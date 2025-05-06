@@ -63,6 +63,41 @@
       margin-bottom: 1rem;
     }
   }
+#signal-contact,
+#email-contact {
+  position: fixed;
+  right: 1.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+#signal-contact {
+  bottom: 5.5rem;
+  background-color: #3a76f0;
+  color: white;
+}
+
+#signal-contact:hover {
+  background-color: #2d5ecf;
+}
+
+#email-contact {
+  bottom: 2.5rem;
+  background-color: #bb86fc;
+  color: #121212;
+}
+
+#email-contact:hover {
+  background-color: #9c5bdf;
+}
 </style>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -329,47 +364,28 @@
     &copy; 2025 David Lynch. All rights reserved.
   </footer>
 
-  <a href="https://signal.me/#eu/dO8FsyiRCVNz6Xw-gsHIBy9VaVLoel9peCn6lF9oNNRF1W3cUAtNz4U-3Np6ui4f"
+<!-- Signal Floating Button -->
+<a href="https://signal.me/#eu/dO8FsyiRCVNz6Xw-gsHIBy9VaVLoel9peCn6lF9oNNRF1W3cUAtNz4U-3Np6ui4f"
    target="_blank"
    id="signal-contact"
    title="Message me on Signal">
-   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="20" height="20" style="margin-right: 8px;">
-     <circle cx="32" cy="32" r="30" fill="#3a76f0"/>
-     <path fill="#fff" d="M44 18H20c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h7v6l7-6h10c1.1 0 2-.9 2-2V20c0-1.1-.9-2-2-2z"/>
-   </svg>
-   Message on Signal
+  <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" width="20" height="20" style="margin-right: 8px;">
+    <circle cx="12" cy="12" r="10" fill="#3a76f0"/>
+    <path d="M16 8H8c-.55 0-1 .45-1 1v5c0 .55.45 1 1 1h3v2l2-2h3c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1z" fill="white"/>
+  </svg>
+  Signal
 </a>
 
-<style>
-  #signal-contact {
-    position: fixed;
-    bottom: 1.5rem;
-    right: 1.5rem;
-    background-color: #3a76f0;
-    color: #fff;
-    font-weight: bold;
-    padding: 0.75rem 1rem;
-    border-radius: 999px;
-    text-decoration: none;
-    font-size: 1rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    transition: background-color 0.3s ease;
-  }
-
-  #signal-contact:hover {
-    background-color: #2d5ecf;
-  }
-
-  @media (max-width: 600px) {
-    #signal-contact {
-      font-size: 0.9rem;
-      padding: 0.6rem 0.9rem;
-    }
-  }
-</style>
-
+<!-- Email Floating Button -->
+<a href="mailto:dlynch@dal213.com"
+   id="email-contact"
+   title="Send me an email">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="#121212" viewBox="0 0 24 24" width="20" height="20" style="margin-right: 8px;">
+    <path fill="#121212" d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4
+      c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm0 2v.01L12 13l8-6.99V6l-8 5.99L4 6z"/>
+  </svg>
+  Email
+</a>
+ 
 </body>
 </html>
