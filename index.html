@@ -340,16 +340,29 @@
   </section>
 </section></body></html>
 
-<section id="contact" style="background-color: #000000; color: #ffffff; padding: 2rem 1rem; max-width: 640px; margin: auto; font-family: sans-serif;">
-  <h2 style="text-align: center; font-size: 1.75rem; margin-bottom: 1rem;">Contact Me</h2>
-  <p style="text-align: center; margin-bottom: 1rem;">
-    I'd love to hear from you. Feel free to reach out securely:
+<section id="contact">
+  <h2>Contact Me</h2>
+  <p>
+    I'd love to hear from you. Feel free to reach out securely using the form below or contact me directly:
   </p>
-  <ul style="list-style: none; padding-left: 0; text-align: center; line-height: 1.8; font-size: 1rem;">
-    <li>Email: <a href="mailto:dlynch@dal213.com" style="color: #ffffff;">dlynch@dal213.com</a></li>
-    <li>Signal: <a href="https://signal.me/#eu/dO8FsyiRCVNz6Xw-gsHIBy9VaVLoel9peCn6lF9oNNRF1W3cUAtNz4U-3Np6ui4f" target="_blank" style="color: #ffffff;">Send a Signal message</a></li>
-    <li>Threema ID: <a href="https://threema.id/KNV4PU9M" target="_blank" style="color: #ffffff;">KNV4PU9M</a></li>
+  <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+    <li>Email: <a href="mailto:dlynch@dal213.com" style="color: #bb86fc;">dlynch@dal213.com</a></li>
+    <li>Signal: <a href="https://signal.me/#eu/dO8FsyiRCVNz6Xw-gsHIBy9VaVLoel9peCn6lF9oNNRF1W3cUAtNz4U-3Np6ui4f" target="_blank" style="color: #bb86fc;">Send a Signal message</a></li>
+    <li>Threema ID: <a href="https://threema.id/KNV4PU9M" target="_blank" style="color: #bb86fc;">KNV4PU9M</a></li>
   </ul>
+
+  <form action="mailto:dlynch@dal213.com?subject=Contact%20from%20Personal%20Website" method="POST" enctype="text/plain">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" required />
+
+    <label for="email">Your Email</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+
+    <button type="submit">Send</button>
+  </form>
 </section>
 
   <footer>
