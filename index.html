@@ -155,6 +155,13 @@
     gap: 16px;
   }
 
+  .grid-full {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
   /* CARD */
   .card {
     background: var(--bg2);
@@ -575,6 +582,7 @@
       btns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const f = btn.dataset.filter;
+      const wearGroup = document.getElementById('wear-group');
       cards.forEach(c => {
         if (f === 'all' || c.dataset.cat === f) {
           c.classList.remove('hidden');
@@ -582,6 +590,9 @@
           c.classList.add('hidden');
         }
       });
+      if (wearGroup) {
+        wearGroup.style.display = (f === 'all' || f === 'wear') ? 'flex' : 'none';
+      }
       updateCount();
     });
   });
