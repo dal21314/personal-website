@@ -14,7 +14,6 @@
     --green: #39ff14;
     --purple: #b44fff;
     --amber: #ffd700;
-    --red: #ff3c5c;
     --bg: #080c10;
     --bg2: #0d1117;
     --bg3: #111820;
@@ -34,30 +33,20 @@
     overflow-x: hidden;
   }
 
-  /* scanline overlay */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0,0,0,0.08) 2px,
-      rgba(0,0,0,0.08) 4px
-    );
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px);
     pointer-events: none;
     z-index: 1000;
   }
 
-  /* grid bg */
   body::after {
     content: '';
     position: fixed;
     inset: 0;
-    background-image:
-      linear-gradient(rgba(0,245,212,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,245,212,0.03) 1px, transparent 1px);
+    background-image: linear-gradient(rgba(0,245,212,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,245,212,0.03) 1px, transparent 1px);
     background-size: 40px 40px;
     pointer-events: none;
     z-index: 0;
@@ -65,213 +54,34 @@
 
   .wrap { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 24px 60px; }
 
-  /* HERO */
-  header {
-    padding: 60px 0 40px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 40px;
-  }
-  .tag {
-    font-size: 11px;
-    letter-spacing: 4px;
-    color: var(--cyan);
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .tag::before {
-    content: '';
-    display: inline-block;
-    width: 24px;
-    height: 1px;
-    background: var(--cyan);
-  }
-  h1 {
-    font-family: var(--head);
-    font-size: clamp(36px, 6vw, 72px);
-    font-weight: 600;
-    line-height: 1;
-    color: #fff;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-  }
+  header { padding: 60px 0 40px; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
+
+  .tag { font-size: 11px; letter-spacing: 4px; color: var(--cyan); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+  .tag::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--cyan); }
+
+  h1 { font-family: var(--head); font-size: clamp(36px, 6vw, 72px); font-weight: 600; line-height: 1; color: #fff; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
   h1 span { color: var(--cyan); }
   .slash { color: var(--text-muted); }
-  .tagline {
-    font-size: 13px;
-    color: var(--text-muted);
-    letter-spacing: 1px;
-    margin-top: 16px;
-    max-width: 520px;
-    line-height: 1.8;
-  }
 
-  /* STAT BAR */
-  .stats {
-    display: flex;
-    gap: 32px;
-    margin-top: 28px;
-    flex-wrap: wrap;
-  }
-  .stat-item {
-    font-size: 12px;
-    color: var(--text-muted);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
+  .tagline { font-size: 13px; color: var(--text-muted); letter-spacing: 1px; margin-top: 16px; max-width: 520px; line-height: 1.8; }
+
+  .stats { display: flex; gap: 32px; margin-top: 28px; flex-wrap: wrap; }
+  .stat-item { font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
   .stat-item strong { color: var(--cyan); font-size: 18px; font-family: var(--head); font-weight: 600; }
 
-  /* FILTERS */
-  .filters {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 32px;
-    align-items: center;
-  }
+  .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; align-items: center; }
   .filter-label { font-size: 11px; color: var(--text-muted); letter-spacing: 2px; margin-right: 4px; }
-  .filter-btn {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text-muted);
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 1px;
-    padding: 6px 14px;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-transform: uppercase;
-  }
+  .filter-btn { background: transparent; border: 1px solid var(--border); color: var(--text-muted); font-family: var(--mono); font-size: 11px; letter-spacing: 1px; padding: 6px 14px; cursor: pointer; transition: all 0.2s; text-transform: uppercase; }
   .filter-btn:hover { border-color: var(--border-hover); color: var(--text); }
   .filter-btn.active { border-color: var(--cyan); color: var(--cyan); background: rgba(0,245,212,0.06); }
 
-  /* GRID */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 16px;
-  }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
 
-  .grid-full {
-    grid-column: 1 / -1;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  /* CARD */
-  .card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    padding: 22px;
-    transition: all 0.25s;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 3px;
-    height: 100%;
-    background: var(--accent-color, var(--cyan));
-    opacity: 0.5;
-    transition: opacity 0.2s;
-  }
-  .card:hover {
-    border-color: var(--border-hover);
-    background: var(--bg3);
-    transform: translateY(-2px);
-  }
+  .card { background: var(--bg2); border: 1px solid var(--border); padding: 22px; transition: all 0.25s; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 10px; }
+  .card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--accent-color, var(--cyan)); opacity: 0.5; transition: opacity 0.2s; }
+  .card:hover { border-color: var(--border-hover); background: var(--bg3); transform: translateY(-2px); }
   .card:hover::before { opacity: 1; }
-
-  .card-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-  .card-icon {
-    width: 36px; height: 36px;
-    border: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 16px;
-    flex-shrink: 0;
-  }
-  .badge {
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    padding: 3px 8px;
-    border: 1px solid;
-    text-transform: uppercase;
-  }
-  .badge-ai    { color: var(--cyan);   border-color: rgba(0,245,212,0.3);   background: rgba(0,245,212,0.06); }
-  .badge-priv  { color: var(--green);  border-color: rgba(57,255,20,0.3);   background: rgba(57,255,20,0.06); }
-  .badge-tech  { color: var(--purple); border-color: rgba(180,79,255,0.3);  background: rgba(180,79,255,0.06); }
-  .badge-prod  { color: var(--amber);  border-color: rgba(255,215,0,0.3);   background: rgba(255,215,0,0.06); }
-  .badge-wear  { color: var(--purple); border-color: rgba(180,79,255,0.3);  background: rgba(180,79,255,0.06); }
-
-  .card-name {
-    font-family: var(--head);
-    font-size: 18px;
-    font-weight: 600;
-    color: #fff;
-    letter-spacing: 0.5px;
-  }
-  .card-desc {
-    font-size: 13px;
-    color: var(--text-muted);
-    line-height: 1.8;
-    flex: 1;
-  }
-  .card-meta {
-    font-size: 10px;
-    color: var(--text-muted);
-    letter-spacing: 1px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding-top: 8px;
-    border-top: 1px solid var(--border);
-  }
-  .card-meta::before { content: '//'; color: var(--cyan); }
-  .visit-btn {
-    margin-top: 4px;
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text-muted);
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 1px;
-    padding: 8px 16px;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: all 0.2s;
-    align-self: flex-start;
-    text-decoration: none;
-    display: inline-block;
-  }
-  .visit-btn:hover { border-color: var(--cyan); color: var(--cyan); }
-
-  .proton-app {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding: 10px 12px;
-    background: rgba(0,245,212,0.03);
-    border: 1px solid var(--border);
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-  .proton-app:hover { border-color: var(--border-hover); background: rgba(0,245,212,0.07); }
-  .pa-name { font-family: var(--head); font-size: 15px; font-weight: 600; color: #fff; }
-  .pa-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
-  .pa-upcoming { border-style: dashed; }
+  .card.full { grid-column: 1 / -1; }
 
   .card[data-cat="ai"]   { --accent-color: var(--cyan); }
   .card[data-cat="priv"] { --accent-color: var(--green); }
@@ -279,21 +89,35 @@
   .card[data-cat="prod"] { --accent-color: var(--amber); }
   .card[data-cat="wear"] { --accent-color: var(--purple); }
 
+  .card-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .card-icon { width: 36px; height: 36px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+
+  .badge { font-size: 10px; letter-spacing: 1.5px; padding: 3px 8px; border: 1px solid; text-transform: uppercase; }
+  .badge-ai   { color: var(--cyan);   border-color: rgba(0,245,212,0.3);  background: rgba(0,245,212,0.06); }
+  .badge-priv { color: var(--green);  border-color: rgba(57,255,20,0.3);  background: rgba(57,255,20,0.06); }
+  .badge-tech { color: var(--purple); border-color: rgba(180,79,255,0.3); background: rgba(180,79,255,0.06); }
+  .badge-prod { color: var(--amber);  border-color: rgba(255,215,0,0.3);  background: rgba(255,215,0,0.06); }
+  .badge-wear { color: var(--purple); border-color: rgba(180,79,255,0.3); background: rgba(180,79,255,0.06); }
+
+  .card-name { font-family: var(--head); font-size: 18px; font-weight: 600; color: #fff; letter-spacing: 0.5px; }
+  .card-desc { font-size: 13px; color: var(--text-muted); line-height: 1.8; flex: 1; }
+  .card-meta { font-size: 10px; color: var(--text-muted); letter-spacing: 1px; display: flex; align-items: center; gap: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+  .card-meta::before { content: '//'; color: var(--cyan); }
+
+  .visit-btn { margin-top: 4px; background: transparent; border: 1px solid var(--border); color: var(--text-muted); font-family: var(--mono); font-size: 11px; letter-spacing: 1px; padding: 8px 16px; cursor: pointer; text-transform: uppercase; transition: all 0.2s; align-self: flex-start; text-decoration: none; display: inline-block; }
+  .visit-btn:hover { border-color: var(--cyan); color: var(--cyan); }
+
+  .tile-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; margin-top: 14px; }
+
+  .proton-app { display: flex; flex-direction: column; gap: 4px; padding: 10px 12px; background: rgba(0,245,212,0.03); border: 1px solid var(--border); text-decoration: none; transition: all 0.2s; }
+  .proton-app:hover { border-color: var(--border-hover); background: rgba(0,245,212,0.07); }
+  .pa-name { font-family: var(--head); font-size: 15px; font-weight: 600; color: #fff; }
+  .pa-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+  .pa-upcoming { border-style: dashed; }
+
   .card.hidden { display: none; }
 
-  /* FOOTER */
-  footer {
-    border-top: 1px solid var(--border);
-    margin-top: 60px;
-    padding-top: 24px;
-    font-size: 11px;
-    color: var(--text-muted);
-    letter-spacing: 1px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
+  footer { border-top: 1px solid var(--border); margin-top: 60px; padding-top: 24px; font-size: 11px; color: var(--text-muted); letter-spacing: 1px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
   footer span { color: var(--cyan); }
 </style>
 </head>
@@ -305,8 +129,8 @@
   <h1>AI<span>//</span>TECH<span class="slash">/</span><br>PRIVACY</h1>
   <p class="tagline">A curated signal feed of tools, reads, and resources at the intersection of artificial intelligence, emerging tech, and digital privacy.</p>
   <div class="stats">
-    <div class="stat-item"><strong id="total-count">18</strong> resources indexed</div>
-    <div class="stat-item"><strong>4</strong> categories</div>
+    <div class="stat-item"><strong>18</strong> resources indexed</div>
+    <div class="stat-item"><strong>5</strong> categories</div>
     <div class="stat-item"><strong id="vis-count">18</strong> visible</div>
   </div>
 </header>
@@ -373,47 +197,20 @@
     <a class="visit-btn" href="https://privacyguides.org" target="_blank">Visit &rarr;</a>
   </div>
 
-  <div class="card" data-cat="priv" style="grid-column: 1 / -1;">
+  <div class="card full" data-cat="priv">
     <div class="card-top"><div class="card-icon">&#9632;</div><span class="badge badge-priv">Privacy</span></div>
     <div class="card-name">Proton Privacy Suite</div>
     <div class="card-desc">Swiss-based, end-to-end encrypted ecosystem built on a zero-knowledge architecture. Open source and independently audited. One account, your entire private digital life.</div>
-    <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; margin-top: 14px;">
-      <a href="https://proton.me/mail" target="_blank" class="proton-app">
-        <span class="pa-name">Mail</span>
-        <span class="pa-desc">Encrypted email. No tracking, no ads.</span>
-      </a>
-      <a href="https://protonvpn.com" target="_blank" class="proton-app">
-        <span class="pa-name">VPN</span>
-        <span class="pa-desc">No-logs VPN. Free tier available.</span>
-      </a>
-      <a href="https://proton.me/pass" target="_blank" class="proton-app">
-        <span class="pa-name">Pass</span>
-        <span class="pa-desc">Passwords, passkeys & 2FA codes.</span>
-      </a>
-      <a href="https://proton.me/drive" target="_blank" class="proton-app">
-        <span class="pa-name">Drive</span>
-        <span class="pa-desc">Encrypted cloud storage.</span>
-      </a>
-      <a href="https://proton.me/calendar" target="_blank" class="proton-app">
-        <span class="pa-name">Calendar</span>
-        <span class="pa-desc">Zero-knowledge encrypted schedule.</span>
-      </a>
-      <a href="https://proton.me/pass#authenticator" target="_blank" class="proton-app">
-        <span class="pa-name">Authenticator</span>
-        <span class="pa-desc">Built-in 2FA inside Proton Pass.</span>
-      </a>
-      <a href="https://proton.me/wallet" target="_blank" class="proton-app">
-        <span class="pa-name">Wallet</span>
-        <span class="pa-desc">Self-custodial Bitcoin wallet.</span>
-      </a>
-      <a href="https://proton.me/lumo" target="_blank" class="proton-app">
-        <span class="pa-name">Lumo</span>
-        <span class="pa-desc">Private AI assistant by Proton.</span>
-      </a>
-      <a href="https://proton.me/meet" target="_blank" class="proton-app pa-upcoming">
-        <span class="pa-name">Meet <span style="font-size:9px;color:var(--amber);letter-spacing:1px;margin-left:6px;">COMING SOON</span></span>
-        <span class="pa-desc">Encrypted video calls. Upcoming.</span>
-      </a>
+    <div class="tile-grid">
+      <a href="https://proton.me/mail" target="_blank" class="proton-app"><span class="pa-name">Mail</span><span class="pa-desc">Encrypted email. No tracking, no ads.</span></a>
+      <a href="https://protonvpn.com" target="_blank" class="proton-app"><span class="pa-name">VPN</span><span class="pa-desc">No-logs VPN. Free tier available.</span></a>
+      <a href="https://proton.me/pass" target="_blank" class="proton-app"><span class="pa-name">Pass</span><span class="pa-desc">Passwords, passkeys &amp; 2FA codes.</span></a>
+      <a href="https://proton.me/drive" target="_blank" class="proton-app"><span class="pa-name">Drive</span><span class="pa-desc">Encrypted cloud storage.</span></a>
+      <a href="https://proton.me/calendar" target="_blank" class="proton-app"><span class="pa-name">Calendar</span><span class="pa-desc">Zero-knowledge encrypted schedule.</span></a>
+      <a href="https://proton.me/pass#authenticator" target="_blank" class="proton-app"><span class="pa-name">Authenticator</span><span class="pa-desc">Built-in 2FA inside Proton Pass.</span></a>
+      <a href="https://proton.me/wallet" target="_blank" class="proton-app"><span class="pa-name">Wallet</span><span class="pa-desc">Self-custodial Bitcoin wallet.</span></a>
+      <a href="https://proton.me/lumo" target="_blank" class="proton-app"><span class="pa-name">Lumo</span><span class="pa-desc">Private AI assistant by Proton.</span></a>
+      <a href="https://proton.me/meet" target="_blank" class="proton-app pa-upcoming"><span class="pa-name">Meet <span style="font-size:9px;color:var(--amber);letter-spacing:1px;margin-left:6px;">COMING SOON</span></span><span class="pa-desc">Encrypted video calls. Upcoming.</span></a>
     </div>
     <div class="card-meta" style="margin-top:14px;">proton.me &mdash; Swiss Privacy Ecosystem</div>
     <a class="visit-btn" href="https://proton.me" target="_blank">Visit Proton &rarr;</a>
@@ -443,7 +240,7 @@
     <a class="visit-btn" href="https://bitwarden.com" target="_blank">Visit &rarr;</a>
   </div>
 
-  <!-- TECH -->
+  <!-- TECHNOLOGY -->
   <div class="card" data-cat="tech">
     <div class="card-top"><div class="card-icon">&#9670;</div><span class="badge badge-tech">Technology</span></div>
     <div class="card-name">Ars Technica</div>
@@ -502,63 +299,41 @@
   </div>
 
   <!-- AI WEARABLES -->
-  <div class="card" data-cat="wear">
+  <div class="card full" data-cat="wear">
     <div class="card-top"><div class="card-icon">&#9671;</div><span class="badge badge-wear">AI Wearables</span></div>
-    <div class="card-name">Meta Ray-Bans</div>
-    <div class="card-desc">AI-powered smart glasses with built-in Meta AI assistant, camera, and open-ear speakers. Hands-free photo, video, and real-time AI queries — in a frame that looks like regular sunglasses.</div>
-    <div class="card-meta">meta.com &mdash; AI Glasses</div>
-    <a class="visit-btn" href="https://www.meta.com/smart-glasses/" target="_blank">Visit &rarr;</a>
+    <div class="card-name">AI Glasses &amp; AR</div>
+    <div class="card-desc">Heads-up displays, cameras, and AI assistants you wear on your face. From subtle AR overlays to fully conversational smart frames.</div>
+    <div class="tile-grid">
+      <a href="https://www.meta.com/smart-glasses/" target="_blank" class="proton-app"><span class="pa-name">Meta Ray-Bans</span><span class="pa-desc">AI assistant, camera &amp; open-ear speakers in a classic frame.</span></a>
+      <a href="https://www.evenrealities.com" target="_blank" class="proton-app"><span class="pa-name">Even Realities G1</span><span class="pa-desc">Minimalist AR HUD for notifications, nav &amp; teleprompter.</span></a>
+      <a href="https://brilliantlabs.ca" target="_blank" class="proton-app"><span class="pa-name">Brilliant Labs Halo</span><span class="pa-desc">Open-source AR glasses with multimodal AI. Built for tinkerers.</span></a>
+    </div>
+    <div class="card-meta" style="margin-top:14px;">AI Glasses &mdash; AR &bull; Camera &bull; Voice AI</div>
   </div>
 
-  <div class="card" data-cat="wear">
+  <div class="card full" data-cat="wear">
     <div class="card-top"><div class="card-icon">&#9671;</div><span class="badge badge-wear">AI Wearables</span></div>
-    <div class="card-name">Even Realities G1</div>
-    <div class="card-desc">Minimalist AR glasses with a heads-up display for notifications, navigation, and teleprompter. Lightweight enough for all-day wear with a clean, prescription-compatible design.</div>
-    <div class="card-meta">evenrealities.com &mdash; AR Glasses</div>
-    <a class="visit-btn" href="https://www.evenrealities.com" target="_blank">Visit &rarr;</a>
+    <div class="card-name">Smart Rings</div>
+    <div class="card-desc">Discreet health and activity tracking on your finger. No screen, no bulk — just continuous biometric monitoring with multi-day battery life.</div>
+    <div class="tile-grid">
+      <a href="https://ouraring.com" target="_blank" class="proton-app"><span class="pa-name">Oura Ring</span><span class="pa-desc">The benchmark for HRV, sleep &amp; readiness tracking.</span></a>
+      <a href="https://www.samsung.com/us/smartphones/galaxy-ring/" target="_blank" class="proton-app"><span class="pa-name">Samsung Galaxy Ring</span><span class="pa-desc">Titanium build, multi-day battery, deep Samsung Health integration.</span></a>
+    </div>
+    <div class="card-meta" style="margin-top:14px;">Smart Rings &mdash; Health &bull; Sleep &bull; HRV</div>
   </div>
 
-  <div class="card" data-cat="wear">
+  <div class="card full" data-cat="wear">
     <div class="card-top"><div class="card-icon">&#9671;</div><span class="badge badge-wear">AI Wearables</span></div>
-    <div class="card-name">Samsung Galaxy Ring</div>
-    <div class="card-desc">Health and sleep tracking smart ring from Samsung. Monitors heart rate, sleep stages, and activity. Lightweight titanium build with multi-day battery life.</div>
-    <div class="card-meta">samsung.com &mdash; Smart Ring</div>
-    <a class="visit-btn" href="https://www.samsung.com/us/smartphones/galaxy-ring/" target="_blank">Visit &rarr;</a>
+    <div class="card-name">AI Pendants &amp; Clips</div>
+    <div class="card-desc">Clip-on and pendant devices that listen, transcribe, and summarize your day. Ambient AI that builds a personal memory layer in the background.</div>
+    <div class="tile-grid">
+      <a href="https://www.limitless.ai" target="_blank" class="proton-app"><span class="pa-name">Limitless Pendant</span><span class="pa-desc">Real-time transcription &amp; personal AI memory layer.</span></a>
+      <a href="https://www.plaud.ai" target="_blank" class="proton-app"><span class="pa-name">Plaud NotePin</span><span class="pa-desc">Clip-on recorder that auto-transcribes &amp; summarizes meetings.</span></a>
+    </div>
+    <div class="card-meta" style="margin-top:14px;">Pendants &amp; Clips &mdash; Transcription &bull; Memory &bull; AI Summaries</div>
   </div>
 
-  <div class="card" data-cat="wear">
-    <div class="card-top"><div class="card-icon">&#9671;</div><span class="badge badge-wear">AI Wearables</span></div>
-    <div class="card-name">Oura Ring</div>
-    <div class="card-desc">The benchmark smart ring for health tracking. Measures HRV, sleep, readiness, and activity. Sleek design, 7-day battery, and a deeply detailed companion app.</div>
-    <div class="card-meta">ouraring.com &mdash; Smart Ring</div>
-    <a class="visit-btn" href="https://ouraring.com" target="_blank">Visit &rarr;</a>
-  </div>
-
-  <div class="card" data-cat="wear">
-    <div class="card-top"><div class="card-icon">&#9671;</div><span class="badge badge-wear">AI Wearables</span></div>
-    <div class="card-name">Brilliant Labs Halo</div>
-    <div class="card-desc">Open-source AI smart glasses with a built-in AR display, camera, and microphone. Runs a multimodal AI that can see, hear, and respond in real time. Built for hackers and tinkerers.</div>
-    <div class="card-meta">brilliantlabs.ca &mdash; AR Glasses</div>
-    <a class="visit-btn" href="https://brilliantlabs.ca" target="_blank">Visit &rarr;</a>
-  </div>
-
-  <div class="card" data-cat="wear">
-    <div class="card-top"><div class="card-icon">&#9671;</div><span class="badge badge-wear">AI Wearables</span></div>
-    <div class="card-name">Limitless Pendant</div>
-    <div class="card-desc">AI-powered wearable that captures and transcribes conversations in real time. Builds a personal memory layer and surfaces insights from your day. Designed for professionals.</div>
-    <div class="card-meta">limitless.ai &mdash; AI Pendant</div>
-    <a class="visit-btn" href="https://www.limitless.ai" target="_blank">Visit &rarr;</a>
-  </div>
-
-  <div class="card" data-cat="wear">
-    <div class="card-top"><div class="card-icon">&#9671;</div><span class="badge badge-wear">AI Wearables</span></div>
-    <div class="card-name">Plaud NotePin</div>
-    <div class="card-desc">Clip-on AI voice recorder and meeting assistant. Transcribes, summarizes, and organizes conversations automatically. Compact, discreet, and built for productivity on the go.</div>
-    <div class="card-meta">plaud.ai &mdash; AI Clip</div>
-    <a class="visit-btn" href="https://www.plaud.ai" target="_blank">Visit &rarr;</a>
-  </div>
-
-</div><!-- /grid -->
+</div>
 
 <footer>
   <div>SIGNAL//HUB &mdash; AI &bull; TECH &bull; PRIVACY</div>
@@ -573,8 +348,7 @@
   const visCount = document.getElementById('vis-count');
 
   function updateCount() {
-    const visible = document.querySelectorAll('.card:not(.hidden)').length;
-    visCount.textContent = visible;
+    visCount.textContent = document.querySelectorAll('.card:not(.hidden)').length;
   }
 
   btns.forEach(btn => {
@@ -582,7 +356,6 @@
       btns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const f = btn.dataset.filter;
-      const wearGroup = document.getElementById('wear-group');
       cards.forEach(c => {
         if (f === 'all' || c.dataset.cat === f) {
           c.classList.remove('hidden');
@@ -590,9 +363,6 @@
           c.classList.add('hidden');
         }
       });
-      if (wearGroup) {
-        wearGroup.style.display = (f === 'all' || f === 'wear') ? 'flex' : 'none';
-      }
       updateCount();
     });
   });
