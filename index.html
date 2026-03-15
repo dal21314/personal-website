@@ -207,6 +207,7 @@
   .badge-priv  { color: var(--green);  border-color: rgba(57,255,20,0.3);   background: rgba(57,255,20,0.06); }
   .badge-tech  { color: var(--purple); border-color: rgba(180,79,255,0.3);  background: rgba(180,79,255,0.06); }
   .badge-prod  { color: var(--amber);  border-color: rgba(255,215,0,0.3);   background: rgba(255,215,0,0.06); }
+  .badge-wear  { color: var(--purple); border-color: rgba(180,79,255,0.3);  background: rgba(180,79,255,0.06); }
 
   .card-name {
     font-family: var(--head);
@@ -269,6 +270,7 @@
   .card[data-cat="priv"] { --accent-color: var(--green); }
   .card[data-cat="tech"] { --accent-color: var(--purple); }
   .card[data-cat="prod"] { --accent-color: var(--amber); }
+  .card[data-cat="wear"] { --accent-color: var(--purple); }
 
   .card.hidden { display: none; }
 
@@ -296,9 +298,9 @@
   <h1>AI<span>//</span>TECH<span class="slash">/</span><br>PRIVACY</h1>
   <p class="tagline">A curated signal feed of tools, reads, and resources at the intersection of artificial intelligence, emerging tech, and digital privacy.</p>
   <div class="stats">
-    <div class="stat-item"><strong id="total-count">17</strong> resources indexed</div>
+    <div class="stat-item"><strong id="total-count">23</strong> resources indexed</div>
     <div class="stat-item"><strong>4</strong> categories</div>
-    <div class="stat-item"><strong id="vis-count">17</strong> visible</div>
+    <div class="stat-item"><strong id="vis-count">23</strong> visible</div>
   </div>
 </header>
 
@@ -309,6 +311,7 @@
   <button class="filter-btn" data-filter="priv">Privacy</button>
   <button class="filter-btn" data-filter="tech">Technology</button>
   <button class="filter-btn" data-filter="prod">Productivity</button>
+  <button class="filter-btn" data-filter="wear">AI Wearables</button>
 </div>
 
 <div class="grid" id="grid">
@@ -489,6 +492,55 @@
     <div class="card-desc">Chromium-based browser with built-in ad and tracker blocking. Fast, private, and compatible with Chrome extensions.</div>
     <div class="card-meta">brave.com &mdash; Browser</div>
     <a class="visit-btn" href="https://brave.com" target="_blank">Visit &rarr;</a>
+  </div>
+
+  <!-- AI WEARABLES -->
+  <div class="card" data-cat="wear">
+    <div class="card-top"><div class="card-icon">&#9671;</div><span class="badge badge-wear">AI Wearables</span></div>
+    <div class="card-name">Meta Ray-Bans</div>
+    <div class="card-desc">AI-powered smart glasses with built-in Meta AI assistant, camera, and open-ear speakers. Hands-free photo, video, and real-time AI queries — in a frame that looks like regular sunglasses.</div>
+    <div class="card-meta">meta.com &mdash; AI Glasses</div>
+    <a class="visit-btn" href="https://www.meta.com/smart-glasses/" target="_blank">Visit &rarr;</a>
+  </div>
+
+  <div class="card" data-cat="wear">
+    <div class="card-top"><div class="card-icon">&#9671;</div><span class="badge badge-wear">AI Wearables</span></div>
+    <div class="card-name">Even Realities G1</div>
+    <div class="card-desc">Minimalist AR glasses with a heads-up display for notifications, navigation, and teleprompter. Lightweight enough for all-day wear with a clean, prescription-compatible design.</div>
+    <div class="card-meta">evenrealities.com &mdash; AR Glasses</div>
+    <a class="visit-btn" href="https://www.evenrealities.com" target="_blank">Visit &rarr;</a>
+  </div>
+
+  <div class="card" data-cat="wear">
+    <div class="card-top"><div class="card-icon">&#9671;</div><span class="badge badge-wear">AI Wearables</span></div>
+    <div class="card-name">Samsung Galaxy Ring</div>
+    <div class="card-desc">Health and sleep tracking smart ring from Samsung. Monitors heart rate, sleep stages, and activity. Lightweight titanium build with multi-day battery life.</div>
+    <div class="card-meta">samsung.com &mdash; Smart Ring</div>
+    <a class="visit-btn" href="https://www.samsung.com/us/smartphones/galaxy-ring/" target="_blank">Visit &rarr;</a>
+  </div>
+
+  <div class="card" data-cat="wear">
+    <div class="card-top"><div class="card-icon">&#9671;</div><span class="badge badge-wear">AI Wearables</span></div>
+    <div class="card-name">Oura Ring</div>
+    <div class="card-desc">The benchmark smart ring for health tracking. Measures HRV, sleep, readiness, and activity. Sleek design, 7-day battery, and a deeply detailed companion app.</div>
+    <div class="card-meta">ouraring.com &mdash; Smart Ring</div>
+    <a class="visit-btn" href="https://ouraring.com" target="_blank">Visit &rarr;</a>
+  </div>
+
+  <div class="card" data-cat="wear">
+    <div class="card-top"><div class="card-icon">&#9671;</div><span class="badge badge-wear">AI Wearables</span></div>
+    <div class="card-name">Limitless Pendant</div>
+    <div class="card-desc">AI-powered wearable that captures and transcribes conversations in real time. Builds a personal memory layer and surfaces insights from your day. Designed for professionals.</div>
+    <div class="card-meta">limitless.ai &mdash; AI Pendant</div>
+    <a class="visit-btn" href="https://www.limitless.ai" target="_blank">Visit &rarr;</a>
+  </div>
+
+  <div class="card" data-cat="wear">
+    <div class="card-top"><div class="card-icon">&#9671;</div><span class="badge badge-wear">AI Wearables</span></div>
+    <div class="card-name">Plaud NotePin</div>
+    <div class="card-desc">Clip-on AI voice recorder and meeting assistant. Transcribes, summarizes, and organizes conversations automatically. Compact, discreet, and built for productivity on the go.</div>
+    <div class="card-meta">plaud.ai &mdash; AI Clip</div>
+    <a class="visit-btn" href="https://www.plaud.ai" target="_blank">Visit &rarr;</a>
   </div>
 
 </div><!-- /grid -->
