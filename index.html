@@ -14,6 +14,7 @@
     --green: #39ff14;
     --purple: #b44fff;
     --amber: #ffd700;
+    --pink: #ff6ef7;
     --bg: #080c10;
     --bg2: #0d1117;
     --bg3: #111820;
@@ -26,7 +27,6 @@
   }
 
   body { background: var(--bg); color: var(--text); font-family: var(--mono); min-height: 100vh; overflow-x: hidden; }
-
   body::before { content: ''; position: fixed; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px); pointer-events: none; z-index: 1000; }
   body::after { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(0,245,212,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,245,212,0.03) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; z-index: 0; }
 
@@ -34,7 +34,6 @@
 
   header { padding: 60px 0 40px; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
   .tag { font-size: 11px; letter-spacing: 4px; color: var(--cyan); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
-  .tag::before { display: none; }
   h1 { font-family: var(--head); font-size: clamp(36px, 6vw, 72px); font-weight: 600; line-height: 1; color: #fff; letter-spacing: 2px; text-transform: uppercase; }
   h1 span { color: var(--cyan); }
   .slash { color: var(--text-muted); }
@@ -49,7 +48,6 @@
   .filter-btn:hover { border-color: var(--border-hover); color: var(--text); }
   .filter-btn.active { border-color: var(--cyan); color: var(--cyan); background: rgba(0,245,212,0.06); }
 
-  /* SECTION */
   .section { margin-bottom: 52px; }
   .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
   .section-title { font-family: var(--head); font-size: 13px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--section-color, var(--cyan)); }
@@ -58,7 +56,7 @@
 
   .section[data-sec="ai"]   { --section-color: var(--cyan); }
   .section[data-sec="wear"] { --section-color: var(--purple); }
-  .section[data-sec="tech"] { --section-color: #ff6ef7; }
+  .section[data-sec="tech"] { --section-color: var(--pink); }
   .section[data-sec="prod"] { --section-color: var(--amber); }
   .section[data-sec="priv"] { --section-color: var(--green); }
 
@@ -72,7 +70,7 @@
 
   .card[data-cat="ai"]   { --accent-color: var(--cyan); }
   .card[data-cat="priv"] { --accent-color: var(--green); }
-  .card[data-cat="tech"] { --accent-color: #ff6ef7; }
+  .card[data-cat="tech"] { --accent-color: var(--pink); }
   .card[data-cat="prod"] { --accent-color: var(--amber); }
   .card[data-cat="wear"] { --accent-color: var(--purple); }
 
@@ -82,7 +80,7 @@
   .badge { font-size: 10px; letter-spacing: 1.5px; padding: 3px 8px; border: 1px solid; text-transform: uppercase; }
   .badge-ai   { color: var(--cyan);   border-color: rgba(0,245,212,0.3);  background: rgba(0,245,212,0.06); }
   .badge-priv { color: var(--green);  border-color: rgba(57,255,20,0.3);  background: rgba(57,255,20,0.06); }
-  .badge-tech { color: #ff6ef7; border-color: rgba(255,110,247,0.3); background: rgba(255,110,247,0.06); }
+  .badge-tech { color: var(--pink);   border-color: rgba(255,110,247,0.3); background: rgba(255,110,247,0.06); }
   .badge-prod { color: var(--amber);  border-color: rgba(255,215,0,0.3);  background: rgba(255,215,0,0.06); }
   .badge-wear { color: var(--purple); border-color: rgba(180,79,255,0.3); background: rgba(180,79,255,0.06); }
 
@@ -134,7 +132,7 @@
 <div class="section" data-sec="ai" id="sec-ai">
   <div class="section-header">
     <span class="section-title">AI Tools</span>
-    <span class="section-count">5 resources</span>
+    <span class="section-count">15 resources</span>
   </div>
   <div class="grid">
     <div class="card" data-cat="ai">
@@ -160,13 +158,6 @@
     </div>
     <div class="card" data-cat="ai">
       <div class="card-top"><div class="card-icon">&#9670;</div><span class="badge badge-ai">AI Tools</span></div>
-      <div class="card-name">Cursor AI</div>
-      <div class="card-desc">An AI-first code editor built on VS Code. Understands your entire codebase, autocompletes intelligently, and lets you chat with your code to build and refactor faster.</div>
-      <div class="card-meta">cursor.com &mdash; AI Code Editor</div>
-      <a class="visit-btn" href="https://cursor.com" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card" data-cat="ai">
-      <div class="card-top"><div class="card-icon">&#9670;</div><span class="badge badge-ai">AI Tools</span></div>
       <div class="card-name">Claude</div>
       <div class="card-desc">Anthropic's AI assistant — Constitutional AI-trained for safety and helpfulness. Strong reasoning, coding, and analysis.</div>
       <div class="card-meta">claude.ai &mdash; Anthropic</div>
@@ -178,6 +169,13 @@
       <div class="card-desc">Anthropic's agentic coding tool. Runs in your terminal, reads your codebase, writes and edits code, runs tests, and commits changes — all from a conversational interface.</div>
       <div class="card-meta">claude.ai/code &mdash; AI Coding Agent</div>
       <a class="visit-btn" href="https://claude.ai/code" target="_blank">Visit &rarr;</a>
+    </div>
+    <div class="card" data-cat="ai">
+      <div class="card-top"><div class="card-icon">&#9670;</div><span class="badge badge-ai">AI Tools</span></div>
+      <div class="card-name">Cursor AI</div>
+      <div class="card-desc">An AI-first code editor built on VS Code. Understands your entire codebase, autocompletes intelligently, and lets you chat with your code to build and refactor faster.</div>
+      <div class="card-meta">cursor.com &mdash; AI Code Editor</div>
+      <a class="visit-btn" href="https://cursor.com" target="_blank">Visit &rarr;</a>
     </div>
     <div class="card" data-cat="ai">
       <div class="card-top"><div class="card-icon">&#9670;</div><span class="badge badge-ai">AI Tools</span></div>
@@ -285,7 +283,7 @@
 <div class="section" data-sec="tech" id="sec-tech">
   <div class="section-header">
     <span class="section-title">Technology</span>
-    <span class="section-count">4 resources</span>
+    <span class="section-count">5 resources</span>
   </div>
   <div class="grid">
     <div class="card" data-cat="tech">
@@ -316,6 +314,9 @@
       <div class="card-meta">wired.com &mdash; Magazine</div>
       <a class="visit-btn" href="https://wired.com" target="_blank">Visit &rarr;</a>
     </div>
+    <div class="card" data-cat="tech">
+      <div class="card-top"><div class="card-icon">&#9670;</div><span class="badge badge-tech">Technology</span></div>
+      <div class="card-name">Hacker News</div>
       <div class="card-desc">Community news aggregator by Y Combinator. The pulse of the tech and startup world. Raw, unfiltered, and high signal.</div>
       <div class="card-meta">news.ycombinator.com &mdash; Community</div>
       <a class="visit-btn" href="https://news.ycombinator.com" target="_blank">Visit &rarr;</a>
@@ -327,7 +328,7 @@
 <div class="section" data-sec="prod" id="sec-prod">
   <div class="section-header">
     <span class="section-title">Productivity</span>
-    <span class="section-count">3 resources</span>
+    <span class="section-count">4 resources</span>
   </div>
   <div class="grid">
     <div class="card" data-cat="prod">
@@ -365,7 +366,7 @@
 <div class="section" data-sec="priv" id="sec-priv">
   <div class="section-header">
     <span class="section-title">Privacy</span>
-    <span class="section-count">6 resources</span>
+    <span class="section-count">12 resources</span>
   </div>
   <div class="grid">
     <div class="card" data-cat="priv">
