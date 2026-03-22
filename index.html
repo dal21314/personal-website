@@ -72,28 +72,30 @@
 
   .tag {
     font-size: 11px;
-    color: var(--text-muted);
+    color: var(--cyan);
     letter-spacing: 0.2em;
     margin-bottom: 16px;
   }
 
   .site-title {
     font-family: var(--head);
-    font-size: clamp(32px, 6vw, 64px);
+    font-size: clamp(48px, 9vw, 96px);
     font-weight: 600;
     color: #fff;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.03em;
     line-height: 1;
-    margin-bottom: 12px;
+    margin-bottom: 24px;
   }
 
-  .site-title span { color: var(--cyan); }
+  .site-title .slash { color: var(--cyan); }
 
   .site-sub {
     font-size: 13px;
     color: var(--text-muted);
     letter-spacing: 0.08em;
     margin-bottom: 28px;
+    max-width: 640px;
+    line-height: 1.7;
   }
 
   .hero-stats {
@@ -299,7 +301,7 @@
     background: rgba(0,245,212,0.06);
   }
 
-  /* WEARABLES SECTION — full-width category cards */
+  /* WEARABLES SECTION */
   .wear-section { margin-bottom: 40px; }
 
   .wear-grid {
@@ -462,8 +464,8 @@
 <div class="wrap">
 
   <header>
-    <div class="tag">SIGNAL//213</div>
-    <h1 class="site-title">SIGNAL//<span>213</span> &mdash; RESOURCE DIRECTORY</h1>
+    <div class="tag">SIGNAL//213 &mdash; RESOURCE DIRECTORY</div>
+    <h1 class="site-title">AI<span class="slash">//</span>TECH<span class="slash">/</span>PRIVACY</h1>
     <p class="site-sub">A curated signal feed of tools, reads, and resources at the intersection of artificial intelligence, emerging tech, and digital privacy.</p>
     <div class="hero-stats">
       <div class="stat"><span class="stat-num">52</span><span class="stat-label">resources indexed</span></div>
