@@ -1,1 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIGNAL//213 — DAILY BRIEFINGS</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;600;700&display=swap');
 
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cyan: #00f5d4;
+    --green: #39ff14;
+    --purple: #b44fff;
+    --amber: #ffd700;
+    --red: #ff3c5c;
+    --bg: #080c10;
+    --bg2: #0d1117;
+    --bg3: #111820;
+    --border: rgba(0,245,212,0.15);
+    --border-hover: rgba(0,245,212,0.4);
+    --text: #c9d6df;
+    --text-muted: #5c7a8a;
+    --mono: 'Share Tech Mono', monospace;
+    --head: 'Rajdhani', sans-serif;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--mono);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px
+    );
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,245,212,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,245,212,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrap { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 24px 80px; }
+
+  /* HEADER */
+  header {
+    padding: 48px 0 32px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+  }
+
+  .site-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.15em;
+    margin-bottom: 12px;
+  }
+
+  .site-tag a {
+    color: var(--cyan);
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+  }
+  .site-tag a:hover { opacity: 1; }
+
+  .page-title {
+    font-family: var(--head);
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.05em;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  .page-title span { color: var(--cyan); }
+
+  .page-subtitle {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    display: flex;
+    gap: 32px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .stat-num {
+    font-family: var(--head);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--cyan);
+  }
+
+  .stat-label {
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* SECTION LABEL */
+  .section-label {
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* BRIEFING CARDS */
+  .briefing-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .briefing-card {
+    display: grid;
+    grid-template-columns: 140px 1fr auto;
+    align-items: center;
+    gap: 24px;
+    padding: 20px 24px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--cyan);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .briefing-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0,245,212,0.04) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .briefing-card:hover {
+    border-color: var(--border-hover);
+    border-left-color: var(--cyan);
+    background: var(--bg3);
+  }
+
+  .briefing-card:hover::before { opacity: 1; }
+
+  .card-date {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  .card-date .day-of-week {
+    display: block;
+    color: var(--cyan);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .card-title {
+    font-family: var(--head);
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.03em;
+  }
+
+  .card-meta {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  .card-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+
+  .tag {
+    font-size: 9px;
+    padding: 2px 7px;
+    border: 1px solid;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-radius: 2px;
+  }
+
+  .tag-ai { color: var(--cyan); border-color: rgba(0,245,212,0.3); }
+  .tag-apple { color: var(--green); border-color: rgba(57,255,20,0.3); }
+  .tag-privacy { color: var(--purple); border-color: rgba(180,79,255,0.3); }
+  .tag-wearables { color: var(--amber); border-color: rgba(255,215,0,0.3); }
+
+  .read-link {
+    font-size: 11px;
+    color: var(--cyan);
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+
+  .briefing-card:hover .read-link { opacity: 1; }
+
+  /* LATEST BADGE */
+  .latest-badge {
+    display: inline-block;
+    font-size: 9px;
+    color: var(--bg);
+    background: var(--cyan);
+    padding: 2px 8px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-left: 10px;
+    vertical-align: middle;
+    font-family: var(--mono);
+  }
+
+  /* EMPTY STATE */
+  .coming-soon {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    border: 1px dashed var(--border);
+  }
+
+  /* FOOTER */
+  footer {
+    margin-top: 80px;
+    padding: 24px 0;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  footer div {
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+  }
+
+  footer span { color: var(--cyan); }
+
+  @media (max-width: 640px) {
+    .briefing-card {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .read-link { display: none; }
+    .stats-bar { gap: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="site-tag">← <a href="../index.html">SIGNAL//213 — RESOURCE DIRECTORY</a></div>
+    <h1 class="page-title">DAILY <span>BRIEFINGS</span></h1>
+    <p class="page-subtitle">AI // TECH // PRIVACY — COMPILED DAILY</p>
+  </header>
+
+  <div class="stats-bar">
+    <div class="stat">
+      <span class="stat-num" id="total-count">1</span>
+      <span class="stat-label">Briefings</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">2026</span>
+      <span class="stat-label">Archive Year</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num" style="color: var(--green);">LIVE</span>
+      <span class="stat-label">Status</span>
+    </div>
+  </div>
+
+  <div class="section-label">ARCHIVE // ALL BRIEFINGS</div>
+
+  <div class="briefing-list">
+
+    <!-- MARCH 21, 2026 -->
+    <a class="briefing-card" href="2026-03-21.html">
+      <div class="card-date">
+        <span class="day-of-week">Saturday</span>
+        March 21, 2026
+      </div>
+      <div>
+        <div class="card-title">
+          📡 SIGNAL//213 Daily Tech Brief
+          <span class="latest-badge">LATEST</span>
+        </div>
+        <div class="card-meta">OpenAI Superapp · Comet iOS · Claude Cowork Projects · Apple Wave · Meta v23 · Quest Drama · Signal Labels</div>
+        <div class="card-tags">
+          <span class="tag tag-ai">OpenAI</span>
+          <span class="tag tag-ai">Claude</span>
+          <span class="tag tag-ai">Perplexity</span>
+          <span class="tag tag-apple">Apple</span>
+          <span class="tag tag-wearables">Meta Glasses</span>
+          <span class="tag tag-privacy">Signal</span>
+          <span class="tag tag-privacy">Threema</span>
+        </div>
+      </div>
+      <span class="read-link">READ →</span>
+    </a>
+
+    <!-- FUTURE ENTRIES WILL BE ADDED ABOVE THIS LINE -->
+
+  </div>
+
+</div>
+
+<footer>
+  <div>SIGNAL//213 — DAILY BRIEFINGS ARCHIVE</div>
+  <div>COMPILED MANUALLY — NO ADS — <span>STAY INFORMED</span></div>
+</footer>
+
+</div>
+</body>
+</html>
