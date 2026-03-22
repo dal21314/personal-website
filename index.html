@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SIGNAL//213</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23080c10'/%3E%3Ctext x='2' y='23' font-family='monospace' font-weight='bold' font-size='18' fill='%2300f5d4'%3E%2F%2F%3C/text%3E%3C/svg%3E">
+
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;600&display=swap');
 
@@ -481,6 +483,58 @@
     .title-row { flex-direction: column; align-items: flex-start; }
     .hero-mascot { width: 90px; height: 90px; align-self: center; }
   }
+
+  /* BACK TO TOP */
+  .back-to-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background: var(--bg2);
+    border: 1px solid rgba(0,245,212,0.35);
+    color: var(--cyan);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    padding: 10px 16px;
+    cursor: pointer;
+    z-index: 500;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(12px);
+    transition: opacity 0.3s, transform 0.3s, background 0.2s;
+  }
+
+  .back-to-top.visible {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+
+  .back-to-top:hover {
+    background: rgba(0,245,212,0.08);
+    border-color: var(--cyan);
+  }
+
+  /* SCROLL-IN ANIMATION */
+  .card,
+  .wear-card,
+  .proton-card {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.45s ease, transform 0.45s ease, border-color 0.2s, background 0.2s;
+  }
+
+  .card.in-view,
+  .wear-card.in-view,
+  .proton-card.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Keep hidden cards hidden even after animation */
+  .card.hidden { display: none; }
+  .wear-card.hidden { display: none; }
+
 </style>
 </head>
 <body>
@@ -938,6 +992,8 @@
 
 </div>
 
+<button class="back-to-top" id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ TOP</button>
+
 <script>
   const filterBtns = document.querySelectorAll('.filter-btn');
   const sections = document.querySelectorAll('.section-wrap');
@@ -964,6 +1020,32 @@
       updateCount();
     });
   });
+
+
+  // BACK TO TOP
+  const btt = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    btt.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+
+  // SCROLL-IN ANIMATIONS
+  const animCards = document.querySelectorAll('.card, .wear-card, .proton-card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        // stagger siblings slightly
+        const siblings = [...entry.target.parentElement.children];
+        const idx = siblings.indexOf(entry.target);
+        setTimeout(() => {
+          entry.target.classList.add('in-view');
+        }, idx * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  animCards.forEach(card => observer.observe(card));
+
 </script>
 </body>
 </html>
