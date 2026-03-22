@@ -14,479 +14,923 @@
     --green: #39ff14;
     --purple: #b44fff;
     --amber: #ffd700;
-    --pink: #ff6ef7;
+    --red: #ff3c5c;
     --bg: #080c10;
     --bg2: #0d1117;
     --bg3: #111820;
     --border: rgba(0,245,212,0.15);
     --border-hover: rgba(0,245,212,0.4);
     --text: #c9d6df;
-    --text-muted: #8aabb8;
+    --text-muted: #5c7a8a;
     --mono: 'Share Tech Mono', monospace;
     --head: 'Rajdhani', sans-serif;
   }
 
-  body { background: var(--bg); color: var(--text); font-family: var(--mono); min-height: 100vh; overflow-x: hidden; }
-  body::before { content: ''; position: fixed; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px); pointer-events: none; z-index: 1000; }
-  body::after { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(0,245,212,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,245,212,0.03) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; z-index: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--mono);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.08) 2px,
+      rgba(0,0,0,0.08) 4px
+    );
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,245,212,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,245,212,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
 
   .wrap { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 24px 60px; }
 
-  header { padding: 60px 0 40px; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
-  .tag { font-size: 11px; letter-spacing: 4px; color: var(--cyan); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
-  h1 { font-family: var(--head); font-size: clamp(36px, 6vw, 72px); font-weight: 600; line-height: 1; color: #fff; letter-spacing: 2px; text-transform: uppercase; }
-  h1 span { color: var(--cyan); }
-  .slash { color: var(--text-muted); }
-  .tagline { font-size: 13px; color: var(--text-muted); letter-spacing: 1px; margin-top: 16px; max-width: 520px; line-height: 1.8; }
-  .stats { display: flex; gap: 32px; margin-top: 28px; flex-wrap: wrap; }
-  .stat-item { font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
-  .stat-item strong { color: var(--cyan); font-size: 18px; font-family: var(--head); font-weight: 600; }
+  /* HERO */
+  header {
+    padding: 60px 0 40px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
 
-  .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; align-items: center; }
-  .filter-label { font-size: 11px; color: var(--text-muted); letter-spacing: 2px; margin-right: 4px; }
-  .filter-btn { background: transparent; border: 1px solid var(--border); color: var(--text-muted); font-family: var(--mono); font-size: 11px; letter-spacing: 1px; padding: 6px 14px; cursor: pointer; transition: all 0.2s; text-transform: uppercase; }
-  .filter-btn:hover { border-color: var(--border-hover); color: var(--text); }
-  .filter-btn.active { border-color: var(--cyan); color: var(--cyan); background: rgba(0,245,212,0.06); }
+  .tag {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.2em;
+    margin-bottom: 16px;
+  }
 
-  .section { margin-bottom: 52px; }
-  .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
-  .section-title { font-family: var(--head); font-size: 13px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--section-color, var(--cyan)); }
-  .section-header::before { content: ''; display: inline-block; width: 3px; height: 18px; background: var(--section-color, var(--cyan)); }
-  .section-count { font-size: 11px; color: var(--text-muted); margin-left: auto; }
+  .site-title {
+    font-family: var(--head);
+    font-size: clamp(32px, 6vw, 64px);
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
 
-  .section[data-sec="ai"]   { --section-color: var(--cyan); }
-  .section[data-sec="wear"] { --section-color: var(--purple); }
-  .section[data-sec="tech"] { --section-color: var(--pink); }
-  .section[data-sec="prod"] { --section-color: var(--amber); }
-  .section[data-sec="priv"] { --section-color: var(--green); }
+  .site-title span { color: var(--cyan); }
 
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+  .site-sub {
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    margin-bottom: 28px;
+  }
 
-  .card { background: var(--bg2); border: 1px solid var(--border); padding: 22px; transition: all 0.25s; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 10px; }
-  .card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--accent-color, var(--cyan)); opacity: 0.5; transition: opacity 0.2s; }
-  .card:hover { border-color: var(--border-hover); background: var(--bg3); transform: translateY(-2px); }
-  .card:hover::before { opacity: 1; }
-  .card.full { grid-column: 1 / -1; }
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
 
-  .card[data-cat="ai"]   { --accent-color: var(--cyan); }
-  .card[data-cat="priv"] { --accent-color: var(--green); }
-  .card[data-cat="tech"] { --accent-color: var(--pink); }
-  .card[data-cat="prod"] { --accent-color: var(--amber); }
-  .card[data-cat="wear"] { --accent-color: var(--purple); }
+  .stat {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
 
-  .card-top { display: flex; justify-content: space-between; align-items: flex-start; }
-  .card-icon { width: 36px; height: 36px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .stat-num {
+    font-family: var(--head);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--cyan);
+  }
 
-  .badge { font-size: 10px; letter-spacing: 1.5px; padding: 3px 8px; border: 1px solid; text-transform: uppercase; }
-  .badge-ai   { color: var(--cyan);   border-color: rgba(0,245,212,0.3);  background: rgba(0,245,212,0.06); }
-  .badge-priv { color: var(--green);  border-color: rgba(57,255,20,0.3);  background: rgba(57,255,20,0.06); }
-  .badge-tech { color: var(--pink);   border-color: rgba(255,110,247,0.3); background: rgba(255,110,247,0.06); }
-  .badge-prod { color: var(--amber);  border-color: rgba(255,215,0,0.3);  background: rgba(255,215,0,0.06); }
-  .badge-wear { color: var(--purple); border-color: rgba(180,79,255,0.3); background: rgba(180,79,255,0.06); }
+  .stat-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+  }
 
-  .card-name { font-family: var(--head); font-size: 18px; font-weight: 600; color: #fff; letter-spacing: 0.5px; }
-  .card-desc { font-size: 13px; color: var(--text-muted); line-height: 1.8; flex: 1; }
-  .card-meta { font-size: 10px; color: var(--text-muted); letter-spacing: 1px; display: flex; align-items: center; gap: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
-  .card-meta::before { content: '//'; color: var(--cyan); }
-  .visit-btn { margin-top: 4px; background: transparent; border: 1px solid var(--border); color: var(--text-muted); font-family: var(--mono); font-size: 11px; letter-spacing: 1px; padding: 8px 16px; cursor: pointer; text-transform: uppercase; transition: all 0.2s; align-self: flex-start; text-decoration: none; display: inline-block; }
-  .visit-btn:hover { border-color: var(--cyan); color: var(--cyan); }
+  /* FILTER BAR */
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
 
-  .tile-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; margin-top: 14px; }
-  .proton-app { display: flex; flex-direction: column; gap: 4px; padding: 10px 12px; background: rgba(0,245,212,0.03); border: 1px solid var(--border); text-decoration: none; transition: all 0.2s; }
-  .proton-app:hover { border-color: var(--border-hover); background: rgba(0,245,212,0.07); }
-  .pa-name { font-family: var(--head); font-size: 15px; font-weight: 600; color: #fff; }
-  .pa-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
-  .pa-upcoming { border-style: dashed; }
+  .filter-label {
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.2em;
+    margin-right: 4px;
+  }
 
-  .section.hidden { display: none; }
+  .filter-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    padding: 6px 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
 
-  footer { border-top: 1px solid var(--border); margin-top: 60px; padding-top: 24px; font-size: 11px; color: var(--text-muted); letter-spacing: 1px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .filter-btn:hover,
+  .filter-btn.active {
+    color: var(--cyan);
+    border-color: rgba(0,245,212,0.4);
+    background: rgba(0,245,212,0.04);
+  }
+
+  .briefings-btn {
+    background: none;
+    border: 1px solid rgba(0,245,212,0.35);
+    color: var(--cyan);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    padding: 6px 14px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+  }
+
+  .briefings-btn:hover {
+    background: rgba(0,245,212,0.08);
+    border-color: rgba(0,245,212,0.7);
+  }
+
+  /* VISIBLE COUNT */
+  .results-bar {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+  }
+
+  .results-bar span { color: var(--cyan); }
+
+  /* SECTION HEADERS */
+  .section-head {
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 12px 0 10px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .section-count {
+    font-family: var(--head);
+    font-size: 18px;
+    color: var(--cyan);
+  }
+
+  .section-sub {
+    font-size: 10px;
+    color: var(--text-muted);
+  }
+
+  /* CARD GRID */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 20px;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .card:hover {
+    border-color: var(--border-hover);
+    background: var(--bg3);
+  }
+
+  .card.hidden { display: none; }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card-icon {
+    font-size: 10px;
+    color: var(--cyan);
+  }
+
+  .badge {
+    font-size: 9px;
+    padding: 2px 8px;
+    letter-spacing: 0.12em;
+    border: 1px solid;
+  }
+
+  .badge-ai    { color: var(--cyan);   border-color: rgba(0,245,212,0.3); }
+  .badge-tech  { color: var(--amber);  border-color: rgba(255,215,0,0.3); }
+  .badge-prod  { color: var(--green);  border-color: rgba(57,255,20,0.3); }
+  .badge-priv  { color: var(--purple); border-color: rgba(180,79,255,0.3); }
+  .badge-wear  { color: var(--red);    border-color: rgba(255,60,92,0.3); }
+
+  .card-name {
+    font-family: var(--head);
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.03em;
+  }
+
+  .card-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .card-meta {
+    font-size: 10px;
+    color: rgba(0,245,212,0.5);
+    letter-spacing: 0.08em;
+  }
+
+  .visit-btn {
+    display: inline-block;
+    font-size: 11px;
+    color: var(--cyan);
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    border: 1px solid rgba(0,245,212,0.25);
+    padding: 6px 14px;
+    transition: all 0.2s;
+    align-self: flex-start;
+  }
+
+  .visit-btn:hover {
+    border-color: var(--cyan);
+    background: rgba(0,245,212,0.06);
+  }
+
+  /* WEARABLES SECTION — full-width category cards */
+  .wear-section { margin-bottom: 40px; }
+
+  .wear-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 12px;
+  }
+
+  .wear-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 20px;
+    transition: border-color 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .wear-card:hover { border-color: var(--border-hover); }
+  .wear-card.hidden { display: none; }
+
+  .wear-card-title {
+    font-family: var(--head);
+    font-size: 17px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.04em;
+  }
+
+  .wear-card-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  .wear-items { display: flex; flex-direction: column; gap: 8px; }
+
+  .wear-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 10px 12px;
+    background: var(--bg3);
+    border-left: 2px solid rgba(0,245,212,0.2);
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+
+  .wear-item:hover { border-left-color: var(--cyan); }
+
+  .wear-item-name {
+    font-size: 13px;
+    color: var(--cyan);
+    letter-spacing: 0.04em;
+  }
+
+  .wear-item-desc {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .wear-card-meta {
+    font-size: 10px;
+    color: rgba(255,60,92,0.6);
+    letter-spacing: 0.1em;
+    margin-top: auto;
+  }
+
+  /* PROTON SUITE CARD */
+  .proton-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 20px;
+    transition: border-color 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .proton-card:hover { border-color: var(--border-hover); }
+
+  .proton-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+
+  .proton-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px 10px;
+    background: var(--bg3);
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .proton-item:hover { border-color: rgba(0,245,212,0.2); }
+
+  .proton-item-name {
+    font-size: 12px;
+    color: var(--cyan);
+    letter-spacing: 0.06em;
+  }
+
+  .proton-item-desc {
+    font-size: 10px;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  .proton-visit {
+    display: inline-block;
+    font-size: 11px;
+    color: var(--cyan);
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    border: 1px solid rgba(0,245,212,0.25);
+    padding: 6px 14px;
+    transition: all 0.2s;
+    align-self: flex-start;
+  }
+
+  .proton-visit:hover {
+    border-color: var(--cyan);
+    background: rgba(0,245,212,0.06);
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 24px 0;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  footer div {
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+  }
+
   footer span { color: var(--cyan); }
+
+  @media (max-width: 640px) {
+    .grid { grid-template-columns: 1fr; }
+    .wear-grid { grid-template-columns: 1fr; }
+    .proton-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero-stats { gap: 20px; }
+    .filter-bar { gap: 6px; }
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
 
-<header>
-  <div class="tag">SIGNAL//213 &mdash; RESOURCE DIRECTORY</div>
-  <a href="briefings/index.html" style="display:inline-block;font-family:'Share Tech Mono',monospace;font-size:11px;color:#00f5d4;text-decoration:none;letter-spacing:0.15em;padding:6px 14px;border:1px solid rgba(0,245,212,0.3);margin-top:12px;">📡 DAILY BRIEFINGS →</a>
-  <h1>AI<span>//</span>TECH<span class="slash">/</span>PRIVACY</h1>
-  <p class="tagline">A curated signal feed of tools, reads, and resources at the intersection of artificial intelligence, emerging tech, and digital privacy.</p>
-  <div class="stats">
-    <div class="stat-item"><strong>52</strong> resources indexed</div>
-    <div class="stat-item"><strong>5</strong> categories</div>
-    <div class="stat-item"><strong id="vis-count">5</strong> sections visible</div>
-  </div>
-</header>
+  <header>
+    <div class="tag">SIGNAL//213</div>
+    <h1 class="site-title">SIGNAL//<span>213</span> &mdash; RESOURCE DIRECTORY</h1>
+    <p class="site-sub">A curated signal feed of tools, reads, and resources at the intersection of artificial intelligence, emerging tech, and digital privacy.</p>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">52</span><span class="stat-label">resources indexed</span></div>
+      <div class="stat"><span class="stat-num">5</span><span class="stat-label">categories</span></div>
+      <div class="stat"><span class="stat-num" id="vis-count">5</span><span class="stat-label">sections visible</span></div>
+    </div>
+  </header>
 
-<div class="filters">
-  <span class="filter-label">FILTER //</span>
-  <button class="filter-btn active" data-filter="all">All</button>
-  <button class="filter-btn" data-filter="ai">AI Tools</button>
-  <button class="filter-btn" data-filter="wear">AI Wearables</button>
-  <button class="filter-btn" data-filter="tech">Technology</button>
-  <button class="filter-btn" data-filter="prod">Productivity</button>
-  <button class="filter-btn" data-filter="priv">Privacy</button>
-</div>
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <span class="filter-label">FILTER //</span>
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="ai">AI Tools</button>
+    <button class="filter-btn" data-filter="wear">AI Wearables</button>
+    <button class="filter-btn" data-filter="tech">Technology</button>
+    <button class="filter-btn" data-filter="prod">Productivity</button>
+    <button class="filter-btn" data-filter="priv">Privacy</button>
+    <a class="briefings-btn" href="briefings/index.html">📡 BRIEFINGS</a>
+  </div>
 
-<!-- AI TOOLS -->
-<div class="section" data-sec="ai" id="sec-ai">
-  <div class="section-header">
-    <span class="section-title">AI Tools</span>
-    <span class="section-count">15 resources</span>
-  </div>
-  <div class="grid">
-    <div class="card" data-cat="ai">
-      <div class="card-top"><div class="card-icon">&#9670;</div><span class="badge badge-ai">AI Tools</span></div>
-      <div class="card-name">ChatGPT</div>
-      <div class="card-desc">OpenAI's flagship AI assistant. Widely used for writing, coding, research, and creative tasks. Available free with optional Plus and Pro tiers for advanced models.</div>
-      <div class="card-meta">chatgpt.com &mdash; OpenAI</div>
-      <a class="visit-btn" href="https://chatgpt.com" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card" data-cat="ai">
-      <div class="card-top"><div class="card-icon">&#9670;</div><span class="badge badge-ai">AI Tools</span></div>
-      <div class="card-name">Atlas Browser</div>
-      <div class="card-desc">OpenAI's AI-native browser built around ChatGPT. Deeply integrates AI into everyday browsing — summarizing pages, answering questions, and taking actions on your behalf.</div>
-      <div class="card-meta">openai.com &mdash; AI Browser</div>
-      <a class="visit-btn" href="https://openai.com" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card" data-cat="ai">
-      <div class="card-top"><div class="card-icon">&#9670;</div><span class="badge badge-ai">AI Tools</span></div>
-      <div class="card-name">OpenAI Codex</div>
-      <div class="card-desc">OpenAI's cloud-based coding agent. Reads your codebase, writes and runs code, fixes bugs, and opens pull requests — all autonomously in an isolated environment.</div>
-      <div class="card-meta">openai.com/codex &mdash; AI Coding Agent</div>
-      <a class="visit-btn" href="https://openai.com/codex" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card" data-cat="ai">
-      <div class="card-top"><div class="card-icon">&#9670;</div><span class="badge badge-ai">AI Tools</span></div>
-      <div class="card-name">Claude</div>
-      <div class="card-desc">Anthropic's AI assistant — Constitutional AI-trained for safety and helpfulness. Strong reasoning, coding, and analysis.</div>
-      <div class="card-meta">claude.ai &mdash; Anthropic</div>
-      <a class="visit-btn" href="https://claude.ai" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card" data-cat="ai">
-      <div class="card-top"><div class="card-icon">&#9670;</div><span class="badge badge-ai">AI Tools</span></div>
-      <div class="card-name">Claude Code</div>
-      <div class="card-desc">Anthropic's agentic coding tool. Runs in your terminal, reads your codebase, writes and edits code, runs tests, and commits changes — all from a conversational interface.</div>
-      <div class="card-meta">claude.ai/code &mdash; AI Coding Agent</div>
-      <a class="visit-btn" href="https://claude.ai/code" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card" data-cat="ai">
-      <div class="card-top"><div class="card-icon">&#9670;</div><span class="badge badge-ai">AI Tools</span></div>
-      <div class="card-name">Cursor AI</div>
-      <div class="card-desc">An AI-first code editor built on VS Code. Understands your entire codebase, autocompletes intelligently, and lets you chat with your code to build and refactor faster.</div>
-      <div class="card-meta">cursor.com &mdash; AI Code Editor</div>
-      <a class="visit-btn" href="https://cursor.com" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card" data-cat="ai">
-      <div class="card-top"><div class="card-icon">&#9670;</div><span class="badge badge-ai">AI Tools</span></div>
-      <div class="card-name">Perplexity AI</div>
-      <div class="card-desc">AI-powered search engine that cites its sources. Great for research without the SEO noise of traditional search.</div>
-      <div class="card-meta">perplexity.ai &mdash; Search</div>
-      <a class="visit-btn" href="https://perplexity.ai" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card" data-cat="ai">
-      <div class="card-top"><div class="card-icon">&#9670;</div><span class="badge badge-ai">AI Tools</span></div>
-      <div class="card-name">Comet Browser</div>
-      <div class="card-desc">Perplexity's AI-native browser. Brings AI-powered search and answers directly into the browsing experience, surfacing relevant information as you explore the web.</div>
-      <div class="card-meta">perplexity.ai &mdash; AI Browser</div>
-      <a class="visit-btn" href="https://perplexity.ai" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card" data-cat="ai">
-      <div class="card-top"><div class="card-icon">&#9670;</div><span class="badge badge-ai">AI Tools</span></div>
-      <div class="card-name">Gemini</div>
-      <div class="card-desc">Google's multimodal AI assistant. Strong at research, summarization, and integrating with Google Workspace. Available free with an Advanced tier for more powerful models.</div>
-      <div class="card-meta">gemini.google.com &mdash; Google</div>
-      <a class="visit-btn" href="https://gemini.google.com" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card" data-cat="ai">
-      <div class="card-top"><div class="card-icon">&#9670;</div><span class="badge badge-ai">AI Tools</span></div>
-      <div class="card-name">Grok</div>
-      <div class="card-desc">xAI's AI assistant built by Elon Musk's team. Real-time access to X/Twitter data, less filtered than most AI assistants, and available via web and the X platform.</div>
-      <div class="card-meta">grok.com &mdash; xAI</div>
-      <a class="visit-btn" href="https://grok.com" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card" data-cat="ai">
-      <div class="card-top"><div class="card-icon">&#9670;</div><span class="badge badge-ai">AI Tools</span></div>
-      <div class="card-name">Lumo</div>
-      <div class="card-desc">Proton's private AI assistant. Runs on Proton's zero-knowledge infrastructure — your conversations stay encrypted and are never used to train models.</div>
-      <div class="card-meta">proton.me/lumo &mdash; Private AI</div>
-      <a class="visit-btn" href="https://proton.me/lumo" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card" data-cat="ai">
-      <div class="card-top"><div class="card-icon">&#9670;</div><span class="badge badge-ai">AI Tools</span></div>
-      <div class="card-name">Ollama</div>
-      <div class="card-desc">Run large language models locally on your own machine. Full privacy — no data leaves your device. Supports Llama, Mistral, and more.</div>
-      <div class="card-meta">ollama.com &mdash; Local AI</div>
-      <a class="visit-btn" href="https://ollama.com" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card" data-cat="ai">
-      <div class="card-top"><div class="card-icon">&#9670;</div><span class="badge badge-ai">AI Tools</span></div>
-      <div class="card-name">LM Studio</div>
-      <div class="card-desc">A desktop app for discovering, downloading, and running local LLMs. Clean UI, no command line needed, and supports a wide range of models from Hugging Face.</div>
-      <div class="card-meta">lmstudio.ai &mdash; Local AI</div>
-      <a class="visit-btn" href="https://lmstudio.ai" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card" data-cat="ai">
-      <div class="card-top"><div class="card-icon">&#9670;</div><span class="badge badge-ai">AI Tools</span></div>
-      <div class="card-name">LocalAI</div>
-      <div class="card-desc">A free, open-source alternative to OpenAI's API that runs entirely on your own hardware. Drop-in compatible with OpenAI clients — no data ever leaves your machine.</div>
-      <div class="card-meta">localai.io &mdash; Local AI</div>
-      <a class="visit-btn" href="https://localai.io" target="_blank">Visit &rarr;</a>
-    </div>
-  </div>
-</div>
+  <div class="results-bar">Showing <span id="section-count">5</span> sections</div>
 
-<!-- AI WEARABLES -->
-<div class="section" data-sec="wear" id="sec-wear">
-  <div class="section-header">
-    <span class="section-title">AI Wearables</span>
-    <span class="section-count">3 categories</span>
-  </div>
-  <div class="grid">
-    <div class="card full" data-cat="wear">
-      <div class="card-top"><div class="card-icon">&#9671;</div><span class="badge badge-wear">AI Wearables</span></div>
-      <div class="card-name">AI Glasses &amp; AR</div>
-      <div class="card-desc">Heads-up displays, cameras, and AI assistants you wear on your face. From subtle AR overlays to fully conversational smart frames.</div>
-      <div class="tile-grid">
-        <a href="https://www.meta.com/smart-glasses/" target="_blank" class="proton-app"><span class="pa-name">Meta Ray-Bans</span><span class="pa-desc">AI assistant, camera &amp; open-ear speakers in a classic frame.</span></a>
-        <a href="https://www.meta.com/smart-glasses/" target="_blank" class="proton-app"><span class="pa-name">Meta Ray-Ban Display</span><span class="pa-desc">Updated Ray-Bans with a built-in display for AR overlays alongside the AI assistant and camera.</span></a>
-        <a href="https://www.evenrealities.com" target="_blank" class="proton-app"><span class="pa-name">Even Realities G2</span><span class="pa-desc">Minimalist AR HUD for notifications, nav &amp; teleprompter.</span></a>
-        <a href="https://brilliantlabs.ca" target="_blank" class="proton-app"><span class="pa-name">Brilliant Labs Halo</span><span class="pa-desc">Open-source AR glasses with multimodal AI. Built for tinkerers.</span></a>
+  <!-- AI TOOLS -->
+  <div class="section-wrap" data-section="ai">
+    <div class="section-head">
+      <span>AI Tools</span>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <span class="section-count">15</span>
+        <span class="section-sub">resources</span>
       </div>
-      <div class="card-meta" style="margin-top:14px;">AI Glasses &mdash; AR &bull; Camera &bull; Voice AI</div>
     </div>
-    <div class="card full" data-cat="wear">
-      <div class="card-top"><div class="card-icon">&#9671;</div><span class="badge badge-wear">AI Wearables</span></div>
-      <div class="card-name">Smart Rings</div>
-      <div class="card-desc">Discreet health and activity tracking on your finger. No screen, no bulk — just continuous biometric monitoring with multi-day battery life.</div>
-      <div class="tile-grid">
-        <a href="https://ouraring.com" target="_blank" class="proton-app"><span class="pa-name">Oura Ring</span><span class="pa-desc">The benchmark for HRV, sleep &amp; readiness tracking.</span></a>
-        <a href="https://www.samsung.com/us/smartphones/galaxy-ring/" target="_blank" class="proton-app"><span class="pa-name">Samsung Galaxy Ring</span><span class="pa-desc">Titanium build, multi-day battery, deep Samsung Health integration.</span></a>
-        <a href="https://www.getpebble.com" target="_blank" class="proton-app"><span class="pa-name">Pebble Index 01</span><span class="pa-desc">Smart ring for capturing voice notes on the go and sending them wherever you need them.</span></a>
+    <div class="grid">
+
+      <div class="card" data-cat="ai">
+        <div class="card-top"><div class="card-icon">◆</div><span class="badge badge-ai">AI Tools</span></div>
+        <div class="card-name">ChatGPT</div>
+        <div class="card-desc">OpenAI's flagship AI assistant. Widely used for writing, coding, research, and creative tasks. Available free with optional Plus and Pro tiers for advanced models.</div>
+        <div class="card-meta">chatgpt.com &mdash; OpenAI</div>
+        <a class="visit-btn" href="https://chatgpt.com" target="_blank">Visit &rarr;</a>
       </div>
-      <div class="card-meta" style="margin-top:14px;">Smart Rings &mdash; Health &bull; Sleep &bull; HRV</div>
-    </div>
-    <div class="card full" data-cat="wear">
-      <div class="card-top"><div class="card-icon">&#9671;</div><span class="badge badge-wear">AI Wearables</span></div>
-      <div class="card-name">AI Pendants &amp; Clips</div>
-      <div class="card-desc">Clip-on and pendant devices that listen, transcribe, and summarize your day. Ambient AI that builds a personal memory layer in the background.</div>
-      <div class="tile-grid">
-        <a href="https://www.plaud.ai/products/plaud-note-pro" target="_blank" class="proton-app"><span class="pa-name">Plaud Note Pro</span><span class="pa-desc">Flagship AI note-taker with AMOLED display, 4 mics, 50-hour battery &amp; real-time AI highlights.</span></a>
-        <a href="https://www.plaud.ai" target="_blank" class="proton-app"><span class="pa-name">Plaud NotePin</span><span class="pa-desc">Clip-on recorder that auto-transcribes &amp; summarizes meetings.</span></a>
+
+      <div class="card" data-cat="ai">
+        <div class="card-top"><div class="card-icon">◆</div><span class="badge badge-ai">AI Tools</span></div>
+        <div class="card-name">Atlas Browser</div>
+        <div class="card-desc">OpenAI's AI-native browser built around ChatGPT. Deeply integrates AI into everyday browsing — summarizing pages, answering questions, and taking actions on your behalf.</div>
+        <div class="card-meta">openai.com &mdash; AI Browser</div>
+        <a class="visit-btn" href="https://openai.com" target="_blank">Visit &rarr;</a>
       </div>
-      <div class="card-meta" style="margin-top:14px;">Pendants &amp; Clips &mdash; Transcription &bull; Memory &bull; AI Summaries</div>
-    </div>
-  </div>
-</div>
 
-<!-- TECHNOLOGY -->
-<div class="section" data-sec="tech" id="sec-tech">
-  <div class="section-header">
-    <span class="section-title">Technology</span>
-    <span class="section-count">5 resources</span>
-  </div>
-  <div class="grid">
-    <div class="card" data-cat="tech">
-      <div class="card-top"><div class="card-icon">&#9670;</div><span class="badge badge-tech">Technology</span></div>
-      <div class="card-name">Ars Technica</div>
-      <div class="card-desc">In-depth technology news, science coverage, and policy reporting. One of the most trusted sources in tech journalism.</div>
-      <div class="card-meta">arstechnica.com &mdash; News</div>
-      <a class="visit-btn" href="https://arstechnica.com" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card" data-cat="tech">
-      <div class="card-top"><div class="card-icon">&#9670;</div><span class="badge badge-tech">Technology</span></div>
-      <div class="card-name">The Verge</div>
-      <div class="card-desc">Consumer tech, AI, and culture. Strong editorial voice covering the intersection of technology and everyday life.</div>
-      <div class="card-meta">theverge.com &mdash; News</div>
-      <a class="visit-btn" href="https://theverge.com" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card" data-cat="tech">
-      <div class="card-top"><div class="card-icon">&#9670;</div><span class="badge badge-tech">Technology</span></div>
-      <div class="card-name">MIT Tech Review</div>
-      <div class="card-desc">Deep analysis of emerging technology from MIT. Excellent AI and machine learning coverage with a research-backed perspective.</div>
-      <div class="card-meta">technologyreview.com &mdash; Analysis</div>
-      <a class="visit-btn" href="https://technologyreview.com" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card" data-cat="tech">
-      <div class="card-top"><div class="card-icon">&#9670;</div><span class="badge badge-tech">Technology</span></div>
-      <div class="card-name">Wired</div>
-      <div class="card-desc">Long-form journalism covering technology, science, culture, and business. One of the most respected voices on how technology shapes the world.</div>
-      <div class="card-meta">wired.com &mdash; Magazine</div>
-      <a class="visit-btn" href="https://wired.com" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card" data-cat="tech">
-      <div class="card-top"><div class="card-icon">&#9670;</div><span class="badge badge-tech">Technology</span></div>
-      <div class="card-name">Hacker News</div>
-      <div class="card-desc">Community news aggregator by Y Combinator. The pulse of the tech and startup world. Raw, unfiltered, and high signal.</div>
-      <div class="card-meta">news.ycombinator.com &mdash; Community</div>
-      <a class="visit-btn" href="https://news.ycombinator.com" target="_blank">Visit &rarr;</a>
-    </div>
-  </div>
-</div>
-
-<!-- PRODUCTIVITY -->
-<div class="section" data-sec="prod" id="sec-prod">
-  <div class="section-header">
-    <span class="section-title">Productivity</span>
-    <span class="section-count">4 resources</span>
-  </div>
-  <div class="grid">
-    <div class="card" data-cat="prod">
-      <div class="card-top"><div class="card-icon">&#9660;</div><span class="badge badge-prod">Productivity</span></div>
-      <div class="card-name">Standard Notes</div>
-      <div class="card-desc">End-to-end encrypted note-taking app. Simple, private, and built to last. Notes are encrypted before they leave your device — even Standard Notes can't read them.</div>
-      <div class="card-meta">standardnotes.com &mdash; Notes</div>
-      <a class="visit-btn" href="https://standardnotes.com" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card" data-cat="prod">
-      <div class="card-top"><div class="card-icon">&#9660;</div><span class="badge badge-prod">Productivity</span></div>
-      <div class="card-name">Obsidian</div>
-      <div class="card-desc">Local-first markdown knowledge base. Your notes stay on your device. A privacy-respecting alternative to Notion for personal knowledge management.</div>
-      <div class="card-meta">obsidian.md &mdash; Notes</div>
-      <a class="visit-btn" href="https://obsidian.md" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card" data-cat="prod">
-      <div class="card-top"><div class="card-icon">&#9660;</div><span class="badge badge-prod">Productivity</span></div>
-      <div class="card-name">uBlock Origin</div>
-      <div class="card-desc">The most effective browser content blocker. Open source, efficient, and trusted. Blocks trackers, ads, and malware domains.</div>
-      <div class="card-meta">ublockorigin.com &mdash; Browser</div>
-      <a class="visit-btn" href="https://ublockorigin.com" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card" data-cat="prod">
-      <div class="card-top"><div class="card-icon">&#9660;</div><span class="badge badge-prod">Productivity</span></div>
-      <div class="card-name">Brave Browser</div>
-      <div class="card-desc">Chromium-based browser with built-in ad and tracker blocking. Fast, private, and compatible with Chrome extensions.</div>
-      <div class="card-meta">brave.com &mdash; Browser</div>
-      <a class="visit-btn" href="https://brave.com" target="_blank">Visit &rarr;</a>
-    </div>
-  </div>
-</div>
-
-<!-- PRIVACY -->
-<div class="section" data-sec="priv" id="sec-priv">
-  <div class="section-header">
-    <span class="section-title">Privacy</span>
-    <span class="section-count">12 resources</span>
-  </div>
-  <div class="grid">
-    <div class="card" data-cat="priv">
-      <div class="card-top"><div class="card-icon">&#9632;</div><span class="badge badge-priv">Privacy</span></div>
-      <div class="card-name">EFF</div>
-      <div class="card-desc">Electronic Frontier Foundation. The leading nonprofit defending civil liberties in the digital world. Essential reading.</div>
-      <div class="card-meta">eff.org &mdash; Advocacy</div>
-      <a class="visit-btn" href="https://eff.org" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card" data-cat="priv">
-      <div class="card-top"><div class="card-icon">&#9632;</div><span class="badge badge-priv">Privacy</span></div>
-      <div class="card-name">Privacy Guides</div>
-      <div class="card-desc">Community-maintained recommendations for private, secure software and services. No affiliate links. No ads.</div>
-      <div class="card-meta">privacyguides.org &mdash; Reference</div>
-      <a class="visit-btn" href="https://privacyguides.org" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card full" data-cat="priv">
-      <div class="card-top"><div class="card-icon">&#9632;</div><span class="badge badge-priv">Privacy</span></div>
-      <div class="card-name">Proton Privacy Suite</div>
-      <div class="card-desc">Swiss-based, end-to-end encrypted ecosystem built on a zero-knowledge architecture. Open source and independently audited. One account, your entire private digital life.</div>
-      <div class="tile-grid">
-        <a href="https://proton.me/mail" target="_blank" class="proton-app"><span class="pa-name">Mail</span><span class="pa-desc">Encrypted email. No tracking, no ads.</span></a>
-        <a href="https://protonvpn.com" target="_blank" class="proton-app"><span class="pa-name">VPN</span><span class="pa-desc">No-logs VPN. Free tier available.</span></a>
-        <a href="https://proton.me/pass" target="_blank" class="proton-app"><span class="pa-name">Pass</span><span class="pa-desc">Passwords, passkeys &amp; 2FA codes.</span></a>
-        <a href="https://proton.me/drive" target="_blank" class="proton-app"><span class="pa-name">Drive</span><span class="pa-desc">Encrypted cloud storage.</span></a>
-        <a href="https://proton.me/calendar" target="_blank" class="proton-app"><span class="pa-name">Calendar</span><span class="pa-desc">Zero-knowledge encrypted schedule.</span></a>
-        <a href="https://proton.me/pass#authenticator" target="_blank" class="proton-app"><span class="pa-name">Authenticator</span><span class="pa-desc">Built-in 2FA inside Proton Pass.</span></a>
-        <a href="https://proton.me/wallet" target="_blank" class="proton-app"><span class="pa-name">Wallet</span><span class="pa-desc">Self-custodial Bitcoin wallet.</span></a>
-        <a href="https://proton.me/lumo" target="_blank" class="proton-app"><span class="pa-name">Lumo</span><span class="pa-desc">Private AI assistant by Proton.</span></a>
-        <a href="https://proton.me/meet" target="_blank" class="proton-app pa-upcoming"><span class="pa-name">Meet <span style="font-size:9px;color:var(--amber);letter-spacing:1px;margin-left:6px;">COMING SOON</span></span><span class="pa-desc">Encrypted video calls. Upcoming.</span></a>
+      <div class="card" data-cat="ai">
+        <div class="card-top"><div class="card-icon">◆</div><span class="badge badge-ai">AI Tools</span></div>
+        <div class="card-name">OpenAI Codex</div>
+        <div class="card-desc">OpenAI's cloud-based coding agent. Reads your codebase, writes and runs code, fixes bugs, and opens pull requests — all autonomously in an isolated environment.</div>
+        <div class="card-meta">openai.com/codex &mdash; AI Coding Agent</div>
+        <a class="visit-btn" href="https://openai.com/codex" target="_blank">Visit &rarr;</a>
       </div>
-      <div class="card-meta" style="margin-top:14px;">proton.me &mdash; Swiss Privacy Ecosystem</div>
-      <a class="visit-btn" href="https://proton.me" target="_blank">Visit Proton &rarr;</a>
-    </div>
-    <div class="card" data-cat="priv">
-      <div class="card-top"><div class="card-icon">&#9632;</div><span class="badge badge-priv">Privacy</span></div>
-      <div class="card-name">Signal</div>
-      <div class="card-desc">Open-source, end-to-end encrypted messaging. The gold standard in private communication. Recommended by security researchers worldwide.</div>
-      <div class="card-meta">signal.org &mdash; Messaging</div>
-      <a class="visit-btn" href="https://signal.org" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card" data-cat="priv">
-      <div class="card-top"><div class="card-icon">&#9632;</div><span class="badge badge-priv">Privacy</span></div>
-      <div class="card-name">Threema</div>
-      <div class="card-desc">End-to-end encrypted messaging that requires no phone number or email to sign up. Swiss-based, open source, and built for maximum anonymity.</div>
-      <div class="card-meta">threema.ch &mdash; Messaging</div>
-      <a class="visit-btn" href="https://threema.ch" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card" data-cat="priv">
-      <div class="card-top"><div class="card-icon">&#9632;</div><span class="badge badge-priv">Privacy</span></div>
-      <div class="card-name">BitChat</div>
-      <div class="card-desc">Jack Dorsey's open-source, decentralized messaging app. Works over Bluetooth mesh networks with no internet, no servers, and no accounts required. End-to-end encrypted with Nostr as a fallback for global reach.</div>
-      <div class="card-meta">github.com/permissionlesstech/bitchat &mdash; Decentralized Messaging</div>
-      <a class="visit-btn" href="https://github.com/permissionlesstech/bitchat" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card" data-cat="priv">
-      <div class="card-top"><div class="card-icon">&#9632;</div><span class="badge badge-priv">Privacy</span></div>
-      <div class="card-name">Nym VPN</div>
-      <div class="card-desc">Swiss-based VPN built on a decentralized mixnet rather than traditional VPN infrastructure. Designed to resist traffic analysis and metadata surveillance — beyond what standard VPNs offer.</div>
-      <div class="card-meta">nym.com &mdash; VPN</div>
-      <a class="visit-btn" href="https://nym.com" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card" data-cat="priv">
-      <div class="card-top"><div class="card-icon">&#9632;</div><span class="badge badge-priv">Privacy</span></div>
-      <div class="card-name">Tails OS</div>
-      <div class="card-desc">An amnesic operating system that boots from a USB drive and leaves no trace on the host machine. Routes all traffic through Tor. Used by journalists, activists, and whistleblowers worldwide.</div>
-      <div class="card-meta">tails.boum.org &mdash; OS</div>
-      <a class="visit-btn" href="https://tails.boum.org" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card" data-cat="priv">
-      <div class="card-top"><div class="card-icon">&#9632;</div><span class="badge badge-priv">Privacy</span></div>
-      <div class="card-name">Tor Browser</div>
-      <div class="card-desc">The gold standard for anonymous browsing. Routes traffic through a global network of relays to conceal your identity and location. Free, open source, and trusted by privacy advocates globally.</div>
-      <div class="card-meta">torproject.org &mdash; Browser</div>
-      <a class="visit-btn" href="https://www.torproject.org" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card" data-cat="priv">
-      <div class="card-top"><div class="card-icon">&#9632;</div><span class="badge badge-priv">Privacy</span></div>
-      <div class="card-name">GrapheneOS</div>
-      <div class="card-desc">A privacy and security hardened Android OS. Strips out Google dependencies, sandboxes apps aggressively, and is widely considered the most secure mobile OS available. Runs on Pixel devices.</div>
-      <div class="card-meta">grapheneos.org &mdash; Mobile OS</div>
-      <a class="visit-btn" href="https://grapheneos.org" target="_blank">Visit &rarr;</a>
-    </div>
-    <div class="card" data-cat="priv">
-      <div class="card-top"><div class="card-icon">&#9632;</div><span class="badge badge-priv">Privacy</span></div>
-      <div class="card-name">Bitwarden</div>
-      <div class="card-desc">Open-source password manager. Self-hostable, audited, and free. The privacy-respecting alternative to LastPass or 1Password.</div>
-      <div class="card-meta">bitwarden.com &mdash; Security</div>
-      <a class="visit-btn" href="https://bitwarden.com" target="_blank">Visit &rarr;</a>
+
+      <div class="card" data-cat="ai">
+        <div class="card-top"><div class="card-icon">◆</div><span class="badge badge-ai">AI Tools</span></div>
+        <div class="card-name">Claude</div>
+        <div class="card-desc">Anthropic's AI assistant — Constitutional AI-trained for safety and helpfulness. Strong reasoning, coding, and analysis.</div>
+        <div class="card-meta">claude.ai &mdash; Anthropic</div>
+        <a class="visit-btn" href="https://claude.ai" target="_blank">Visit &rarr;</a>
+      </div>
+
+      <div class="card" data-cat="ai">
+        <div class="card-top"><div class="card-icon">◆</div><span class="badge badge-ai">AI Tools</span></div>
+        <div class="card-name">Claude Code</div>
+        <div class="card-desc">Anthropic's agentic coding tool. Runs in your terminal, reads your codebase, writes and edits code, runs tests, and commits changes — all from a conversational interface.</div>
+        <div class="card-meta">claude.ai/code &mdash; AI Coding Agent</div>
+        <a class="visit-btn" href="https://claude.ai/code" target="_blank">Visit &rarr;</a>
+      </div>
+
+      <div class="card" data-cat="ai">
+        <div class="card-top"><div class="card-icon">◆</div><span class="badge badge-ai">AI Tools</span></div>
+        <div class="card-name">Cursor AI</div>
+        <div class="card-desc">An AI-first code editor built on VS Code. Understands your entire codebase, autocompletes intelligently, and lets you chat with your code to build and refactor faster.</div>
+        <div class="card-meta">cursor.com &mdash; AI Code Editor</div>
+        <a class="visit-btn" href="https://cursor.com" target="_blank">Visit &rarr;</a>
+      </div>
+
+      <div class="card" data-cat="ai">
+        <div class="card-top"><div class="card-icon">◆</div><span class="badge badge-ai">AI Tools</span></div>
+        <div class="card-name">Perplexity AI</div>
+        <div class="card-desc">AI-powered search engine that cites its sources. Great for research without the SEO noise of traditional search.</div>
+        <div class="card-meta">perplexity.ai &mdash; Search</div>
+        <a class="visit-btn" href="https://perplexity.ai" target="_blank">Visit &rarr;</a>
+      </div>
+
+      <div class="card" data-cat="ai">
+        <div class="card-top"><div class="card-icon">◆</div><span class="badge badge-ai">AI Tools</span></div>
+        <div class="card-name">Comet Browser</div>
+        <div class="card-desc">Perplexity's AI-native browser. Brings AI-powered search and answers directly into the browsing experience, surfacing relevant information as you explore the web.</div>
+        <div class="card-meta">perplexity.ai &mdash; AI Browser</div>
+        <a class="visit-btn" href="https://perplexity.ai" target="_blank">Visit &rarr;</a>
+      </div>
+
+      <div class="card" data-cat="ai">
+        <div class="card-top"><div class="card-icon">◆</div><span class="badge badge-ai">AI Tools</span></div>
+        <div class="card-name">Gemini</div>
+        <div class="card-desc">Google's multimodal AI assistant. Strong at research, summarization, and integrating with Google Workspace. Available free with an Advanced tier for more powerful models.</div>
+        <div class="card-meta">gemini.google.com &mdash; Google</div>
+        <a class="visit-btn" href="https://gemini.google.com" target="_blank">Visit &rarr;</a>
+      </div>
+
+      <div class="card" data-cat="ai">
+        <div class="card-top"><div class="card-icon">◆</div><span class="badge badge-ai">AI Tools</span></div>
+        <div class="card-name">Grok</div>
+        <div class="card-desc">xAI's AI assistant built by Elon Musk's team. Real-time access to X/Twitter data, less filtered than most AI assistants, and available via web and the X platform.</div>
+        <div class="card-meta">grok.com &mdash; xAI</div>
+        <a class="visit-btn" href="https://grok.com" target="_blank">Visit &rarr;</a>
+      </div>
+
+      <div class="card" data-cat="ai">
+        <div class="card-top"><div class="card-icon">◆</div><span class="badge badge-ai">AI Tools</span></div>
+        <div class="card-name">Lumo</div>
+        <div class="card-desc">Proton's private AI assistant. Runs on Proton's zero-knowledge infrastructure — your conversations stay encrypted and are never used to train models.</div>
+        <div class="card-meta">proton.me/lumo &mdash; Private AI</div>
+        <a class="visit-btn" href="https://proton.me/lumo" target="_blank">Visit &rarr;</a>
+      </div>
+
+      <div class="card" data-cat="ai">
+        <div class="card-top"><div class="card-icon">◆</div><span class="badge badge-ai">AI Tools</span></div>
+        <div class="card-name">Ollama</div>
+        <div class="card-desc">Run large language models locally on your own machine. Full privacy — no data leaves your device. Supports Llama, Mistral, and more.</div>
+        <div class="card-meta">ollama.com &mdash; Local AI</div>
+        <a class="visit-btn" href="https://ollama.com" target="_blank">Visit &rarr;</a>
+      </div>
+
+      <div class="card" data-cat="ai">
+        <div class="card-top"><div class="card-icon">◆</div><span class="badge badge-ai">AI Tools</span></div>
+        <div class="card-name">LM Studio</div>
+        <div class="card-desc">A desktop app for discovering, downloading, and running local LLMs. Clean UI, no command line needed, and supports a wide range of models from Hugging Face.</div>
+        <div class="card-meta">lmstudio.ai &mdash; Local AI</div>
+        <a class="visit-btn" href="https://lmstudio.ai" target="_blank">Visit &rarr;</a>
+      </div>
+
+      <div class="card" data-cat="ai">
+        <div class="card-top"><div class="card-icon">◆</div><span class="badge badge-ai">AI Tools</span></div>
+        <div class="card-name">LocalAI</div>
+        <div class="card-desc">A free, open-source alternative to OpenAI's API that runs entirely on your own hardware. Drop-in compatible with OpenAI clients — no data ever leaves your machine.</div>
+        <div class="card-meta">localai.io &mdash; Local AI</div>
+        <a class="visit-btn" href="https://localai.io" target="_blank">Visit &rarr;</a>
+      </div>
+
     </div>
   </div>
-</div>
 
-<footer>
-  <div>SIGNAL//213 &mdash; AI &bull; TECH &bull; PRIVACY</div>
-  <div>RESOURCES CURATED MANUALLY &mdash; NO AFFILIATE LINKS &mdash; <span>STAY PRIVATE</span></div>
-</footer>
+  <!-- AI WEARABLES -->
+  <div class="section-wrap wear-section" data-section="wear">
+    <div class="section-head">
+      <span>AI Wearables</span>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <span class="section-count">3</span>
+        <span class="section-sub">categories</span>
+      </div>
+    </div>
+    <div class="wear-grid">
+
+      <div class="wear-card" data-cat="wear">
+        <div class="card-top"><div class="card-icon">◇</div><span class="badge badge-wear">AI Wearables</span></div>
+        <div class="wear-card-title">AI Glasses &amp; AR</div>
+        <div class="wear-card-sub">Heads-up displays, cameras, and AI assistants you wear on your face. From subtle AR overlays to fully conversational smart frames.</div>
+        <div class="wear-items">
+          <a class="wear-item" href="https://www.meta.com/smart-glasses/" target="_blank">
+            <span class="wear-item-name">Meta Ray-Bans</span>
+            <span class="wear-item-desc">AI assistant, camera &amp; open-ear speakers in a classic frame.</span>
+          </a>
+          <a class="wear-item" href="https://www.meta.com/smart-glasses/" target="_blank">
+            <span class="wear-item-name">Meta Ray-Ban Display</span>
+            <span class="wear-item-desc">Updated Ray-Bans with a built-in display for AR overlays alongside the AI assistant and camera.</span>
+          </a>
+          <a class="wear-item" href="https://www.evenrealities.com" target="_blank">
+            <span class="wear-item-name">Even Realities G2</span>
+            <span class="wear-item-desc">Minimalist AR HUD for notifications, nav &amp; teleprompter.</span>
+          </a>
+          <a class="wear-item" href="https://brilliantlabs.ca" target="_blank">
+            <span class="wear-item-name">Brilliant Labs Halo</span>
+            <span class="wear-item-desc">Open-source AR glasses with multimodal AI. Built for tinkerers.</span>
+          </a>
+        </div>
+        <div class="wear-card-meta">AI Glasses &mdash; AR &bull; Camera &bull; Voice AI</div>
+      </div>
+
+      <div class="wear-card" data-cat="wear">
+        <div class="card-top"><div class="card-icon">◇</div><span class="badge badge-wear">AI Wearables</span></div>
+        <div class="wear-card-title">Smart Rings</div>
+        <div class="wear-card-sub">Discreet health and activity tracking on your finger. No screen, no bulk — just continuous biometric monitoring with multi-day battery life.</div>
+        <div class="wear-items">
+          <a class="wear-item" href="https://ouraring.com" target="_blank">
+            <span class="wear-item-name">Oura Ring</span>
+            <span class="wear-item-desc">The benchmark for HRV, sleep &amp; readiness tracking.</span>
+          </a>
+          <a class="wear-item" href="https://www.samsung.com/us/smartphones/galaxy-ring/" target="_blank">
+            <span class="wear-item-name">Samsung Galaxy Ring</span>
+            <span class="wear-item-desc">Titanium build, multi-day battery, deep Samsung Health integration.</span>
+          </a>
+          <a class="wear-item" href="https://www.getpebble.com" target="_blank">
+            <span class="wear-item-name">Pebble Index 01</span>
+            <span class="wear-item-desc">Smart ring for capturing voice notes on the go and sending them wherever you need them.</span>
+          </a>
+        </div>
+        <div class="wear-card-meta">Smart Rings &mdash; Health &bull; Sleep &bull; HRV</div>
+      </div>
+
+      <div class="wear-card" data-cat="wear">
+        <div class="card-top"><div class="card-icon">◇</div><span class="badge badge-wear">AI Wearables</span></div>
+        <div class="wear-card-title">AI Pendants &amp; Clips</div>
+        <div class="wear-card-sub">Clip-on and pendant devices that listen, transcribe, and summarize your day. Ambient AI that builds a personal memory layer in the background.</div>
+        <div class="wear-items">
+          <a class="wear-item" href="https://www.plaud.ai/products/plaud-note-pro" target="_blank">
+            <span class="wear-item-name">Plaud Note Pro</span>
+            <span class="wear-item-desc">Flagship AI note-taker with AMOLED display, 4 mics, 50-hour battery &amp; real-time AI highlights.</span>
+          </a>
+          <a class="wear-item" href="https://www.plaud.ai" target="_blank">
+            <span class="wear-item-name">Plaud NotePin</span>
+            <span class="wear-item-desc">Clip-on recorder that auto-transcribes &amp; summarizes meetings.</span>
+          </a>
+        </div>
+        <div class="wear-card-meta">Pendants &amp; Clips &mdash; Transcription &bull; Memory &bull; AI Summaries</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TECHNOLOGY -->
+  <div class="section-wrap" data-section="tech">
+    <div class="section-head">
+      <span>Technology</span>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <span class="section-count">5</span>
+        <span class="section-sub">resources</span>
+      </div>
+    </div>
+    <div class="grid">
+
+      <div class="card" data-cat="tech">
+        <div class="card-top"><div class="card-icon">◆</div><span class="badge badge-tech">Technology</span></div>
+        <div class="card-name">Ars Technica</div>
+        <div class="card-desc">In-depth technology news, science coverage, and policy reporting. One of the most trusted sources in tech journalism.</div>
+        <div class="card-meta">arstechnica.com &mdash; News</div>
+        <a class="visit-btn" href="https://arstechnica.com" target="_blank">Visit &rarr;</a>
+      </div>
+
+      <div class="card" data-cat="tech">
+        <div class="card-top"><div class="card-icon">◆</div><span class="badge badge-tech">Technology</span></div>
+        <div class="card-name">The Verge</div>
+        <div class="card-desc">Consumer tech, AI, and culture. Strong editorial voice covering the intersection of technology and everyday life.</div>
+        <div class="card-meta">theverge.com &mdash; News</div>
+        <a class="visit-btn" href="https://theverge.com" target="_blank">Visit &rarr;</a>
+      </div>
+
+      <div class="card" data-cat="tech">
+        <div class="card-top"><div class="card-icon">◆</div><span class="badge badge-tech">Technology</span></div>
+        <div class="card-name">MIT Tech Review</div>
+        <div class="card-desc">Deep analysis of emerging technology from MIT. Excellent AI and machine learning coverage with a research-backed perspective.</div>
+        <div class="card-meta">technologyreview.com &mdash; Analysis</div>
+        <a class="visit-btn" href="https://technologyreview.com" target="_blank">Visit &rarr;</a>
+      </div>
+
+      <div class="card" data-cat="tech">
+        <div class="card-top"><div class="card-icon">◆</div><span class="badge badge-tech">Technology</span></div>
+        <div class="card-name">Wired</div>
+        <div class="card-desc">Long-form journalism covering technology, science, culture, and business. One of the most respected voices on how technology shapes the world.</div>
+        <div class="card-meta">wired.com &mdash; Magazine</div>
+        <a class="visit-btn" href="https://wired.com" target="_blank">Visit &rarr;</a>
+      </div>
+
+      <div class="card" data-cat="tech">
+        <div class="card-top"><div class="card-icon">◆</div><span class="badge badge-tech">Technology</span></div>
+        <div class="card-name">Hacker News</div>
+        <div class="card-desc">Community news aggregator by Y Combinator. The pulse of the tech and startup world. Raw, unfiltered, and high signal.</div>
+        <div class="card-meta">news.ycombinator.com &mdash; Community</div>
+        <a class="visit-btn" href="https://news.ycombinator.com" target="_blank">Visit &rarr;</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PRODUCTIVITY -->
+  <div class="section-wrap" data-section="prod">
+    <div class="section-head">
+      <span>Productivity</span>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <span class="section-count">4</span>
+        <span class="section-sub">resources</span>
+      </div>
+    </div>
+    <div class="grid">
+
+      <div class="card" data-cat="prod">
+        <div class="card-top"><div class="card-icon">▼</div><span class="badge badge-prod">Productivity</span></div>
+        <div class="card-name">Standard Notes</div>
+        <div class="card-desc">End-to-end encrypted note-taking app. Simple, private, and built to last. Notes are encrypted before they leave your device — even Standard Notes can't read them.</div>
+        <div class="card-meta">standardnotes.com &mdash; Notes</div>
+        <a class="visit-btn" href="https://standardnotes.com" target="_blank">Visit &rarr;</a>
+      </div>
+
+      <div class="card" data-cat="prod">
+        <div class="card-top"><div class="card-icon">▼</div><span class="badge badge-prod">Productivity</span></div>
+        <div class="card-name">Obsidian</div>
+        <div class="card-desc">Local-first markdown knowledge base. Your notes stay on your device. A privacy-respecting alternative to Notion for personal knowledge management.</div>
+        <div class="card-meta">obsidian.md &mdash; Notes</div>
+        <a class="visit-btn" href="https://obsidian.md" target="_blank">Visit &rarr;</a>
+      </div>
+
+      <div class="card" data-cat="prod">
+        <div class="card-top"><div class="card-icon">▼</div><span class="badge badge-prod">Productivity</span></div>
+        <div class="card-name">uBlock Origin</div>
+        <div class="card-desc">The most effective browser content blocker. Open source, efficient, and trusted. Blocks trackers, ads, and malware domains.</div>
+        <div class="card-meta">ublockorigin.com &mdash; Browser</div>
+        <a class="visit-btn" href="https://ublockorigin.com" target="_blank">Visit &rarr;</a>
+      </div>
+
+      <div class="card" data-cat="prod">
+        <div class="card-top"><div class="card-icon">▼</div><span class="badge badge-prod">Productivity</span></div>
+        <div class="card-name">Brave Browser</div>
+        <div class="card-desc">Chromium-based browser with built-in ad and tracker blocking. Fast, private, and compatible with Chrome extensions.</div>
+        <div class="card-meta">brave.com &mdash; Browser</div>
+        <a class="visit-btn" href="https://brave.com" target="_blank">Visit &rarr;</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PRIVACY -->
+  <div class="section-wrap" data-section="priv">
+    <div class="section-head">
+      <span>Privacy</span>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <span class="section-count">12</span>
+        <span class="section-sub">resources</span>
+      </div>
+    </div>
+    <div class="grid">
+
+      <div class="card" data-cat="priv">
+        <div class="card-top"><div class="card-icon">■</div><span class="badge badge-priv">Privacy</span></div>
+        <div class="card-name">EFF</div>
+        <div class="card-desc">Electronic Frontier Foundation. The leading nonprofit defending civil liberties in the digital world. Essential reading.</div>
+        <div class="card-meta">eff.org &mdash; Advocacy</div>
+        <a class="visit-btn" href="https://eff.org" target="_blank">Visit &rarr;</a>
+      </div>
+
+      <div class="card" data-cat="priv">
+        <div class="card-top"><div class="card-icon">■</div><span class="badge badge-priv">Privacy</span></div>
+        <div class="card-name">Privacy Guides</div>
+        <div class="card-desc">Community-maintained recommendations for private, secure software and services. No affiliate links. No ads.</div>
+        <div class="card-meta">privacyguides.org &mdash; Reference</div>
+        <a class="visit-btn" href="https://privacyguides.org" target="_blank">Visit &rarr;</a>
+      </div>
+
+      <!-- PROTON SUITE — full-width -->
+      <div class="proton-card" data-cat="priv" style="grid-column: 1 / -1;">
+        <div class="card-top"><div class="card-icon">■</div><span class="badge badge-priv">Privacy</span></div>
+        <div class="card-name">Proton Privacy Suite</div>
+        <div class="card-desc">Swiss-based, end-to-end encrypted ecosystem built on a zero-knowledge architecture. Open source and independently audited. One account, your entire private digital life.</div>
+        <div class="proton-grid">
+          <a class="proton-item" href="https://proton.me/mail" target="_blank"><span class="proton-item-name">Mail</span><span class="proton-item-desc">Encrypted email. No tracking, no ads.</span></a>
+          <a class="proton-item" href="https://protonvpn.com" target="_blank"><span class="proton-item-name">VPN</span><span class="proton-item-desc">No-logs VPN. Free tier available.</span></a>
+          <a class="proton-item" href="https://proton.me/pass" target="_blank"><span class="proton-item-name">Pass</span><span class="proton-item-desc">Passwords, passkeys &amp; 2FA codes.</span></a>
+          <a class="proton-item" href="https://proton.me/drive" target="_blank"><span class="proton-item-name">Drive</span><span class="proton-item-desc">Encrypted cloud storage.</span></a>
+          <a class="proton-item" href="https://proton.me/calendar" target="_blank"><span class="proton-item-name">Calendar</span><span class="proton-item-desc">Zero-knowledge encrypted schedule.</span></a>
+          <a class="proton-item" href="https://proton.me/pass#authenticator" target="_blank"><span class="proton-item-name">Authenticator</span><span class="proton-item-desc">Built-in 2FA inside Proton Pass.</span></a>
+          <a class="proton-item" href="https://proton.me/wallet" target="_blank"><span class="proton-item-name">Wallet</span><span class="proton-item-desc">Self-custodial Bitcoin wallet.</span></a>
+          <a class="proton-item" href="https://proton.me/lumo" target="_blank"><span class="proton-item-name">Lumo</span><span class="proton-item-desc">Private AI assistant by Proton.</span></a>
+          <a class="proton-item" href="https://proton.me/meet" target="_blank"><span class="proton-item-name">Meet <span style="font-size:9px;color:var(--text-muted);">COMING SOON</span></span><span class="proton-item-desc">Encrypted video calls. Upcoming.</span></a>
+        </div>
+        <div class="card-meta" style="margin-top:4px;">proton.me &mdash; Swiss Privacy Ecosystem</div>
+        <a class="proton-visit" href="https://proton.me" target="_blank">Visit Proton &rarr;</a>
+      </div>
+
+      <div class="card" data-cat="priv">
+        <div class="card-top"><div class="card-icon">■</div><span class="badge badge-priv">Privacy</span></div>
+        <div class="card-name">Signal</div>
+        <div class="card-desc">Open-source, end-to-end encrypted messaging. The gold standard in private communication. Recommended by security researchers worldwide.</div>
+        <div class="card-meta">signal.org &mdash; Messaging</div>
+        <a class="visit-btn" href="https://signal.org" target="_blank">Visit &rarr;</a>
+      </div>
+
+      <div class="card" data-cat="priv">
+        <div class="card-top"><div class="card-icon">■</div><span class="badge badge-priv">Privacy</span></div>
+        <div class="card-name">Threema</div>
+        <div class="card-desc">End-to-end encrypted messaging that requires no phone number or email to sign up. Swiss-based, open source, and built for maximum anonymity.</div>
+        <div class="card-meta">threema.ch &mdash; Messaging</div>
+        <a class="visit-btn" href="https://threema.ch" target="_blank">Visit &rarr;</a>
+      </div>
+
+      <div class="card" data-cat="priv">
+        <div class="card-top"><div class="card-icon">■</div><span class="badge badge-priv">Privacy</span></div>
+        <div class="card-name">BitChat</div>
+        <div class="card-desc">Jack Dorsey's open-source, decentralized messaging app. Works over Bluetooth mesh networks with no internet, no servers, and no accounts required. End-to-end encrypted with Nostr as a fallback for global reach.</div>
+        <div class="card-meta">github.com/permissionlesstech/bitchat &mdash; Decentralized Messaging</div>
+        <a class="visit-btn" href="https://github.com/permissionlesstech/bitchat" target="_blank">Visit &rarr;</a>
+      </div>
+
+      <div class="card" data-cat="priv">
+        <div class="card-top"><div class="card-icon">■</div><span class="badge badge-priv">Privacy</span></div>
+        <div class="card-name">Nym VPN</div>
+        <div class="card-desc">Swiss-based VPN built on a decentralized mixnet rather than traditional VPN infrastructure. Designed to resist traffic analysis and metadata surveillance — beyond what standard VPNs offer.</div>
+        <div class="card-meta">nym.com &mdash; VPN</div>
+        <a class="visit-btn" href="https://nym.com" target="_blank">Visit &rarr;</a>
+      </div>
+
+      <div class="card" data-cat="priv">
+        <div class="card-top"><div class="card-icon">■</div><span class="badge badge-priv">Privacy</span></div>
+        <div class="card-name">Tails OS</div>
+        <div class="card-desc">An amnesic operating system that boots from a USB drive and leaves no trace on the host machine. Routes all traffic through Tor. Used by journalists, activists, and whistleblowers worldwide.</div>
+        <div class="card-meta">tails.boum.org &mdash; OS</div>
+        <a class="visit-btn" href="https://tails.boum.org" target="_blank">Visit &rarr;</a>
+      </div>
+
+      <div class="card" data-cat="priv">
+        <div class="card-top"><div class="card-icon">■</div><span class="badge badge-priv">Privacy</span></div>
+        <div class="card-name">Tor Browser</div>
+        <div class="card-desc">The gold standard for anonymous browsing. Routes traffic through a global network of relays to conceal your identity and location. Free, open source, and trusted by privacy advocates globally.</div>
+        <div class="card-meta">torproject.org &mdash; Browser</div>
+        <a class="visit-btn" href="https://www.torproject.org" target="_blank">Visit &rarr;</a>
+      </div>
+
+      <div class="card" data-cat="priv">
+        <div class="card-top"><div class="card-icon">■</div><span class="badge badge-priv">Privacy</span></div>
+        <div class="card-name">GrapheneOS</div>
+        <div class="card-desc">A privacy and security hardened Android OS. Strips out Google dependencies, sandboxes apps aggressively, and is widely considered the most secure mobile OS available. Runs on Pixel devices.</div>
+        <div class="card-meta">grapheneos.org &mdash; Mobile OS</div>
+        <a class="visit-btn" href="https://grapheneos.org" target="_blank">Visit &rarr;</a>
+      </div>
+
+      <div class="card" data-cat="priv">
+        <div class="card-top"><div class="card-icon">■</div><span class="badge badge-priv">Privacy</span></div>
+        <div class="card-name">Bitwarden</div>
+        <div class="card-desc">Open-source password manager. Self-hostable, audited, and free. The privacy-respecting alternative to LastPass or 1Password.</div>
+        <div class="card-meta">bitwarden.com &mdash; Security</div>
+        <a class="visit-btn" href="https://bitwarden.com" target="_blank">Visit &rarr;</a>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <div>SIGNAL//213 &mdash; AI &bull; TECH &bull; PRIVACY</div>
+    <div>RESOURCES CURATED MANUALLY &mdash; NO AFFILIATE LINKS &mdash; <span>STAY PRIVATE</span></div>
+  </footer>
 
 </div>
 
 <script>
-  const btns = document.querySelectorAll('.filter-btn');
-  const sections = document.querySelectorAll('.section');
-  const visCount = document.getElementById('vis-count');
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const sections = document.querySelectorAll('.section-wrap');
+  const sectionCount = document.getElementById('section-count');
 
   function updateCount() {
-    visCount.textContent = document.querySelectorAll('.section:not(.hidden)').length;
+    const visible = document.querySelectorAll('.section-wrap:not(.hidden)').length;
+    sectionCount.textContent = visible;
   }
 
-  btns.forEach(btn => {
+  filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      btns.forEach(b => b.classList.remove('active'));
+      filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const f = btn.dataset.filter;
-      sections.forEach(s => {
-        if (f === 'all' || s.dataset.sec === f) {
-          s.classList.remove('hidden');
+
+      sections.forEach(section => {
+        if (f === 'all' || section.dataset.section === f) {
+          section.classList.remove('hidden');
         } else {
-          s.classList.add('hidden');
+          section.classList.add('hidden');
         }
       });
       updateCount();
