@@ -112,8 +112,20 @@
     height: 110px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid rgba(0,245,212,0.3);
-    box-shadow: 0 0 24px rgba(0,245,212,0.12), 0 0 60px rgba(0,245,212,0.05);
+    border: 2px solid rgba(0,245,212,0.4);
+    box-shadow: 0 0 24px rgba(0,245,212,0.15), 0 0 60px rgba(0,245,212,0.06);
+    animation: mascot-pulse 3.5s ease-in-out infinite;
+  }
+
+  @keyframes mascot-pulse {
+    0%, 100% {
+      box-shadow: 0 0 16px rgba(0,245,212,0.15), 0 0 40px rgba(0,245,212,0.05);
+      border-color: rgba(0,245,212,0.3);
+    }
+    50% {
+      box-shadow: 0 0 32px rgba(0,245,212,0.45), 0 0 80px rgba(0,245,212,0.15), 0 0 120px rgba(0,245,212,0.06);
+      border-color: rgba(0,245,212,0.7);
+    }
   }
 
   .page-subtitle {
@@ -374,6 +386,193 @@
     transform: translateY(0);
   }
 
+
+  /* SEARCH / FILTER BAR */
+  .search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .search-input-wrap {
+    flex: 1;
+    min-width: 200px;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 12px;
+    font-size: 11px;
+    color: var(--text-muted);
+    pointer-events: none;
+    letter-spacing: 0;
+  }
+
+  .search-input {
+    width: 100%;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    padding: 9px 12px 9px 32px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .search-input::placeholder { color: var(--text-muted); }
+  .search-input:focus { border-color: rgba(0,245,212,0.4); }
+
+  .search-count {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+
+  .search-count span { color: var(--cyan); }
+
+  .briefing-card.hidden-search { display: none; }
+
+  .no-results {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-muted);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    border: 1px dashed var(--border);
+  }
+
+  .no-results.visible { display: block; }
+
+  /* ISSUE NUMBER */
+  .issue-num {
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+    font-family: var(--mono);
+    margin-bottom: 4px;
+  }
+
+  /* READING TIME */
+  .read-time {
+    font-size: 10px;
+    color: rgba(0,245,212,0.5);
+    letter-spacing: 0.1em;
+    margin-top: 6px;
+  }
+
+  /* KEYBOARD SHORTCUTS */
+  .kbd-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(8,12,16,0.88);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+  }
+
+  .kbd-overlay.visible {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .kbd-panel {
+    background: var(--bg2);
+    border: 1px solid rgba(0,245,212,0.3);
+    padding: 28px 32px;
+    min-width: 300px;
+    box-shadow: 0 0 60px rgba(0,245,212,0.1);
+  }
+
+  .kbd-title {
+    font-family: var(--head);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--cyan);
+    letter-spacing: 0.15em;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .kbd-close-hint {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+  }
+
+  .kbd-list { display: flex; flex-direction: column; gap: 10px; }
+
+  .kbd-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+  }
+
+  kbd {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 24px;
+    padding: 0 7px;
+    background: var(--bg3);
+    border: 1px solid rgba(0,245,212,0.25);
+    color: var(--cyan);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+
+  .kbd-hint-bar {
+    position: fixed;
+    bottom: 32px;
+    left: 32px;
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+    opacity: 0;
+    transition: opacity 0.4s;
+    pointer-events: none;
+    font-family: var(--mono);
+  }
+
+  .kbd-hint-bar.visible { opacity: 1; }
+
+  .kbd-inline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 18px;
+    padding: 0 5px;
+    background: var(--bg3);
+    border: 1px solid rgba(0,245,212,0.25);
+    color: var(--cyan);
+    font-family: var(--mono);
+    font-size: 10px;
+    vertical-align: middle;
+    margin: 0 2px;
+  }
+
 </style>
 </head>
 <body>
@@ -403,15 +602,25 @@
     </div>
   </div>
 
+  <div class="search-bar">
+    <div class="search-input-wrap">
+      <span class="search-icon">⌕</span>
+      <input class="search-input" id="search-input" type="text" placeholder="SEARCH BRIEFINGS..." autocomplete="off" />
+    </div>
+    <div class="search-count">Showing <span id="result-count">1</span> of 1</div>
+  </div>
+
   <div class="section-label">ARCHIVE // ALL BRIEFINGS</div>
 
   <div class="briefing-list">
+    <div class="no-results" id="no-results">NO BRIEFINGS MATCH YOUR SEARCH</div>
 
     <!-- MARCH 21, 2026 -->
-    <a class="briefing-card" href="2026-03-21.html">
+    <a class="briefing-card" href="2026-03-21.html" data-search="openai superapp comet ios claude cowork apple wave meta signal labels saturday march 2026">
       <div class="card-date">
         <span class="day-of-week">Saturday</span>
         March 21, 2026
+        <div class="issue-num">ISSUE #001</div>
       </div>
       <div>
         <div class="card-title">
@@ -428,6 +637,7 @@
           <span class="tag tag-privacy">Signal</span>
           <span class="tag tag-privacy">Threema</span>
         </div>
+        <div class="read-time">~ 5 min read</div>
       </div>
       <span class="read-link">READ →</span>
     </a>
@@ -437,6 +647,21 @@
   </div>
 
 </div>
+
+  <!-- KEYBOARD SHORTCUTS OVERLAY -->
+  <div class="kbd-overlay" id="kbd-overlay">
+    <div class="kbd-panel">
+      <div class="kbd-title">KEYBOARD SHORTCUTS <span class="kbd-close-hint">ESC to close</span></div>
+      <div class="kbd-list">
+        <div class="kbd-row"><kbd>?</kbd><span>Show this panel</span></div>
+        <div class="kbd-row"><kbd>/</kbd><span>Focus search</span></div>
+        <div class="kbd-row"><kbd>T</kbd><span>Back to top</span></div>
+        <div class="kbd-row"><kbd>H</kbd><span>Back to Signal//213</span></div>
+        <div class="kbd-row"><kbd>ESC</kbd><span>Clear search / close</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="kbd-hint-bar" id="kbd-hint-bar">Press <kbd class="kbd-inline">?</kbd> for shortcuts &nbsp;·&nbsp; <kbd class="kbd-inline">/</kbd> to search</div>
 
 <button class="back-to-top" id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ TOP</button>
 
@@ -455,18 +680,65 @@
   }, { passive: true });
 
   // SCROLL-IN ANIMATIONS
-  const cards = document.querySelectorAll('.briefing-card');
+  const allCards = document.querySelectorAll('.briefing-card');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        const siblings = [...entry.target.parentElement.children];
+        const siblings = [...entry.target.parentElement.children].filter(el => el.classList.contains('briefing-card'));
         const idx = siblings.indexOf(entry.target);
         setTimeout(() => entry.target.classList.add('in-view'), idx * 80);
         observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.08 });
-  cards.forEach(c => observer.observe(c));
+  allCards.forEach(c => observer.observe(c));
+
+  // SEARCH
+  const searchInput = document.getElementById('search-input');
+  const resultCount = document.getElementById('result-count');
+  const noResults = document.getElementById('no-results');
+  const briefingCards = document.querySelectorAll('.briefing-card');
+  const total = briefingCards.length;
+
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.toLowerCase().trim();
+    let visible = 0;
+    briefingCards.forEach(card => {
+      const text = (card.dataset.search || '') + ' ' + card.textContent.toLowerCase();
+      const match = !q || text.includes(q);
+      card.classList.toggle('hidden-search', !match);
+      if (match) visible++;
+    });
+    resultCount.textContent = visible;
+    noResults.classList.toggle('visible', visible === 0);
+  });
+
+  // KEYBOARD SHORTCUTS
+  const kbdOverlay = document.getElementById('kbd-overlay');
+
+  setTimeout(() => {
+    const hintBar = document.getElementById('kbd-hint-bar');
+    hintBar.classList.add('visible');
+    setTimeout(() => hintBar.classList.remove('visible'), 4500);
+  }, 1800);
+
+  document.addEventListener('keydown', (e) => {
+    const tag = e.target.tagName;
+    if (e.key === 'Escape') {
+      kbdOverlay.classList.remove('visible');
+      if (tag === 'INPUT') { searchInput.blur(); searchInput.value = ''; searchInput.dispatchEvent(new Event('input')); }
+      return;
+    }
+    if (tag === 'INPUT') return;
+    if (e.key === '?' || (e.key === '/' && e.shiftKey)) { e.preventDefault(); kbdOverlay.classList.toggle('visible'); return; }
+    if (e.key === '/') { e.preventDefault(); searchInput.focus(); return; }
+    if (e.key.toLowerCase() === 't') { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+    if (e.key.toLowerCase() === 'h') { window.location.href = '../index.html'; return; }
+  });
+
+  kbdOverlay.addEventListener('click', (e) => {
+    if (e.target === kbdOverlay) kbdOverlay.classList.remove('visible');
+  });
 </script>
 
 </body>
