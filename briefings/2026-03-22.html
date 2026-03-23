@@ -20,144 +20,185 @@
   body::after { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(0,245,212,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,245,212,0.03) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; z-index: 0; }
   .wrap { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 24px 80px; }
   header { padding: 48px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
-  .site-tag { font-family: var(--mono); font-size: 11px; color: var(--text-muted); letter-spacing: 0.15em; margin-bottom: 12px; }
-  .site-tag a { color: var(--cyan); text-decoration: none; opacity: 0.8; transition: opacity 0.2s; }
-  .site-tag a:hover { opacity: 1; }
-  .page-title { font-family: var(--head); font-size: clamp(22px, 4vw, 38px); font-weight: 700; color: #fff; letter-spacing: 0.05em; line-height: 1.2; margin-bottom: 8px; }
+  .page-title { font-family: var(--head); font-size: clamp(28px, 5vw, 52px); font-weight: 700; color: #fff; letter-spacing: 0.05em; line-height: 1.1; margin-bottom: 10px; }
   .page-title span { color: var(--cyan); }
-  .page-subtitle { font-family: var(--mono); font-size: 11px; color: var(--text-muted); letter-spacing: 0.1em; margin-top: 6px; }
-  .meta-bar { display: flex; gap: 24px; flex-wrap: wrap; margin: 16px 0 0; }
-  .meta-item { font-size: 11px; color: var(--text-muted); letter-spacing: 0.1em; }
-  .meta-item span { color: var(--cyan); }
-
-  /* ARTICLE CONTENT */
-  .article { line-height: 1.75; font-size: 14px; }
-  .article h1 { font-family: var(--head); font-size: 26px; font-weight: 700; color: #fff; letter-spacing: 0.05em; margin: 48px 0 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
-  .article h2 { font-family: var(--head); font-size: 20px; font-weight: 700; color: var(--cyan); letter-spacing: 0.08em; margin: 36px 0 14px; padding-left: 12px; border-left: 3px solid var(--cyan); }
-  .article h3 { font-family: var(--head); font-size: 16px; font-weight: 600; color: #fff; letter-spacing: 0.05em; margin: 24px 0 10px; }
-  .article h4 { font-family: var(--mono); font-size: 13px; color: var(--amber); letter-spacing: 0.08em; margin: 20px 0 8px; text-transform: uppercase; }
-  .article p { color: var(--text); margin-bottom: 14px; }
-  .article a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(0,245,212,0.3); transition: border-color 0.2s; }
-  .article a:hover { border-color: var(--cyan); }
-  .article strong { color: #fff; font-weight: 600; }
-  .article em { color: var(--text-muted); font-style: italic; }
-  .article hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
-  .article blockquote { background: var(--bg2); border-left: 3px solid var(--amber); padding: 14px 18px; margin: 16px 0; border-radius: 0 4px 4px 0; }
-  .article blockquote p { color: var(--amber); margin: 0; font-size: 13px; }
-  .article ul, .article ol { padding-left: 24px; margin-bottom: 14px; }
-  .article li { margin-bottom: 6px; color: var(--text); }
-  .article code { background: var(--bg3); border: 1px solid var(--border); padding: 2px 6px; font-family: var(--mono); font-size: 12px; color: var(--green); border-radius: 3px; }
-  .article pre { background: var(--bg3); border: 1px solid var(--border); padding: 16px; overflow-x: auto; margin: 16px 0; border-radius: 4px; }
-  .article pre code { background: none; border: none; padding: 0; }
-  /* TABLE */
-  .article table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 13px; }
-  .article thead tr { background: var(--bg3); }
-  .article th { color: var(--cyan); font-family: var(--head); font-weight: 600; letter-spacing: 0.08em; text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--border); }
-  .article td { padding: 9px 14px; border-bottom: 1px solid rgba(0,245,212,0.07); color: var(--text); vertical-align: top; }
-  .article tr:hover td { background: rgba(0,245,212,0.02); }
-  /* TOC */
-  .toc-block { background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid var(--purple); padding: 18px 20px; margin: 24px 0 40px; border-radius: 0 4px 4px 0; }
-  .toc-block ul { list-style: none; padding: 0; columns: 2; column-gap: 24px; }
-  .toc-block li { margin-bottom: 6px; font-size: 12px; }
-  .toc-block li a { color: var(--text-muted); border-bottom: none; letter-spacing: 0.06em; }
-  .toc-block li a:hover { color: var(--cyan); }
-  /* BACK NAV */
-  .back-nav { margin-bottom: 32px; }
-  .back-nav a { font-size: 11px; color: var(--cyan); text-decoration: none; letter-spacing: 0.12em; border-bottom: none; opacity: 0.7; transition: opacity 0.2s; }
-  .back-nav a:hover { opacity: 1; }
-  /* BACK TO TOP */
-  .back-to-top { position: fixed; bottom: 32px; right: 32px; background: var(--bg2); border: 1px solid rgba(0,245,212,0.35); color: var(--cyan); font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; padding: 10px 16px; cursor: pointer; z-index: 500; opacity: 0; pointer-events: none; transform: translateY(12px); transition: opacity 0.3s, transform 0.3s, background 0.2s; }
-  .back-to-top.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
-  .back-to-top:hover { background: rgba(0,245,212,0.08); border-color: var(--cyan); }
+  .page-subtitle { font-family: var(--head); font-size: clamp(14px, 2vw, 20px); font-weight: 600; color: var(--text-muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 20px; }
+  .meta-bar { display: flex; gap: 32px; flex-wrap: wrap; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+  .meta-item { font-size: 11px; color: var(--text-muted); letter-spacing: 0.12em; }
+  .meta-item span { color: var(--cyan); font-weight: bold; }
+  .nav-buttons { display: flex; gap: 12px; margin: 28px 0; flex-wrap: wrap; }
+  .nav-btn { display: inline-block; font-family: var(--mono); font-size: 11px; color: var(--cyan); background: var(--bg2); border: 1px solid rgba(0,245,212,0.3); padding: 9px 18px; text-decoration: none; letter-spacing: 0.12em; transition: all 0.2s; }
+  .nav-btn:hover { background: var(--bg3); border-color: var(--cyan); }
+  .toc-box { background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid var(--purple); padding: 20px 24px; margin: 0 0 48px; }
+  .toc-label { font-family: var(--head); font-size: 13px; font-weight: 700; color: var(--purple); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 16px; }
+  .toc-box ul { list-style: none; padding: 0; columns: 3; column-gap: 16px; }
+  .toc-box li { margin-bottom: 8px; break-inside: avoid; }
+  .toc-box a { font-size: 11px; color: var(--text-muted); text-decoration: none; letter-spacing: 0.06em; transition: color 0.2s; }
+  .toc-box a:hover { color: var(--cyan); }
+  section { margin-bottom: 56px; }
+  .section-heading { font-family: var(--head); font-size: clamp(20px, 3vw, 28px); font-weight: 700; color: #fff; letter-spacing: 0.05em; padding-bottom: 14px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+  .story-grid { display: flex; flex-direction: column; gap: 2px; }
+  .story-card { background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid rgba(0,245,212,0.4); padding: 20px 24px; transition: all 0.2s; }
+  .story-card:hover { border-color: var(--border-hover); border-left-color: var(--cyan); background: var(--bg3); }
+  .table-card { border-left-color: var(--amber); }
+  .warning-card { border-left-color: var(--red); }
+  .story-title { font-family: var(--head); font-size: 16px; font-weight: 600; color: #fff; letter-spacing: 0.03em; margin-bottom: 10px; }
+  .story-body { font-size: 13px; line-height: 1.7; color: var(--text); margin-bottom: 14px; }
+  .story-body p { margin: 0; }
+  .story-body a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(0,245,212,0.3); }
+  .story-body a:hover { border-color: var(--cyan); }
+  .story-body strong { color: #fff; }
+  .story-body em { color: var(--text-muted); font-style: italic; }
+  .story-body blockquote { background: var(--bg3); border-left: 3px solid var(--amber); padding: 10px 14px; margin: 4px 0; }
+  .story-body blockquote p { color: var(--amber); font-size: 12px; margin: 0; }
+  .story-body ul, .story-body ol { padding-left: 20px; }
+  .story-body li { margin-bottom: 4px; }
+  .story-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 10px; border-top: 1px solid rgba(0,245,212,0.07); }
+  .source { font-size: 10px; color: var(--text-muted); letter-spacing: 0.1em; }
+  .source a { color: var(--text-muted); text-decoration: none; }
+  .source a:hover { color: var(--cyan); }
+  .read-more { font-size: 10px; color: var(--cyan); letter-spacing: 0.15em; opacity: 0.6; }
+  .narrative { padding: 14px 24px; background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid rgba(0,245,212,0.15); font-size: 13px; line-height: 1.7; color: var(--text); }
+  .narrative a { color: var(--cyan); text-decoration: none; }
+  .narrative strong { color: #fff; }
+  .story-body table { width: 100%; border-collapse: collapse; margin: 0; font-size: 12px; }
+  .story-body th { color: var(--cyan); font-family: var(--head); font-weight: 600; letter-spacing: 0.08em; text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--border); background: var(--bg3); }
+  .story-body td { padding: 8px 12px; border-bottom: 1px solid rgba(0,245,212,0.06); color: var(--text); vertical-align: top; }
+  .story-body td strong { color: var(--cyan); }
+  .story-body tr:hover td { background: rgba(0,245,212,0.02); }
   footer { margin-top: 80px; padding: 24px 0; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
   footer div { font-size: 10px; color: var(--text-muted); letter-spacing: 0.12em; }
   footer span { color: var(--cyan); }
-  @media (max-width: 640px) {
-    .toc-block ul { columns: 1; }
-    .meta-bar { gap: 12px; }
-  }
+  .back-to-top { position: fixed; bottom: 32px; right: 32px; background: var(--bg2); border: 1px solid rgba(0,245,212,0.35); color: var(--cyan); font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; padding: 10px 16px; cursor: pointer; z-index: 500; opacity: 0; pointer-events: none; transform: translateY(12px); transition: opacity 0.3s, transform 0.3s, background 0.2s; }
+  .back-to-top.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
+  .back-to-top:hover { background: rgba(0,245,212,0.08); border-color: var(--cyan); }
+  @media (max-width: 640px) { .toc-box ul { columns: 1; } .meta-bar { gap: 16px; } .nav-buttons { flex-direction: column; } }
 </style>
 </head>
 <body>
 <div class="wrap">
-
   <header>
-    <div class="site-tag">← <a href="index.html">SIGNAL//213 — DAILY BRIEFINGS</a> &nbsp;·&nbsp; <a href="../index.html">RESOURCE DIRECTORY</a></div>
-    <h1 class="page-title">SIGNAL<span>//</span>213</h1>
-    <p class="page-subtitle">DAILY TECH BRIEF — AI // TECH // PRIVACY</p>
+    <h1 class="page-title">SIGNAL<span>//</span>213 <span>DAILY TECH BRIEF</span></h1>
+    <p class="page-subtitle">AI // TECH // PRIVACY</p>
     <div class="meta-bar">
-      <div class="meta-item">DATE: <span>Sunday, March 22, 2026</span></div>
-      <div class="meta-item">EDITION: <span>#002</span></div>
-      <div class="meta-item">SOURCES: <span>20+</span></div>
+      <div class="meta-item">EDITION <span>#002</span></div>
+      <div class="meta-item">SOURCES <span>20+</span></div>
+      <div class="meta-item">TOPICS <span>OPENAI · CLAUDE · APPLE · META · SIGNAL · PROTON · NOTION</span></div>
     </div>
   </header>
+  <div class="nav-buttons">
+    <a class="nav-btn" href="index.html">← ALL BRIEFINGS</a>
+    <a class="nav-btn" href="../index.html">← RESOURCE DIRECTORY</a>
+  </div>
+  <div class="toc-box">
+    <div class="toc-label">// CONTENTS</div>
+    <ul>
+      <li><a href="#openai-chatgpt">‣ 🤖 OPENAI & CHATGPT</a></li>
+      <li><a href="#chatgpt-atlas-browser">‣ 🌐 CHATGPT ATLAS BROWSER</a></li>
+      <li><a href="#perplexity-comet-browser">‣ 🔭 PERPLEXITY & COMET BROWSER</a></li>
+      <li><a href="#anthropic-claude">‣ 🧠 ANTHROPIC & CLAUDE</a></li>
+      <li><a href="#apple-ecosystem">‣ 🍎 APPLE ECOSYSTEM</a></li>
+      <li><a href="#proton-ecosystem">‣ 🔐 PROTON ECOSYSTEM</a></li>
+      <li><a href="#notion">‣ 📋 NOTION</a></li>
+      <li><a href="#meta-ray-ban-glasses-gen-2-display">‣ 🥽 META RAY-BAN GLASSES (Gen 2 & Display)</a></li>
+      <li><a href="#meta-quest-vr">‣ 🥽 META QUEST VR</a></li>
+      <li><a href="#smart-glasses-roundup">‣ 👓 SMART GLASSES ROUNDUP</a></li>
+      <li><a href="#secure-messaging-spotlight">‣ 🔒 SECURE MESSAGING SPOTLIGHT</a></li>
+      <li><a href="#power-user-actions-for-today">‣ ⚡ POWER-USER ACTIONS FOR TODAY</a></li>
+      <li><a href="#top-ten-hottest-ai-tech-products-right-now">‣ 🔥 TOP TEN HOTTEST AI & TECH PRODUCTS RIGHT NOW</a></li>
+    </ul>
+  </div>
+  <section id="openai-chatgpt">
+    <h2 class="section-heading">🤖 OPENAI & CHATGPT</h2>
+    <div class="story-grid">
+    <div class="story-card">
+      <div class="story-title">OpenAI to Introduce Ads to Free and Go Tiers in the US</div>
+      <div class="story-body"><p>OpenAI confirmed plans to integrate advertisements into ChatGPT for free and "Go" tier users in the United States, starting in the coming weeks. The company has partnered with Criteo to manage ad placements, with brands spending $50,000–$100,000 for early slots. Paid tiers (Plus, Pro, Business, Enterprise) will remain ad-free.</p></div>
+      <div class="story-footer"><span class="source">SOURCE // <a href="https://www.latestly.com/technology/openai-to-introduce-advertisements-to-chatgpt-free-and-go-tiers-in-the-united-states-7363484.html">LatestLY / Reuters</a></span><span class="read-more">READ →</span></div>
+    </div>
+    <div class="story-card">
+      <div class="story-title">OpenAI's IPO Push: ChatGPT Must Be a "Productivity Tool"</div>
+      <div class="story-body"><p>OpenAI CEO of Applications Fidji Simo held an all-hands meeting last week and told staff the company is "orienting aggressively" toward enterprise and high-productivity use cases. With 900 million weekly active users, the goal is converting them into high-compute users. The company is also targeting a 2026 IPO, trimming its previously announced $1.4 trillion compute target to roughly $600 billion by 2030.</p></div>
+      <div class="story-footer"><span class="source">SOURCE // <a href="https://www.cnbc.com/2026/03/17/openai-preps-for-ipo-in-2026-says-chatgpt-must-be-productivity-tool.html">CNBC</a></span><span class="read-more">READ →</span></div>
+    </div>
+    <div class="story-card">
+      <div class="story-title">GPT-5.4 mini Now Rolling Out — Legacy Deep Research Sunset This Week</div>
+      <div class="story-body"><p>GPT-5.4 mini is now available to Free and Go users via the "Thinking" feature, and serves as a rate-limit fallback for paid tiers. Separately, OpenAI will remove the legacy Deep Research mode on March 26, 2026 — current Deep Research experiences are unaffected. ChatGPT Business also shipped write actions for Google Docs, Sheets, Microsoft Outlook, and Teams (disabled by default; admins must enable).</p></div>
+      <div class="story-footer"><span class="source">SOURCE // <a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes">OpenAI Help Center</a></span><span class="read-more">READ →</span></div>
+    </div>
+    <div class="story-card">
+      <div class="story-title">OpenAI Plans to Nearly Double Workforce</div>
+      <div class="story-body"><p>OpenAI is planning to grow from ~4,500 to ~8,000 employees by year-end 2026, primarily in engineering, research, product development, and sales. The push is explicitly aimed at competing with Anthropic for enterprise market share — a sign of how fast Claude's business momentum has rattled OpenAI's internal urgency.</p></div>
+      <div class="story-footer"><span class="source">SOURCE // <a href="https://www.pymnts.com/artificial-intelligence-2/2026/openai-beefs-up-staff-to-take-on-claude/">PYMNTS / Financial Times</a></span><span class="read-more">READ →</span></div>
+    </div>
+    </div>
+  </section>
 
-  <div class="article">
-<h1>📡 SIGNAL//213 Daily Tech Brief — Sunday, March 22, 2026</h1>
-<blockquote>
-<p><strong>Edition #2026-03-22</strong> | Sources: 20+ | Compiled: Sunday, March 22, 2026</p>
-</blockquote>
-<hr />
-<h2>Table of Contents</h2>
-<ul>
-<li><a href="#openai--chatgpt">OpenAI &amp; ChatGPT</a></li>
-<li><a href="#chatgpt-atlas-browser">ChatGPT Atlas Browser</a></li>
-<li><a href="#perplexity--comet-browser">Perplexity &amp; Comet Browser</a></li>
-<li><a href="#anthropic--claude">Anthropic &amp; Claude</a></li>
-<li><a href="#apple-ecosystem">Apple Ecosystem</a></li>
-<li><a href="#proton-ecosystem">Proton Ecosystem</a></li>
-<li><a href="#notion">Notion</a></li>
-<li><a href="#meta-ray-ban-glasses-gen-2--display">Meta Ray-Ban Glasses</a></li>
-<li><a href="#meta-quest-vr">Meta Quest VR</a></li>
-<li><a href="#smart-glasses-roundup">Smart Glasses Roundup</a></li>
-<li><a href="#-secure-messaging-spotlight">🔒 Secure Messaging Spotlight</a></li>
-<li><a href="#-power-user-actions-today">⚡ Power-User Actions Today</a></li>
-<li><a href="#-top-ten-hottest-ai--tech-products">🔥 Top Ten Hottest AI &amp; Tech Products</a></li>
-</ul>
-<hr />
-<h2>🤖 OPENAI &amp; CHATGPT</h2>
-<p><strong>OpenAI to Introduce Ads to Free and Go Tiers in the US</strong>
-OpenAI confirmed plans to integrate advertisements into ChatGPT for free and "Go" tier users in the United States, starting in the coming weeks. The company has partnered with Criteo to manage ad placements, with brands spending $50,000–$100,000 for early slots. Paid tiers (Plus, Pro, Business, Enterprise) will remain ad-free. — <a href="https://www.latestly.com/technology/openai-to-introduce-advertisements-to-chatgpt-free-and-go-tiers-in-the-united-states-7363484.html">LatestLY / Reuters</a></p>
-<p><strong>OpenAI's IPO Push: ChatGPT Must Be a "Productivity Tool"</strong>
-OpenAI CEO of Applications Fidji Simo held an all-hands meeting last week and told staff the company is "orienting aggressively" toward enterprise and high-productivity use cases. With 900 million weekly active users, the goal is converting them into high-compute users. The company is also targeting a 2026 IPO, trimming its previously announced $1.4 trillion compute target to roughly $600 billion by 2030. — <a href="https://www.cnbc.com/2026/03/17/openai-preps-for-ipo-in-2026-says-chatgpt-must-be-productivity-tool.html">CNBC</a></p>
-<p><strong>GPT-5.4 mini Now Rolling Out — Legacy Deep Research Sunset This Week</strong>
-GPT-5.4 mini is now available to Free and Go users via the "Thinking" feature, and serves as a rate-limit fallback for paid tiers. Separately, OpenAI will remove the legacy Deep Research mode on March 26, 2026 — current Deep Research experiences are unaffected. ChatGPT Business also shipped write actions for Google Docs, Sheets, Microsoft Outlook, and Teams (disabled by default; admins must enable). — <a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes">OpenAI Help Center</a></p>
-<p><strong>OpenAI Plans to Nearly Double Workforce</strong>
-OpenAI is planning to grow from ~4,500 to ~8,000 employees by year-end 2026, primarily in engineering, research, product development, and sales. The push is explicitly aimed at competing with Anthropic for enterprise market share — a sign of how fast Claude's business momentum has rattled OpenAI's internal urgency. — <a href="https://www.pymnts.com/artificial-intelligence-2/2026/openai-beefs-up-staff-to-take-on-claude/">PYMNTS / Financial Times</a></p>
-<hr />
-<h2>🌐 CHATGPT ATLAS BROWSER</h2>
-<p>Atlas continues its rollout as OpenAI's macOS-native AI browser. Recent updates include more persistent Agent Mode for repetitive tasks like bulk email processing, browser memories that now persist useful details across sessions, and multi-account support — allowing separate profiles for work, personal, and school use. OpenAI's stated goal is to merge ChatGPT, Codex, and Atlas into a single "superapp," with Greg Brockman and Fidji Simo leading the consolidation effort.</p>
-<p>By default, OpenAI does not use browsing content to train models. Agent Mode remains in preview for Plus, Pro, and Business users. — <a href="https://openai.com/index/introducing-chatgpt-atlas/">OpenAI</a></p>
-<blockquote>
+  <section id="chatgpt-atlas-browser">
+    <h2 class="section-heading">🌐 CHATGPT ATLAS BROWSER</h2>
+    <div class="story-grid">
+    <div class="narrative"><p>Atlas continues its rollout as OpenAI's macOS-native AI browser. Recent updates include more persistent Agent Mode for repetitive tasks like bulk email processing, browser memories that now persist useful details across sessions, and multi-account support — allowing separate profiles for work, personal, and school use. OpenAI's stated goal is to merge ChatGPT, Codex, and Atlas into a single "superapp," with Greg Brockman and Fidji Simo leading the consolidation effort.</p></div>
+    <div class="narrative"><p>By default, OpenAI does not use browsing content to train models. Agent Mode remains in preview for Plus, Pro, and Business users. — <a href="https://openai.com/index/introducing-chatgpt-atlas/">OpenAI</a></p></div>
+    <div class="story-card warning-card"><div class="story-body"><blockquote>
 <p><strong>Bottom line:</strong> The coming superapp merger makes Atlas more important, not less — it's the browsing layer of OpenAI's long-term desktop strategy.</p>
-</blockquote>
-<hr />
-<h2>🔭 PERPLEXITY &amp; COMET BROWSER</h2>
-<p><strong>Comet Completes Cross-Platform Rollout — Now Free on iOS</strong>
-Perplexity's Comet browser is now available as a free download on the App Store for iPhone, completing its rollout across iOS, Android, Windows, and Mac. Originally a $200/month product, it now includes Deep Research, voice mode, page summarization, and the ability to complete multi-step tasks on your behalf — like researching a LinkedIn contact and preparing a meeting brief in one session. Research threads sync between iPhone and desktop. — <a href="https://www.ghacks.net/2026/03/20/perplexitys-ai-browser-comet-launches-on-iphone-with-built-in-assistant/">gHacks</a></p>
-<p><strong>Comet Gets Samsung Galaxy Integration + Voice Mode Upgrade</strong>
-This week's changelog shipped Comet integration with Samsung's Galaxy S26, bringing agentic browsing directly into Samsung Internet. Voice mode was upgraded to OpenAI's GPT Realtime 1.5, delivering over 25% more reliable interactions and improved expressiveness. Comet Computer (the agentic desktop mode) also gained access to GPT-5.3-Codex as a dedicated coding subagent. — <a href="https://www.perplexity.ai/changelog">Perplexity Changelog</a></p>
-<blockquote>
+</blockquote></div></div>
+    </div>
+  </section>
+
+  <section id="perplexity-comet-browser">
+    <h2 class="section-heading">🔭 PERPLEXITY & COMET BROWSER</h2>
+    <div class="story-grid">
+    <div class="story-card">
+      <div class="story-title">Comet Completes Cross-Platform Rollout — Now Free on iOS</div>
+      <div class="story-body"><p>Perplexity's Comet browser is now available as a free download on the App Store for iPhone, completing its rollout across iOS, Android, Windows, and Mac. Originally a $200/month product, it now includes Deep Research, voice mode, page summarization, and the ability to complete multi-step tasks on your behalf — like researching a LinkedIn contact and preparing a meeting brief in one session. Research threads sync between iPhone and desktop.</p></div>
+      <div class="story-footer"><span class="source">SOURCE // <a href="https://www.ghacks.net/2026/03/20/perplexitys-ai-browser-comet-launches-on-iphone-with-built-in-assistant/">gHacks</a></span><span class="read-more">READ →</span></div>
+    </div>
+    <div class="story-card">
+      <div class="story-title">Comet Gets Samsung Galaxy Integration + Voice Mode Upgrade</div>
+      <div class="story-body"><p>This week's changelog shipped Comet integration with Samsung's Galaxy S26, bringing agentic browsing directly into Samsung Internet. Voice mode was upgraded to OpenAI's GPT Realtime 1.5, delivering over 25% more reliable interactions and improved expressiveness. Comet Computer (the agentic desktop mode) also gained access to GPT-5.3-Codex as a dedicated coding subagent.</p></div>
+      <div class="story-footer"><span class="source">SOURCE // <a href="https://www.perplexity.ai/changelog">Perplexity Changelog</a></span><span class="read-more">READ →</span></div>
+    </div>
+    <div class="story-card warning-card"><div class="story-body"><blockquote>
 <p>⚠️ <strong>Privacy Warning:</strong> Perplexity openly collects browsing and search history from Comet to create ad-targeting profiles. There is currently no opt-out option within the app.</p>
 <p>⚠️ <strong>Security Notice:</strong> Multiple prompt injection exploits (collectively called PerplexedBrowser) were disclosed in March, including attacks that could exfiltrate Gmail data and hijack 1Password accounts via meeting invite injections. Perplexity has patched the disclosed vulnerabilities. — <a href="https://thehackernews.com/2026/03/researchers-trick-perplexitys-comet-ai.html">The Hacker News</a></p>
-</blockquote>
-<hr />
-<h2>🧠 ANTHROPIC &amp; CLAUDE</h2>
-<p><strong>Claude Code Channels — Telegram &amp; Discord Control for Developers</strong>
-Anthropic launched Claude Code Channels this week, allowing developers to connect Claude Code to their Telegram or Discord accounts via MCP. Developers can send instructions and receive task completion notifications asynchronously — moving from a synchronous "ask and wait" model to an always-on agentic partner accessible from anywhere. The setup uses BotFather for Telegram and a <code>/telegram:configure</code> command. Community reaction called it an "OpenClaw killer." — <a href="https://venturebeat.com/orchestration/anthropic-just-shipped-an-openclaw-killer-called-claude-code-channels">VentureBeat</a></p>
-<p><strong>Cowork Projects Now Available</strong>
-Anthropic's Claude Cowork Desktop rolled out a Projects feature this week for paid users, letting them anchor tasks, files, and instructions in a single persistent workspace. Users can import existing chats, connect a local folder, or start fresh — with Claude maintaining full context between sessions. — <a href="https://cybersecuritynews.com/projects-feature-claude-cowork-desktop/">Cybersecurity News</a></p>
-<p><strong>DoD Disputes with Anthropic Ongoing — Pentagon Plans Exit Within 6 Months</strong>
-The Department of Defense said it is confident it can phase out Anthropic's Claude within six months following an ongoing dispute over how the military can use its AI models. Defense Secretary Pete Hegseth labeled Anthropic a "supply-chain risk." The Pentagon has already begun deploying OpenAI and Google Gemini on classified networks as alternatives. — <a href="https://federalnewsnetwork.com/defense-news/2026/03/dod-confident-it-can-replace-anthropics-claude-within-six-months-but-some-warn-transition-wont-be-easy/">Federal News Network</a></p>
-<p><strong>New Market Data: Claude Surging in Enterprise</strong>
-Businesses purchasing AI for the first time are choosing Anthropic at three times the rate of OpenAI, according to credit card data cited by the Financial Times. Claude's subscription market share has climbed to approximately 24.4%, up from roughly 4% a year ago. OpenAI leads overall at 34.4% but lost 1.5% month-over-month in February while Anthropic gained 4.9%. — <a href="https://www.pymnts.com/artificial-intelligence-2/2026/openai-beefs-up-staff-to-take-on-claude/">PYMNTS / FT</a></p>
-<blockquote>
+</blockquote></div></div>
+    </div>
+  </section>
+
+  <section id="anthropic-claude">
+    <h2 class="section-heading">🧠 ANTHROPIC & CLAUDE</h2>
+    <div class="story-grid">
+    <div class="story-card">
+      <div class="story-title">Claude Code Channels — Telegram &amp; Discord Control for Developers</div>
+      <div class="story-body"><p>Anthropic launched Claude Code Channels this week, allowing developers to connect Claude Code to their Telegram or Discord accounts via MCP. Developers can send instructions and receive task completion notifications asynchronously — moving from a synchronous "ask and wait" model to an always-on agentic partner accessible from anywhere. The setup uses BotFather for Telegram and a <code>/telegram:configure</code> command. Community reaction called it an "OpenClaw killer."</p></div>
+      <div class="story-footer"><span class="source">SOURCE // <a href="https://venturebeat.com/orchestration/anthropic-just-shipped-an-openclaw-killer-called-claude-code-channels">VentureBeat</a></span><span class="read-more">READ →</span></div>
+    </div>
+    <div class="story-card">
+      <div class="story-title">Cowork Projects Now Available</div>
+      <div class="story-body"><p>Anthropic's Claude Cowork Desktop rolled out a Projects feature this week for paid users, letting them anchor tasks, files, and instructions in a single persistent workspace. Users can import existing chats, connect a local folder, or start fresh — with Claude maintaining full context between sessions.</p></div>
+      <div class="story-footer"><span class="source">SOURCE // <a href="https://cybersecuritynews.com/projects-feature-claude-cowork-desktop/">Cybersecurity News</a></span><span class="read-more">READ →</span></div>
+    </div>
+    <div class="story-card">
+      <div class="story-title">DoD Disputes with Anthropic Ongoing — Pentagon Plans Exit Within 6 Months</div>
+      <div class="story-body"><p>The Department of Defense said it is confident it can phase out Anthropic's Claude within six months following an ongoing dispute over how the military can use its AI models. Defense Secretary Pete Hegseth labeled Anthropic a "supply-chain risk." The Pentagon has already begun deploying OpenAI and Google Gemini on classified networks as alternatives.</p></div>
+      <div class="story-footer"><span class="source">SOURCE // <a href="https://federalnewsnetwork.com/defense-news/2026/03/dod-confident-it-can-replace-anthropics-claude-within-six-months-but-some-warn-transition-wont-be-easy/">Federal News Network</a></span><span class="read-more">READ →</span></div>
+    </div>
+    <div class="story-card">
+      <div class="story-title">New Market Data: Claude Surging in Enterprise</div>
+      <div class="story-body"><p>Businesses purchasing AI for the first time are choosing Anthropic at three times the rate of OpenAI, according to credit card data cited by the Financial Times. Claude's subscription market share has climbed to approximately 24.4%, up from roughly 4% a year ago. OpenAI leads overall at 34.4% but lost 1.5% month-over-month in February while Anthropic gained 4.9%.</p></div>
+      <div class="story-footer"><span class="source">SOURCE // <a href="https://www.pymnts.com/artificial-intelligence-2/2026/openai-beefs-up-staff-to-take-on-claude/">PYMNTS / FT</a></span><span class="read-more">READ →</span></div>
+    </div>
+    <div class="story-card warning-card"><div class="story-body"><blockquote>
 <p>💡 <strong>Note:</strong> Anthropic's March 2026 usage promotion is still active — free and paid users have expanded limits with access to the most capable model tier. Take advantage while it lasts.</p>
-</blockquote>
-<hr />
-<h2>🍎 APPLE ECOSYSTEM</h2>
-<p>March has been Apple's most prolific product month in years. Here's the current rundown:</p>
-<ul>
+</blockquote></div></div>
+    </div>
+  </section>
+
+  <section id="apple-ecosystem">
+    <h2 class="section-heading">🍎 APPLE ECOSYSTEM</h2>
+    <div class="story-grid">
+    <div class="narrative"><p>March has been Apple's most prolific product month in years. Here's the current rundown:</p></div>
+    <div class="narrative"><p><ul>
 <li><strong>iPhone 17e</strong> — Ships with A19, MagSafe, 48MP camera, USB-C, and the new C1X cellular modem. Available in black, white, and soft pink. Starts at $599.</li>
 <li><strong>MacBook Air M5</strong> — Up to 4x faster at AI tasks than M4; 13" and 15" models available. Best-value Mac on the market.</li>
 <li><strong>MacBook Neo</strong> — New $599 entry MacBook powered by A18 Pro. Apple's first sub-$600 laptop. A practical Mac alternative for first-time buyers.</li>
@@ -165,86 +206,173 @@ Businesses purchasing AI for the first time are choosing Anthropic at three time
 <li><strong>iPad Air M4</strong> — Up to 30% faster than M3; 11" starts at $599 and 13" at $799. Available now.</li>
 <li><strong>AirPods Max 2</strong> — H2 chip, up to 1.5x improved ANC over the previous generation. Pre-orders open March 25; starts at $549.</li>
 <li><strong>Studio Display &amp; Studio Display XDR</strong> — Refreshed with Center Stage cameras, 6-speaker spatial audio, and updated internals.</li>
-</ul>
-<p><strong>iOS 26.4 Release Candidate Drops</strong>
-Apple seeded the iOS 26.4 RC to testers this week, including AI Playlist Playground via Apple Music (beta), new emoji, and several under-the-hood Siri improvements. Public release expected next week. — <a href="https://www.macrumors.com/2026/03/04/apple-march-2026-product-releases/">MacRumors</a></p>
-<p><strong>Apple Turns 50 on April 1</strong>
-Apple will mark its 50th anniversary on April 1, 2026, celebrating five decades since its 1976 founding.</p>
-<hr />
-<h2>🔐 PROTON ECOSYSTEM</h2>
-<p><strong>Proton Sheets Now Live</strong>
-Proton Drive's latest update ships Proton Sheets — end-to-end encrypted collaborative spreadsheets — alongside a Drive SDK upgrade that makes core file operations faster and more reliable. Proton continues to be the only major productivity platform offering full E2E encryption across documents, spreadsheets, and file storage. — <a href="https://proton.me/blog/product-updates">Proton Blog</a></p>
-<p><strong>Born Private — Reserve Your Child's Email Address</strong>
-Proton launched its "Born Private" program on March 16, allowing parents to reserve a permanent, sealed, private Proton Mail address for their children — no ads, no tracking — to be unlocked when they're ready. — <a href="https://proton.me/blog">Proton Blog</a></p>
-<p><strong>Proton Pass CLI Now Available</strong>
-Proton Pass released a command-line interface for power users, enabling scripted integrations with Proton's password manager for automation workflows and server-side deployment.</p>
-<p><strong>Instagram to Drop E2E Encrypted Chats on May 8</strong>
-Proton flagged a significant privacy reversal: Instagram will remove end-to-end encrypted chat support on May 8, 2026 — reversing a major privacy feature Meta had championed for years. Proton is also closely watching EU Chat Control negotiations, with a final deal expected by June 2026. — <a href="https://proton.me/blog/data-breach-observatory-2026">Proton Blog</a></p>
-<blockquote>
+</ul></p></div>
+    <div class="story-card">
+      <div class="story-title">iOS 26.4 Release Candidate Drops</div>
+      <div class="story-body"><p>Apple seeded the iOS 26.4 RC to testers this week, including AI Playlist Playground via Apple Music (beta), new emoji, and several under-the-hood Siri improvements. Public release expected next week.</p></div>
+      <div class="story-footer"><span class="source">SOURCE // <a href="https://www.macrumors.com/2026/03/04/apple-march-2026-product-releases/">MacRumors</a></span><span class="read-more">READ →</span></div>
+    </div>
+    <div class="story-card">
+      <div class="story-title">Apple Turns 50 on April 1</div>
+      <div class="story-body"><p>Apple will mark its 50th anniversary on April 1, 2026, celebrating five decades since its 1976 founding.</p></div>
+      <div class="story-footer"><span class="read-more">READ →</span></div>
+    </div>
+    </div>
+  </section>
+
+  <section id="proton-ecosystem">
+    <h2 class="section-heading">🔐 PROTON ECOSYSTEM</h2>
+    <div class="story-grid">
+    <div class="story-card">
+      <div class="story-title">Proton Sheets Now Live</div>
+      <div class="story-body"><p>Proton Drive's latest update ships Proton Sheets — end-to-end encrypted collaborative spreadsheets — alongside a Drive SDK upgrade that makes core file operations faster and more reliable. Proton continues to be the only major productivity platform offering full E2E encryption across documents, spreadsheets, and file storage.</p></div>
+      <div class="story-footer"><span class="source">SOURCE // <a href="https://proton.me/blog/product-updates">Proton Blog</a></span><span class="read-more">READ →</span></div>
+    </div>
+    <div class="story-card">
+      <div class="story-title">Born Private — Reserve Your Child's Email Address</div>
+      <div class="story-body"><p>Proton launched its "Born Private" program on March 16, allowing parents to reserve a permanent, sealed, private Proton Mail address for their children — no ads, no tracking — to be unlocked when they're ready.</p></div>
+      <div class="story-footer"><span class="source">SOURCE // <a href="https://proton.me/blog">Proton Blog</a></span><span class="read-more">READ →</span></div>
+    </div>
+    <div class="story-card">
+      <div class="story-title">Proton Pass CLI Now Available</div>
+      <div class="story-body"><p>Proton Pass released a command-line interface for power users, enabling scripted integrations with Proton's password manager for automation workflows and server-side deployment.</p></div>
+      <div class="story-footer"><span class="read-more">READ →</span></div>
+    </div>
+    <div class="story-card">
+      <div class="story-title">Instagram to Drop E2E Encrypted Chats on May 8</div>
+      <div class="story-body"><p>Proton flagged a significant privacy reversal: Instagram will remove end-to-end encrypted chat support on May 8, 2026 — reversing a major privacy feature Meta had championed for years. Proton is also closely watching EU Chat Control negotiations, with a final deal expected by June 2026.</p></div>
+      <div class="story-footer"><span class="source">SOURCE // <a href="https://proton.me/blog/data-breach-observatory-2026">Proton Blog</a></span><span class="read-more">READ →</span></div>
+    </div>
+    <div class="story-card warning-card"><div class="story-body"><blockquote>
 <p>⚠️ <strong>Privacy Alert:</strong> If your contacts use Instagram DMs for sensitive communication, May 8 is your migration deadline.</p>
-</blockquote>
-<hr />
-<h2>📋 NOTION</h2>
-<p><strong>Custom Skills for Notion AI</strong> <em>(March 20)</em>
-Turn any repetitive AI task into a reusable command accessible via the text selection menu or @mention in agent chat. Skills are Notion pages, so your entire team can build and share them. Enable via <code>Settings → Notion AI → General</code>. Available on Business and Enterprise plans. — <a href="https://www.notion.com/releases/2026-03-20">Notion Releases</a></p>
-<p><strong>Salesforce Integration Now Live</strong> <em>(March 11)</em>
-Notion AI can now search Salesforce data — accounts, leads, opportunities, and contacts — directly alongside your Notion workspace. Ask questions about your pipeline or get a contact summary without leaving Notion. Find it in <code>Settings → Notion AI → AI Connectors</code>. — <a href="https://www.notion.com/releases">Notion Releases</a></p>
-<p><strong>Notion Academy in 6 New Languages</strong> <em>(March 19)</em>
-Notion Academy videos and certification programs are now live in Spanish, Portuguese, Japanese, Korean, French, and German — expanding access to learning and productivity resources globally. — <a href="https://www.notion.com/releases/2026-03-19">Notion Releases</a></p>
-<p><strong>AI Meeting Notes Consent Controls</strong> <em>(March 12)</em>
-Workspace admins can now set a policy requiring an automatic audio consent message at the start of every AI Meeting Notes transcription. Enable in <code>Settings → Notion AI → AI Meeting Notes → Enforce consent</code>. — <a href="https://www.notion.com/releases/2026-03-12">Notion Releases</a></p>
-<p><strong>GPT-5.4 Now Available in Model Picker</strong> <em>(March 6)</em>
-OpenAI's GPT-5.4 is now selectable in Notion's model picker for Business and Enterprise users — faster responses and better token efficiency for demanding workflows. — <a href="https://www.notion.com/releases/2026-03-06">Notion Releases</a></p>
-<hr />
-<h2>🥽 META RAY-BAN GLASSES (Gen 2 &amp; Display)</h2>
-<p><strong>v23 Software Update Rolling Out</strong>
-Meta's latest v23 update brings snow sports tracking with Garmin integration, real-time resort condition data, and a more natural conversational voice mode — you can now interrupt Meta AI mid-sentence without repeating "Hey Meta." The update is rolling out to Ray-Ban Meta and Oakley Meta HSTN in the US and Canada. — <a href="https://www.meta.com/help/ai-glasses/1809764829519902/">Meta AI Glasses Release Notes</a></p>
-<p><strong>Display Glasses Recent Feature Highlights</strong> <em>(Week of March 4)</em>
+</blockquote></div></div>
+    </div>
+  </section>
+
+  <section id="notion">
+    <h2 class="section-heading">📋 NOTION</h2>
+    <div class="story-grid">
+    <div class="story-card">
+      <div class="story-title">Custom Skills for Notion AI</div>
+      <div class="story-body"><p><em>(March 20)</em>
+Turn any repetitive AI task into a reusable command accessible via the text selection menu or @mention in agent chat. Skills are Notion pages, so your entire team can build and share them. Enable via <code>Settings → Notion AI → General</code>. Available on Business and Enterprise plans.</p></div>
+      <div class="story-footer"><span class="source">SOURCE // <a href="https://www.notion.com/releases/2026-03-20">Notion Releases</a></span><span class="read-more">READ →</span></div>
+    </div>
+    <div class="story-card">
+      <div class="story-title">Salesforce Integration Now Live</div>
+      <div class="story-body"><p><em>(March 11)</em>
+Notion AI can now search Salesforce data — accounts, leads, opportunities, and contacts — directly alongside your Notion workspace. Ask questions about your pipeline or get a contact summary without leaving Notion. Find it in <code>Settings → Notion AI → AI Connectors</code>.</p></div>
+      <div class="story-footer"><span class="source">SOURCE // <a href="https://www.notion.com/releases">Notion Releases</a></span><span class="read-more">READ →</span></div>
+    </div>
+    <div class="story-card">
+      <div class="story-title">Notion Academy in 6 New Languages</div>
+      <div class="story-body"><p><em>(March 19)</em>
+Notion Academy videos and certification programs are now live in Spanish, Portuguese, Japanese, Korean, French, and German — expanding access to learning and productivity resources globally.</p></div>
+      <div class="story-footer"><span class="source">SOURCE // <a href="https://www.notion.com/releases/2026-03-19">Notion Releases</a></span><span class="read-more">READ →</span></div>
+    </div>
+    <div class="story-card">
+      <div class="story-title">AI Meeting Notes Consent Controls</div>
+      <div class="story-body"><p><em>(March 12)</em>
+Workspace admins can now set a policy requiring an automatic audio consent message at the start of every AI Meeting Notes transcription. Enable in <code>Settings → Notion AI → AI Meeting Notes → Enforce consent</code>.</p></div>
+      <div class="story-footer"><span class="source">SOURCE // <a href="https://www.notion.com/releases/2026-03-12">Notion Releases</a></span><span class="read-more">READ →</span></div>
+    </div>
+    <div class="story-card">
+      <div class="story-title">GPT-5.4 Now Available in Model Picker</div>
+      <div class="story-body"><p><em>(March 6)</em>
+OpenAI's GPT-5.4 is now selectable in Notion's model picker for Business and Enterprise users — faster responses and better token efficiency for demanding workflows.</p></div>
+      <div class="story-footer"><span class="source">SOURCE // <a href="https://www.notion.com/releases/2026-03-06">Notion Releases</a></span><span class="read-more">READ →</span></div>
+    </div>
+    </div>
+  </section>
+
+  <section id="meta-ray-ban-glasses-gen-2-display">
+    <h2 class="section-heading">🥽 META RAY-BAN GLASSES (Gen 2 & Display)</h2>
+    <div class="story-grid">
+    <div class="story-card">
+      <div class="story-title">v23 Software Update Rolling Out</div>
+      <div class="story-body"><p>Meta's latest v23 update brings snow sports tracking with Garmin integration, real-time resort condition data, and a more natural conversational voice mode — you can now interrupt Meta AI mid-sentence without repeating "Hey Meta." The update is rolling out to Ray-Ban Meta and Oakley Meta HSTN in the US and Canada.</p></div>
+      <div class="story-footer"><span class="source">SOURCE // <a href="https://www.meta.com/help/ai-glasses/1809764829519902/">Meta AI Glasses Release Notes</a></span><span class="read-more">READ →</span></div>
+    </div>
+    <div class="story-card">
+      <div class="story-title">Display Glasses Recent Feature Highlights</div>
+      <div class="story-body"><p><em>(Week of March 4)</em>
 - Real-time captioning for phone calls (English)
 - Instagram Reels: watch, like, save, and share directly from your glasses
 - Two new Neural Band games: 2048 and GOAT platformer
 - Personalized Spotify shortcuts below the media player
-- Early Access: handwriting via Neural Band to send Instagram Direct and Android messages</p>
-<p><strong>Production Scale-Up to 20 Million Units</strong>
-Meta and EssilorLuxottica are weighing a plan to double Ray-Ban smart glasses output to up to 20 million units in 2026, driven by unprecedented demand. U.S. waitlists for Display glasses extend well into this year; international expansion remains paused indefinitely due to limited inventory. — <a href="https://glassalmanac.com/ray%E2%80%91ban-meta-smart-glasses-plan-for-20m-units-in-2026-why-it-matters-now/">Glass Almanac / Reuters</a></p>
-<blockquote>
+- Early Access: handwriting via Neural Band to send Instagram Direct and Android messages</p></div>
+      <div class="story-footer"><span class="read-more">READ →</span></div>
+    </div>
+    <div class="story-card">
+      <div class="story-title">Production Scale-Up to 20 Million Units</div>
+      <div class="story-body"><p>Meta and EssilorLuxottica are weighing a plan to double Ray-Ban smart glasses output to up to 20 million units in 2026, driven by unprecedented demand. U.S. waitlists for Display glasses extend well into this year; international expansion remains paused indefinitely due to limited inventory.</p></div>
+      <div class="story-footer"><span class="source">SOURCE // <a href="https://glassalmanac.com/ray%E2%80%91ban-meta-smart-glasses-plan-for-20m-units-in-2026-why-it-matters-now/">Glass Almanac / Reuters</a></span><span class="read-more">READ →</span></div>
+    </div>
+    <div class="story-card warning-card"><div class="story-body"><blockquote>
 <p>⚠️ <strong>Congressional Pressure on Facial Recognition:</strong> Senators Markey, Wyden, and Merkley sent a letter to Zuckerberg on March 17 demanding answers about Meta's reported plans to add facial recognition to its smart glasses, citing serious concerns about mass surveillance risks — particularly for protesters. The letter comes ahead of nationwide "No Kings" rallies scheduled for March 28. — <a href="https://www.boston.com/news/local-news/2026/03/21/markey-presses-meta-on-facial-recognition-risks-in-smart-glasses/">Boston.com</a></p>
-</blockquote>
-<hr />
-<h2>🥽 META QUEST VR</h2>
-<p><strong>Horizon Worlds VR Shutdown Reversed After Community Backlash</strong>
-In a notable about-face, Meta CTO Andrew Bosworth confirmed on March 19, 2026 that Horizon Worlds will remain available on Quest VR headsets after all — just days after announcing it would be fully removed by June 15. The reversal came in response to fan outcry. However, Meta is still prioritizing mobile development, and no new VR content development is planned. Existing games on the older Horizon Unity engine will continue to work in VR. — <a href="https://techcrunch.com/2026/03/19/meta-decides-not-to-shut-down-horizon-worlds-on-vr-after-all/">TechCrunch</a></p>
-<p><strong>March Horizon+ Games</strong>
-This month's Horizon+ subscription additions include Arizona Sunshine Remake (updated zombie shooter with new visuals and all DLC) and The Pirate: Republic of Nassau (18th-century naval strategy). — <a href="https://space4games.com/en/games-en/meta-horizon-these-new-vr-games-are-available-in-march-2026/">Space4Games</a></p>
-<p><strong>Quest 4 Timeline Pushed — Likely 2027 or Later</strong>
-Leaks from UploadVR and Leaker Luna suggest the Quest 4 has been pushed to 2027 or later after Reality Labs reset the project roadmap under a new codename ("Griffin"). Meta cut over 1,000 Reality Labs jobs in January. Reality Labs has lost $73 billion since 2021. — <a href="https://the-gadgeteer.com/2026/02/26/everything-we-know-about-the-meta-quest-4-so-far/">The Gadgeteer</a></p>
-<hr />
-<h2>👓 SMART GLASSES ROUNDUP</h2>
-<h3>Even Realities G2 + R1 Ring</h3>
-<p>The G2 remains one of the most compelling daily-wear AR glasses on the market — camera-free, prescription-ready from -12 to +12, with a 27.5-degree FoV 3D microdisplay and 18% lighter frame than its predecessor. Its HAO 2.0 optical system maintains consistent visuals whether the display is on or off. The R1 ring adds subtle gesture control. CES Innovation Award winner. — <a href="https://the-gadgeteer.com/2026/01/10/i-wore-the-even-g2-through-all-of-ces-and-nobody-knew-they-were-smart-glasses/">The Gadgeteer</a></p>
-<h3>Brilliant Labs Halo</h3>
-<p>Halo shipped in Q1 2026 at $349, with a full-color microOLED display, up to 14 hours of battery life, and on-device AI processing (no raw point-of-view data leaves the device). A new partnership with Neuphonic and TheStage AI brings ultra-low-latency, locally-processed voice AI to the glasses — positioning Halo as the privacy-first alternative to cloud-dependent smart glasses. Open-source platform. — <a href="https://www.financialcontent.com/article/bizwire-2026-3-5-smart-glasses-rebuilt-for-privacy-brilliant-labs-neuphonic-and-thestage-ai-move-ai-off-the-cloud">Financial Content / Business Wire</a></p>
-<h3>Samsung Android XR Smart Glasses</h3>
-<p>Samsung has confirmed its Android XR-powered smart glasses will launch in 2026, positioning directly against Meta's Ray-Bans. No pricing or exact date yet. — <a href="https://www.tomsguide.com/computing/smart-glasses/ray-ban-meta-glasses-just-got-a-big-upgrade-9-new-features-to-try-now">Tom's Guide</a></p>
-<h3>Google + Warby Parker</h3>
-<p>Google announced a partnership with Warby Parker for AI-powered smart glasses, signaling a major new entrant in the space. Timeline and specs remain unconfirmed. — <a href="https://www.eff.org/deeplinks/2026/03/think-twice-buying-or-using-metas-ray-bans">EFF Deeplinks</a></p>
-<hr />
-<h2>🔒 SECURE MESSAGING SPOTLIGHT</h2>
-<h3>🟢 Signal</h3>
-<p><strong>IBM + Signal Partner on Quantum-Safe Group Messaging</strong>
-IBM Research has been collaborating with Signal's developers to redesign group messaging protocols to withstand future quantum attacks. Signal already upgraded its core protocol with SPQR in 2025, but protecting group membership metadata required a ground-up redesign. The new model makes group members — rather than the server — the gatekeepers of membership data, using NIST-standardized ML-DSA. Findings were presented at the Real-World Crypto conference this month. Implementation timeline has not been announced. — <a href="https://research.ibm.com/blog/signal-threema-quantum-safe">IBM Research</a></p>
-<p><strong>Signal Status: Stable</strong>
-No major outages or controversial policy changes this week. Signal continues to be the gold standard for open-source E2E encrypted messaging for mainstream users.</p>
-<hr />
-<h3>🟣 Threema</h3>
-<p><strong>IBM + Threema Partner on Quantum-Safe Encryption</strong>
-Alongside the Signal collaboration, Threema is working with IBM Research to integrate ML-KEM — NIST's standardized post-quantum key encapsulation mechanism — into its messaging architecture. The goal is quantum-resilient communication that doesn't compromise Threema's operational efficiency or its signature no-phone-number, no-email anonymous model. — <a href="https://research.ibm.com/blog/signal-threema-quantum-safe">IBM Research</a> / <a href="https://quantumcomputingreport.com/ibm-signal-and-threema-partner-to-fortify-messaging-against-quantum-threats/">Quantum Computing Report</a></p>
-<blockquote>
+</blockquote></div></div>
+    </div>
+  </section>
+
+  <section id="meta-quest-vr">
+    <h2 class="section-heading">🥽 META QUEST VR</h2>
+    <div class="story-grid">
+    <div class="story-card">
+      <div class="story-title">Horizon Worlds VR Shutdown Reversed After Community Backlash</div>
+      <div class="story-body"><p>In a notable about-face, Meta CTO Andrew Bosworth confirmed on March 19, 2026 that Horizon Worlds will remain available on Quest VR headsets after all — just days after announcing it would be fully removed by June 15. The reversal came in response to fan outcry. However, Meta is still prioritizing mobile development, and no new VR content development is planned. Existing games on the older Horizon Unity engine will continue to work in VR.</p></div>
+      <div class="story-footer"><span class="source">SOURCE // <a href="https://techcrunch.com/2026/03/19/meta-decides-not-to-shut-down-horizon-worlds-on-vr-after-all/">TechCrunch</a></span><span class="read-more">READ →</span></div>
+    </div>
+    <div class="story-card">
+      <div class="story-title">March Horizon+ Games</div>
+      <div class="story-body"><p>This month's Horizon+ subscription additions include Arizona Sunshine Remake (updated zombie shooter with new visuals and all DLC) and The Pirate: Republic of Nassau (18th-century naval strategy).</p></div>
+      <div class="story-footer"><span class="source">SOURCE // <a href="https://space4games.com/en/games-en/meta-horizon-these-new-vr-games-are-available-in-march-2026/">Space4Games</a></span><span class="read-more">READ →</span></div>
+    </div>
+    <div class="story-card">
+      <div class="story-title">Quest 4 Timeline Pushed — Likely 2027 or Later</div>
+      <div class="story-body"><p>Leaks from UploadVR and Leaker Luna suggest the Quest 4 has been pushed to 2027 or later after Reality Labs reset the project roadmap under a new codename ("Griffin"). Meta cut over 1,000 Reality Labs jobs in January. Reality Labs has lost $73 billion since 2021.</p></div>
+      <div class="story-footer"><span class="source">SOURCE // <a href="https://the-gadgeteer.com/2026/02/26/everything-we-know-about-the-meta-quest-4-so-far/">The Gadgeteer</a></span><span class="read-more">READ →</span></div>
+    </div>
+    </div>
+  </section>
+
+  <section id="smart-glasses-roundup">
+    <h2 class="section-heading">👓 SMART GLASSES ROUNDUP</h2>
+    <div class="story-grid">
+    <div class="narrative"><p>The G2 remains one of the most compelling daily-wear AR glasses on the market — camera-free, prescription-ready from -12 to +12, with a 27.5-degree FoV 3D microdisplay and 18% lighter frame than its predecessor. Its HAO 2.0 optical system maintains consistent visuals whether the display is on or off. The R1 ring adds subtle gesture control. CES Innovation Award winner. — <a href="https://the-gadgeteer.com/2026/01/10/i-wore-the-even-g2-through-all-of-ces-and-nobody-knew-they-were-smart-glasses/">The Gadgeteer</a></p></div>
+    <div class="narrative"><p>Halo shipped in Q1 2026 at $349, with a full-color microOLED display, up to 14 hours of battery life, and on-device AI processing (no raw point-of-view data leaves the device). A new partnership with Neuphonic and TheStage AI brings ultra-low-latency, locally-processed voice AI to the glasses — positioning Halo as the privacy-first alternative to cloud-dependent smart glasses. Open-source platform. — <a href="https://www.financialcontent.com/article/bizwire-2026-3-5-smart-glasses-rebuilt-for-privacy-brilliant-labs-neuphonic-and-thestage-ai-move-ai-off-the-cloud">Financial Content / Business Wire</a></p></div>
+    <div class="narrative"><p>Samsung has confirmed its Android XR-powered smart glasses will launch in 2026, positioning directly against Meta's Ray-Bans. No pricing or exact date yet. — <a href="https://www.tomsguide.com/computing/smart-glasses/ray-ban-meta-glasses-just-got-a-big-upgrade-9-new-features-to-try-now">Tom's Guide</a></p></div>
+    <div class="narrative"><p>Google announced a partnership with Warby Parker for AI-powered smart glasses, signaling a major new entrant in the space. Timeline and specs remain unconfirmed. — <a href="https://www.eff.org/deeplinks/2026/03/think-twice-buying-or-using-metas-ray-bans">EFF Deeplinks</a></p></div>
+    </div>
+  </section>
+
+  <section id="secure-messaging-spotlight">
+    <h2 class="section-heading">🔒 SECURE MESSAGING SPOTLIGHT</h2>
+    <div class="story-grid">
+    <div class="story-card">
+      <div class="story-title">IBM + Signal Partner on Quantum-Safe Group Messaging</div>
+      <div class="story-body"><p>IBM Research has been collaborating with Signal's developers to redesign group messaging protocols to withstand future quantum attacks. Signal already upgraded its core protocol with SPQR in 2025, but protecting group membership metadata required a ground-up redesign. The new model makes group members — rather than the server — the gatekeepers of membership data, using NIST-standardized ML-DSA. Findings were presented at the Real-World Crypto conference this month. Implementation timeline has not been announced.</p></div>
+      <div class="story-footer"><span class="source">SOURCE // <a href="https://research.ibm.com/blog/signal-threema-quantum-safe">IBM Research</a></span><span class="read-more">READ →</span></div>
+    </div>
+    <div class="story-card">
+      <div class="story-title">Signal Status: Stable</div>
+      <div class="story-body"><p>No major outages or controversial policy changes this week. Signal continues to be the gold standard for open-source E2E encrypted messaging for mainstream users.</p></div>
+      <div class="story-footer"><span class="read-more">READ →</span></div>
+    </div>
+    <div class="story-card">
+      <div class="story-title">IBM + Threema Partner on Quantum-Safe Encryption</div>
+      <div class="story-body"><p>Alongside the Signal collaboration, Threema is working with IBM Research to integrate ML-KEM — NIST's standardized post-quantum key encapsulation mechanism — into its messaging architecture. The goal is quantum-resilient communication that doesn't compromise Threema's operational efficiency or its signature no-phone-number, no-email anonymous model.</p></div>
+      <div class="story-footer"><span class="source">SOURCE // <a href="https://research.ibm.com/blog/signal-threema-quantum-safe">IBM Research</a> / <a href="https://quantumcomputingreport.com/ibm-signal-and-threema-partner-to-fortify-messaging-against-quantum-threats/">Quantum Computing Report</a></span><span class="read-more">READ →</span></div>
+    </div>
+    <div class="story-card warning-card"><div class="story-body"><blockquote>
 <p><strong>Privacy Note:</strong> Threema remains the most privacy-protective mainstream messenger available — no phone number, no email, no server-side account, Swiss jurisdiction, and now actively building toward a post-quantum future.</p>
-</blockquote>
-<hr />
-<h2>⚡ POWER-USER ACTIONS FOR TODAY</h2>
-<ol>
+</blockquote></div></div>
+    </div>
+  </section>
+
+  <section id="power-user-actions-for-today">
+    <h2 class="section-heading">⚡ POWER-USER ACTIONS FOR TODAY</h2>
+    <div class="story-grid">
+    <div class="narrative"><p><ol>
 <li>
 <p><strong>Meta Ray-Ban Gen 2</strong> — Check your Meta AI app for the v23 update. Test the new natural conversation mode: you can now interrupt Meta AI mid-sentence without re-saying "Hey Meta." This alone makes rapid hands-free queries far less clunky.</p>
 </li>
@@ -269,10 +397,14 @@ Alongside the Signal collaboration, Threema is working with IBM Research to inte
 <li>
 <p><strong>ChatGPT (Free/Go Users)</strong> — Ads are coming in the next few weeks. If you're on the free tier and want an uninterrupted AI experience, now is a good time to evaluate whether a ChatGPT Plus subscription or a switch to Claude (with the current expanded limits) makes more sense for your workflow.</p>
 </li>
-</ol>
-<hr />
-<h2>🔥 TOP TEN HOTTEST AI &amp; TECH PRODUCTS RIGHT NOW</h2>
-<table>
+</ol></p></div>
+    </div>
+  </section>
+
+  <section id="top-ten-hottest-ai-tech-products-right-now">
+    <h2 class="section-heading">🔥 TOP TEN HOTTEST AI & TECH PRODUCTS RIGHT NOW</h2>
+    <div class="story-grid">
+    <div class="story-card table-card"><div class="story-body"><table>
 <thead>
 <tr>
 <th>#</th>
@@ -332,27 +464,21 @@ Alongside the Signal collaboration, Threema is working with IBM Research to inte
 <td>Top AI health wearable; discrete all-day tracking; integrating with third-party AI health platforms</td>
 </tr>
 </tbody>
-</table>
-<hr />
-<p><em>Briefing compiled Sunday, March 22, 2026. Sources include CNBC, Bloomberg, Reuters, OpenAI, Anthropic, Perplexity, MacRumors, 9to5Mac, TechCrunch, The Decoder, gHacks, VentureBeat, Meta, Proton, Notion, IBM Research, Federal News Network, The Hacker News, Gizmodo, Glass Almanac, and others.</em></p>
-<hr />
-  </div>
+</table></div></div>
+    <div class="narrative"><p><em>Briefing compiled Sunday, March 22, 2026. Sources include CNBC, Bloomberg, Reuters, OpenAI, Anthropic, Perplexity, MacRumors, 9to5Mac, TechCrunch, The Decoder, gHacks, VentureBeat, Meta, Proton, Notion, IBM Research, Federal News Network, The Hacker News, Gizmodo, Glass Almanac, and others.</em></p></div>
+    </div>
+  </section>
+
 
   <footer>
     <div>SIGNAL//213 — DAILY BRIEFINGS ARCHIVE</div>
     <div>COMPILED MANUALLY — NO ADS — <span>STAY INFORMED</span></div>
   </footer>
-
 </div>
-
 <button class="back-to-top" id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ TOP</button>
-
 <script>
   const btt = document.getElementById('back-to-top');
-  window.addEventListener('scroll', () => {
-    btt.classList.toggle('visible', window.scrollY > 300);
-  }, { passive: true });
+  window.addEventListener('scroll', () => { btt.classList.toggle('visible', window.scrollY > 300); }, { passive: true });
 </script>
-
 </body>
 </html>
