@@ -9,14 +9,16 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
   <!-- Canonical / absolute URLs so social platforms can fetch the preview -->
-  <link rel="canonical" href="https://dal213.com/">
+  <!-- NOTE: site redirects to www, so canonical names www to match. If you'd rather
+       run on the apex (dal213.com), flip BOTH the host redirect and these URLs. -->
+  <link rel="canonical" href="https://www.dal213.com/">
 
   <!-- Open Graph / Social preview -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://dal213.com/">
+  <meta property="og:url" content="https://www.dal213.com/">
   <meta property="og:title" content="David Lynch — Account Manager, Public Safety SaaS">
   <meta property="og:description" content="Frontline perspective. Serious tools for public safety. 20+ years in EMS & fire, 20+ in sales — helping departments find software that fits how they work.">
-  <meta property="og:image" content="https://dal213.com/og-image.png">
+  <meta property="og:image" content="https://www.dal213.com/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Frontline perspective. Serious tools for public safety. Schedule a call.">
@@ -25,25 +27,43 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="David Lynch — Account Manager, Public Safety SaaS">
   <meta name="twitter:description" content="Frontline perspective. Serious tools for public safety. 20+ years in EMS & fire, 20+ in sales — helping departments find software that fits how they work.">
-  <meta name="twitter:image" content="https://dal213.com/og-image.png">
+  <meta name="twitter:image" content="https://www.dal213.com/og-image.png">
 
-  <meta name="description" content="David Lynch — Account Manager for BATT3 and FireTek. 20+ years in EMS and fire service, 20+ in sales. Helping fire departments find public safety SaaS that fits how they work.">
+  <meta name="description" content="David Lynch — Account Manager for BATT3 & FireTek. 20+ years in EMS and fire service, 20+ in sales, helping departments find public safety SaaS that fits.">
 
-  <!-- Person structured data -->
+  <!-- ProfilePage + Person structured data — disambiguates THIS David Lynch -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "David Lynch",
-    "jobTitle": "Account Manager",
-    "url": "https://dal213.com",
-    "email": "dlynch@batt3.com",
-    "description": "David Lynch — Account Manager for BATT3 and FireTek. 20+ years in EMS and fire service, 20+ in sales. Helping fire departments find public safety SaaS that fits how they work.",
-    "sameAs": ["https://www.linkedin.com/in/david-lynch-0553b9409/"],
-    "worksFor": [
-      { "@type": "Organization", "name": "BATT3 (Battalion 3 Technologies)", "url": "https://www.batt3.com" },
-      { "@type": "Organization", "name": "FireTek", "url": "https://www.firetek.io" }
-    ]
+    "@type": "ProfilePage",
+    "dateModified": "2026-06-22",
+    "mainEntity": {
+      "@type": "Person",
+      "@id": "https://www.dal213.com/#david-lynch",
+      "name": "David Lynch",
+      "jobTitle": "Account Manager, Public Safety SaaS",
+      "url": "https://www.dal213.com/",
+      "image": "https://www.dal213.com/og-image.png",
+      "email": "dlynch@batt3.com",
+      "description": "David Lynch — Account Manager for BATT3 & FireTek. 20+ years in EMS and fire service, 20+ in sales, helping departments find public safety SaaS that fits.",
+      "knowsAbout": [
+        "Public safety software",
+        "Fire service technology",
+        "Emergency medical services",
+        "Incident command",
+        "Firefighter staffing and accountability"
+      ],
+      "address": { "@type": "PostalAddress", "addressCountry": "US" },
+      "sameAs": [
+        "https://www.linkedin.com/in/david-lynch-0553b9409/",
+        "https://batt3.com/our-team/",
+        "https://www.firetek.io"
+      ],
+      "worksFor": [
+        { "@type": "Organization", "name": "BATT3 (Battalion 3 Technologies)", "url": "https://www.batt3.com" },
+        { "@type": "Organization", "name": "FireTek", "url": "https://www.firetek.io" }
+      ]
+    }
   }
   </script>
 
@@ -51,6 +71,24 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap" rel="stylesheet">
 <style>
+  :root {
+    /* Default theme — matches the Tweaks defaults so the page is fully styled
+       even before (or without) JavaScript. React overrides these at runtime. */
+    --grey-bg: #3d4046;
+    --grey-bg-2: #34373c;
+    --grey-line: #52555c;
+    --navy: #18243f;
+    --navy-2: #1f2a44;
+    --navy-line: #2d3a5c;
+    --accent: #e9b464;
+    --accent-quiet: #af8543;
+    --ink: #e9ecf2;
+    --ink-dim: #a9b0be;
+    --ink-quiet: #b0b6c2;
+    --serif: 'Fraunces', Georgia, serif;
+    --radius: 14px;
+    --pad: clamp(20px, 3.2vw, 36px);
+  }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
   body {
@@ -641,9 +679,136 @@
 </style>
 </head>
 <body>
-  <div id="root"></div>
+  <!-- Static content below is the real page for crawlers, social scrapers, and
+       no-JS visitors. React replaces #root on mount to add the Tweaks panel and
+       live theming. Keep this in sync with the JSX if you change body copy. -->
+  <div id="root">
+    <main class="page">
+      <div class="meta">
+        <div><span class="dot"></span>Account Management — Public Safety SaaS</div>
+        <div class="meta-right">
+          <a class="meta-link" href="https://www.linkedin.com/in/david-lynch-0553b9409/" target="_blank" rel="noopener">LinkedIn</a>
+          <span class="meta-sep">Public Safety SaaS · Since 2018</span>
+        </div>
+      </div>
 
-  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+      <section class="hero">
+        <div>
+          <p class="tagline"><span>◆</span>&nbsp;&nbsp;Account Manager · BATT3 &nbsp;·&nbsp; FireTek</p>
+          <h1>David <em>Lynch</em></h1>
+          <p class="lede">
+            Two decades in sales, then two decades on the frontlines as an EMT and firefighter — now back in sales, getting the right tools into the hands of the people I stood next to.
+          </p>
+          <p class="serves">
+            For fire chiefs, training officers, and IT leads at volunteer, combination, and career departments — 10 to 500+ personnel.
+          </p>
+          <p class="cta-orienter">Pick the product you'd like to talk about:</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="https://bookings.cloud.microsoft/bookwithme/user/8069978f4c7245698f975c84107de687%40batt3.com?anonymous&ismsaljsauthenabled=true" target="_blank" rel="noopener">Schedule a call <b>BATT3</b> <span class="arrow">↗</span></a>
+            <a class="btn btn-secondary" href="https://calendar.proton.me/bookings#6wHNZZtAKaxrvuhW0MArWVXlEilzm9AGMUtPjH6mXsQ=" target="_blank" rel="noopener">Schedule a call <b>FireTek</b> <span class="arrow">↗</span></a>
+          </div>
+        </div>
+        <aside class="hero-aside">
+          <div class="portrait">
+            <img src="portrait.png" alt="David Lynch, public safety SaaS account manager for BATT3 and FireTek" width="190" height="253">
+          </div>
+          <div class="meta-list">
+            <div class="meta-item"><b>Based</b><span>United States</span></div>
+            <div class="meta-item"><b>Focus</b><span>Public Safety SaaS</span></div>
+            <div class="meta-item"><b>Sector</b><span>Fire · EMS</span></div>
+          </div>
+        </aside>
+      </section>
+
+      <div id="about" class="section-label"><span class="num">01</span><span>About</span><span class="rule"></span></div>
+      <article class="card about">
+        <div>
+          <p>With more than 20 years in EMS and the fire service, I bring a deep frontline perspective to the SaaS public safety sector.</p>
+          <p>My career spans roles as a career EMT, Haz-Mat Technician, Swift water rescue technician, volunteer firefighter, and search and rescue responder. Before stepping into public safety, I spent an equal two decades in sales — <em>a combination that now shapes how I work with agencies</em> — understanding both the operational realities of the job and the business side of getting the right tools into responders' hands.</p>
+        </div>
+        <aside class="creds">
+          <h4>Frontline Experience</h4>
+          <ul>
+            <li>Career EMT<span>20+ yrs</span></li>
+            <li>Haz-Mat Technician<span>Cert.</span></li>
+            <li>Swift Water Rescue<span>Cert.</span></li>
+            <li>Volunteer Firefighter<span>Retired</span></li>
+            <li>Search &amp; Rescue<span>Retired</span></li>
+            <li>Sales &amp; Account Mgmt<span>20+ yrs</span></li>
+          </ul>
+        </aside>
+      </article>
+
+      <div id="work" class="section-label"><span class="num">02</span><span>Where I Work</span><span class="rule"></span></div>
+      <div class="companies">
+        <article class="card company">
+          <header class="company-head">
+            <div class="logo">BATT<span class="mark">3</span></div>
+            <div class="role"><b>Account Manager</b>Public Safety Solutions</div>
+          </header>
+          <p class="company-desc"><strong>Battalion 3 Technologies</strong> delivers field-tested digital solutions built by and for the fire service. Founded by two career battalion chiefs, BATT3 specializes in intuitive software platforms that enhance firefighter safety, streamline operations, and support real-time accountability. Trusted by fire and EMS agencies across the country — BATT3 is committed to supporting the mission, not replacing it.</p>
+          <div class="products">
+            <span class="pill">FireRoster — Staffing</span>
+            <span class="pill">ICx — Incident Command</span>
+          </div>
+          <footer class="company-foot">
+            <a href="https://www.batt3.com" target="_blank" rel="noopener">batt3.com <span class="arrow">↗</span></a>
+            <a class="email" href="/cdn-cgi/l/email-protection#e98d8590878a81a98b889d9ddac78a8684"><span class="__cf_email__" data-cfemail="bdd9d1c4d3ded5fddfdcc9c98e93ded2d0">[email&#160;protected]</span></a>
+          </footer>
+        </article>
+        <article class="card company">
+          <header class="company-head">
+            <div class="logo">Fire<span class="mark">Tek</span></div>
+            <div class="role"><b>Account Manager</b>Real-time Response</div>
+          </header>
+          <p class="company-desc"><strong>FireTek</strong> is a real-time alerting and mapping platform purpose-built for fire departments and EMS. From dispatch to arrival, it delivers instant alerts, live location tracking, and hoselay mapping to the nearest water source — showing who's en route with accurate maps, property data, and true routing. Designed by firefighters, for firefighters.</p>
+          <div class="products">
+            <span class="pill">Alerts</span>
+            <span class="pill">Live Mapping</span>
+            <span class="pill">Hoselay / Hydrants</span>
+            <span class="pill">True Routing</span>
+          </div>
+          <footer class="company-foot">
+            <a href="https://www.firetek.io" target="_blank" rel="noopener">firetek.io <span class="arrow">↗</span></a>
+            <a class="email" href="/cdn-cgi/l/email-protection#355154435c511b594c5b565d75535c475041505e1b5c5a"><span class="__cf_email__" data-cfemail="771316011e13591b0e19141f37111e051203121c591e18">[email&#160;protected]</span></a>
+          </footer>
+        </article>
+      </div>
+
+      <div id="contact" class="section-label"><span class="num">03</span><span>Get in Touch</span><span class="rule"></span></div>
+      <div class="companies contact-grid">
+        <article class="card contact-card">
+          <header class="contact-head">
+            <div class="logo">BATT<span class="mark">3</span></div>
+            <div class="role"><b>Direct Line</b>Account Management</div>
+          </header>
+          <dl class="contact">
+            <dt>Email</dt><dd><a href="/cdn-cgi/l/email-protection#dcb8b0a5b2bfb49cbebda8a8eff2bfb3b1"><span class="__cf_email__" data-cfemail="0561697c6b666d4567647171362b666a68">[email&#160;protected]</span></a></dd>
+            <dt>Web</dt><dd><a href="https://www.batt3.com" target="_blank" rel="noopener">www.batt3.com</a></dd>
+            <dt>Book</dt><dd><a href="https://bookings.cloud.microsoft/bookwithme/user/8069978f4c7245698f975c84107de687%40batt3.com?anonymous&ismsaljsauthenabled=true" target="_blank" rel="noopener">Schedule a meeting ↗</a></dd>
+          </dl>
+        </article>
+        <article class="card contact-card">
+          <header class="contact-head">
+            <div class="logo">Fire<span class="mark">Tek</span></div>
+            <div class="role"><b>Direct Line</b>Account Management</div>
+          </header>
+          <dl class="contact">
+            <dt>Email</dt><dd><a href="/cdn-cgi/l/email-protection#c7a3a6b1aea3e9abbea9a4af87a1aeb5a2b3a2ace9aea8"><span class="__cf_email__" data-cfemail="660207100f02480a1f08050e26000f140312030d480f09">[email&#160;protected]</span></a></dd>
+            <dt>Web</dt><dd><a href="https://www.firetek.io" target="_blank" rel="noopener">www.firetek.io</a></dd>
+            <dt>Book</dt><dd><a href="https://calendar.proton.me/bookings#6wHNZZtAKaxrvuhW0MArWVXlEilzm9AGMUtPjH6mXsQ=" target="_blank" rel="noopener">Schedule a meeting ↗</a></dd>
+          </dl>
+        </article>
+      </div>
+
+      <footer class="site">
+        <div>© 2026 David Lynch</div>
+        <div>Serving those who serve</div>
+      </footer>
+    </main>
+  </div>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
   <script type="text/babel" src="tweaks-panel.jsx"></script>
@@ -752,7 +917,7 @@
               </div>
               <aside className="hero-aside">
                 <div className="portrait">
-                  <img src="portrait.png" alt="David Lynch" />
+                  <img src="portrait.png" alt="David Lynch, public safety SaaS account manager for BATT3 and FireTek" />
                 </div>
                 <div className="meta-list">
                   <div className="meta-item"><b>Based</b><span>United States</span></div>
