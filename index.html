@@ -291,6 +291,79 @@
   }
   .btn-secondary:hover b { color: var(--accent); }
 
+  /* --- Sticky / persistent booking buttons ------------------------- */
+  .sticky-cta {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 60;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    opacity: 0;
+    transform: translateY(14px);
+    pointer-events: none;
+    transition: opacity 0.28s ease, transform 0.28s ease;
+  }
+  .sticky-cta.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .sticky-cta-opt {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 18px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    border: 1px solid transparent;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.38), 0 2px 8px rgba(0,0,0,0.22);
+    transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.15s ease;
+  }
+  .sticky-cta-opt:hover { transform: translateY(-1px); }
+  .sticky-cta-opt .opt-label { color: inherit; }
+  .sticky-cta-opt .opt-brand {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 3px 7px;
+    border-radius: 999px;
+    margin-left: auto;
+  }
+  .sticky-cta-opt .arrow { opacity: 0.6; transition: transform 0.2s ease, opacity 0.2s; }
+  .sticky-cta-opt:hover .arrow { transform: translate(2px,-2px); opacity: 1; }
+  .sticky-cta-opt.batt3 {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #1a1300;
+  }
+  .sticky-cta-opt.batt3 .opt-brand { background: rgba(0,0,0,0.14); color: #1a1300; }
+  .sticky-cta-opt.batt3:hover { background: color-mix(in srgb, var(--accent) 88%, white); }
+  .sticky-cta-opt.firetek {
+    background: var(--navy-2);
+    border-color: var(--navy-line);
+    color: var(--ink);
+  }
+  .sticky-cta-opt.firetek .opt-brand { background: rgba(233,180,100,0.16); color: var(--accent); }
+  .sticky-cta-opt.firetek:hover { border-color: var(--accent); color: var(--accent); }
+
+  @media (max-width: 560px) {
+    .sticky-cta { right: 14px; bottom: 14px; left: 14px; }
+    .sticky-cta-opt { justify-content: center; }
+    .sticky-cta-opt .opt-brand { margin-left: 8px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sticky-cta, .sticky-cta-opt, .arrow { transition: none; }
+  }
+
   .hero-aside {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
@@ -771,7 +844,7 @@
           </div>
           <footer class="company-foot">
             <a href="https://www.batt3.com" target="_blank" rel="noopener">batt3.com <span class="arrow">↗</span></a>
-            <a class="email" href="/cdn-cgi/l/email-protection#b1d5ddc8dfd2d9f1d3d0c5c5829fd2dedc"><span class="__cf_email__" data-cfemail="c3a7afbaada0ab83a1a2b7b7f0eda0acae">[email&#160;protected]</span></a>
+            <a class="email" href="/cdn-cgi/l/email-protection#3f5b5346515c577f5d5e4b4b0c115c5052"><span class="__cf_email__" data-cfemail="c2a6aebbaca1aa82a0a3b6b6f1eca1adaf">[email&#160;protected]</span></a>
           </footer>
         </article>
         <article class="card company">
@@ -788,7 +861,7 @@
           </div>
           <footer class="company-foot">
             <a href="https://www.firetek.io" target="_blank" rel="noopener">firetek.io <span class="arrow">↗</span></a>
-            <a class="email" href="/cdn-cgi/l/email-protection#7115100718155f1d081f1219311718031405141a5f181e"><span class="__cf_email__" data-cfemail="9efaffe8f7fab0f2e7f0fdf6def8f7ecfbeafbf5b0f7f1">[email&#160;protected]</span></a>
+            <a class="email" href="/cdn-cgi/l/email-protection#3a5e5b4c535e1456435459527a5c53485f4e5f51145355"><span class="__cf_email__" data-cfemail="0c686d7a6568226075626f644c6a657e69786967226563">[email&#160;protected]</span></a>
           </footer>
         </article>
       </div>
@@ -801,7 +874,7 @@
             <div class="role"><b>Direct Line</b>Account Management</div>
           </header>
           <dl class="contact">
-            <dt>Email</dt><dd><a href="/cdn-cgi/l/email-protection#d6b2baafb8b5be96b4b7a2a2e5f8b5b9bb"><span class="__cf_email__" data-cfemail="86e2eaffe8e5eec6e4e7f2f2b5a8e5e9eb">[email&#160;protected]</span></a></dd>
+            <dt>Email</dt><dd><a href="/cdn-cgi/l/email-protection#2b4f47524548436b494a5f5f1805484446"><span class="__cf_email__" data-cfemail="16727a6f78757e5674776262253875797b">[email&#160;protected]</span></a></dd>
             <dt>Web</dt><dd><a href="https://www.batt3.com" target="_blank" rel="noopener">www.batt3.com</a></dd>
             <dt>Book</dt><dd><a href="https://bookings.cloud.microsoft/bookwithme/user/8069978f4c7245698f975c84107de687%40batt3.com?anonymous&ismsaljsauthenabled=true" target="_blank" rel="noopener">Schedule a meeting ↗</a></dd>
           </dl>
@@ -812,7 +885,7 @@
             <div class="role"><b>Direct Line</b>Account Management</div>
           </header>
           <dl class="contact">
-            <dt>Email</dt><dd><a href="/cdn-cgi/l/email-protection#1a7e7b6c737e3476637479725a7c73687f6e7f71347375"><span class="__cf_email__" data-cfemail="5b3f3a2d323f7537223538331b3d32293e2f3e30753234">[email&#160;protected]</span></a></dd>
+            <dt>Email</dt><dd><a href="/cdn-cgi/l/email-protection#721613041b165c1e0b1c111a32141b00170617195c1b1d"><span class="__cf_email__" data-cfemail="e58184938c81cb899c8b868da5838c978091808ecb8c8a">[email&#160;protected]</span></a></dd>
             <dt>Web</dt><dd><a href="https://www.firetek.io" target="_blank" rel="noopener">www.firetek.io</a></dd>
             <dt>Book</dt><dd><a href="https://calendar.proton.me/bookings#6wHNZZtAKaxrvuhW0MArWVXlEilzm9AGMUtPjH6mXsQ=" target="_blank" rel="noopener">Schedule a meeting ↗</a></dd>
           </dl>
@@ -826,7 +899,35 @@
     </main>
   </div>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+  <!-- Sticky / persistent booking buttons. Lives OUTSIDE #root so it
+       survives React mounting. Vanilla JS toggles visibility on scroll. -->
+  <div id="sticky-cta" class="sticky-cta" aria-hidden="true">
+    <a class="sticky-cta-opt batt3" href="https://bookings.cloud.microsoft/bookwithme/user/8069978f4c7245698f975c84107de687%40batt3.com?anonymous&ismsaljsauthenabled=true" target="_blank" rel="noopener">
+      <span class="opt-label">Schedule a call</span><span class="opt-brand">BATT3</span><span class="arrow">↗</span>
+    </a>
+    <a class="sticky-cta-opt firetek" href="https://calendar.proton.me/bookings#6wHNZZtAKaxrvuhW0MArWVXlEilzm9AGMUtPjH6mXsQ=" target="_blank" rel="noopener">
+      <span class="opt-label">Schedule a call</span><span class="opt-brand">FireTek</span><span class="arrow">↗</span>
+    </a>
+  </div>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    (function () {
+      var wrap = document.getElementById('sticky-cta');
+      if (!wrap) return;
+      // Reveal after the hero CTA scrolls out of view; stay visible through the
+      // rest of the page.
+      function vis() {
+        var show = window.scrollY > 520;
+        wrap.classList.toggle('visible', show);
+        wrap.setAttribute('aria-hidden', show ? 'false' : 'true');
+      }
+      vis();
+      window.addEventListener('scroll', vis, { passive: true });
+      window.addEventListener('resize', vis);
+    })();
+  </script>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
   <script type="text/babel" src="tweaks-panel.jsx"></script>
